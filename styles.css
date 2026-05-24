@@ -201,9 +201,10 @@ img {
 }
 
 .rings {
-  width: 76px;
+  width: 72px;
   height: auto;
-  margin: 0 auto 6px;
+  margin: -2px auto 6px;
+  filter: drop-shadow(0 6px 8px rgba(64, 80, 47, 0.10));
 }
 
 .eyebrow,
