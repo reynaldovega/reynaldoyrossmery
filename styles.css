@@ -659,6 +659,27 @@ blockquote {
   font-size: 0.9rem;
 }
 
+.registry {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  margin: 28px auto 0;
+  padding-top: 24px;
+}
+
+.registry::before {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: 0 auto 20px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.registry p {
+  margin-bottom: 16px;
+}
+
 address {
   margin: 0 auto 18px;
   max-width: 560px;
