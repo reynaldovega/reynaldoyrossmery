@@ -380,18 +380,18 @@ button:hover {
 
 .section-floral--confirm-left,
 .section-floral--confirm-right {
-  width: 250px;
-  bottom: -46px;
-  opacity: 0.32;
+  width: 180px;
+  bottom: 18px;
+  opacity: 0.28;
 }
 
 .section-floral--confirm-left {
-  left: -92px;
+  left: -68px;
   transform: scaleX(-1);
 }
 
 .section-floral--confirm-right {
-  right: -92px;
+  right: -68px;
 }
 
 .mini-divider {
@@ -591,11 +591,13 @@ address {
 .confirm {
   position: relative;
   z-index: 5;
-  padding-bottom: 66px;
+  padding-top: 44px;
+  padding-bottom: 50px;
+  min-height: 0;
   background: var(--ivory);
 }
 
-.confirm > * {
+.confirm > *:not(.section-floral) {
   position: relative;
   z-index: 4;
 }
@@ -701,8 +703,17 @@ address {
 
   .section-floral--confirm-left,
   .section-floral--confirm-right {
-    width: 170px;
-    bottom: -34px;
+    width: 118px;
+    bottom: 12px;
+    opacity: 0.24;
+  }
+
+  .section-floral--confirm-left {
+    left: -54px;
+  }
+
+  .section-floral--confirm-right {
+    right: -54px;
   }
 
   .parent-grid,
