@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: boda-rossmery-reynaldo
+    runtime: static
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

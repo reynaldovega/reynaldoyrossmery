@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="58" viewBox="0 0 96 58" fill="none">
+  <defs>
+    <linearGradient id="gold" x1="16" y1="14" x2="78" y2="45" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f7df97"/>
+      <stop offset=".34" stop-color="#c8942e"/>
+      <stop offset=".62" stop-color="#fff0b8"/>
+      <stop offset="1" stop-color="#9f6e1d"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="38" cy="32" rx="23" ry="13" transform="rotate(-12 38 32)" stroke="url(#gold)" stroke-width="5"/>
+  <ellipse cx="58" cy="27" rx="23" ry="13" transform="rotate(13 58 27)" stroke="url(#gold)" stroke-width="5"/>
+  <path d="M20 25c9-10 24-13 38-5" stroke="#fff6cf" stroke-width="2" stroke-linecap="round" opacity=".75"/>
+  <path d="M45 17c12-7 27-4 35 7" stroke="#fff6cf" stroke-width="2" stroke-linecap="round" opacity=".75"/>
+</svg>
