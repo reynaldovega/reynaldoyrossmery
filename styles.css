@@ -301,15 +301,103 @@ button:hover {
 }
 
 .section {
+  position: relative;
   padding: 54px 24px;
   border-top: 1px solid var(--line);
   text-align: center;
   background: var(--paper);
+  overflow: hidden;
 }
 
 .section p {
+  position: relative;
+  z-index: 2;
   color: var(--muted);
   line-height: 1.7;
+}
+
+.section h2,
+.section h3,
+.section address,
+.section .primary-action,
+.section .map-link,
+.section .formal,
+.section .gift-grid,
+.section .event-list {
+  position: relative;
+  z-index: 2;
+}
+
+.section-floral {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.42;
+  filter: drop-shadow(0 12px 18px rgba(64, 80, 47, 0.08));
+}
+
+.section-floral--schedule {
+  width: 170px;
+  right: -62px;
+  top: 18px;
+  transform: rotate(24deg);
+  opacity: 0.34;
+}
+
+.section-floral--gifts-left,
+.section-floral--gifts-right {
+  width: 160px;
+  opacity: 0.22;
+}
+
+.section-floral--gifts-left {
+  left: -70px;
+  top: 22px;
+}
+
+.section-floral--gifts-right {
+  right: -70px;
+  bottom: 12px;
+  transform: rotate(180deg);
+}
+
+.section-floral--dress {
+  width: 145px;
+  left: -54px;
+  top: 20px;
+  transform: scaleX(-1) rotate(12deg);
+  opacity: 0.3;
+}
+
+.section-floral--confirm-left,
+.section-floral--confirm-right {
+  width: 250px;
+  bottom: -46px;
+  opacity: 0.32;
+}
+
+.section-floral--confirm-left {
+  left: -92px;
+  transform: scaleX(-1);
+}
+
+.section-floral--confirm-right {
+  right: -92px;
+}
+
+.mini-divider {
+  position: relative;
+  z-index: 2;
+  width: min(210px, 62%);
+  height: 18px;
+  margin: -12px auto 26px;
+  background:
+    radial-gradient(circle at 50% 50%, var(--gold) 0 3px, transparent 4px),
+    linear-gradient(90deg, transparent, var(--gold), transparent);
+  background-repeat: no-repeat;
+  background-size: 42px 12px, 100% 1px;
+  background-position: center, center;
+  opacity: 0.75;
 }
 
 .blessing {
@@ -438,6 +526,7 @@ blockquote {
 }
 
 .gifts {
+  position: relative;
   background: var(--soft);
 }
 
@@ -474,6 +563,7 @@ address {
 }
 
 .dress {
+  position: relative;
   background: var(--paper);
 }
 
@@ -584,6 +674,23 @@ address {
 
   .section {
     padding: 44px 18px;
+  }
+
+  .section-floral--schedule {
+    width: 120px;
+    right: -56px;
+  }
+
+  .section-floral--gifts-left,
+  .section-floral--gifts-right,
+  .section-floral--dress {
+    width: 110px;
+  }
+
+  .section-floral--confirm-left,
+  .section-floral--confirm-right {
+    width: 170px;
+    bottom: -34px;
   }
 
   .parent-grid,
