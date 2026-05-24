@@ -145,6 +145,7 @@ img {
   padding: 46px 94px 18px;
   background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(244,246,241,0.90));
   overflow: hidden;
+  isolation: isolate;
 }
 
 .hero__photo img {
@@ -163,24 +164,24 @@ img {
 .photo-floral {
   position: absolute !important;
   z-index: 2 !important;
-  width: clamp(150px, 28vw, 245px) !important;
+  width: clamp(96px, 16vw, 132px) !important;
   height: auto !important;
   max-width: none !important;
   max-height: none !important;
   border: 0 !important;
   box-shadow: none !important;
-  opacity: 0.82;
+  opacity: 0.7;
   pointer-events: none;
 }
 
 .photo-floral--left {
-  left: calc(50% - 250px);
-  bottom: 8px;
+  left: clamp(14px, 8vw, 72px);
+  bottom: 22px;
 }
 
 .photo-floral--right {
-  right: calc(50% - 250px);
-  top: 18px;
+  right: clamp(14px, 8vw, 72px);
+  top: 28px;
   transform: rotate(180deg);
 }
 
@@ -621,7 +622,7 @@ address {
   }
 
   .hero__photo {
-    padding: 36px 42px 14px;
+    padding: 34px 32px 14px;
   }
 
   .hero__photo img {
@@ -630,17 +631,18 @@ address {
   }
 
   .photo-floral {
-    width: 150px !important;
+    width: 76px !important;
+    opacity: 0.5;
   }
 
   .photo-floral--left {
-    left: -2px;
-    bottom: 4px;
+    left: 8px;
+    bottom: 22px;
   }
 
   .photo-floral--right {
-    right: -2px;
-    top: 12px;
+    right: 8px;
+    top: 24px;
   }
 
   .floral {
@@ -648,13 +650,15 @@ address {
   }
 
   .floral--top-left {
-    left: -98px;
-    width: 235px;
+    left: -128px;
+    width: 210px;
+    opacity: 0.62;
   }
 
   .floral--top-right {
-    right: -98px;
-    width: 235px;
+    right: -128px;
+    width: 210px;
+    opacity: 0.62;
   }
 
   .floral--middle-left {
@@ -710,6 +714,30 @@ address {
 
   .event__time {
     min-height: 64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-floral {
+    display: none;
+  }
+
+  .hero__photo {
+    padding: 30px 24px 12px;
+  }
+
+  .floral--top-left,
+  .floral--top-right {
+    width: 170px;
+    opacity: 0.5;
+  }
+
+  .floral--top-left {
+    left: -118px;
+  }
+
+  .floral--top-right {
+    right: -118px;
   }
 }
 
