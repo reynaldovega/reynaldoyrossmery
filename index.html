@@ -4,170 +4,285 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nuestra Boda | Rossmery y Reynaldo</title>
-  <meta name="description" content="Parte digital de matrimonio de Rossmery y Reynaldo. Sábado 26 de septiembre de 2026, 4:00 PM.">
-  <link rel="canonical" href="https://reynaldoyrossmery.onrender.com/">
+  <meta name="description" content="Parte digital de matrimonio de Rossmery y Reynaldo. Sabado 26 de septiembre de 2026, 4:00 PM.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://reynaldoyrossmery.onrender.com/">
   <meta property="og:title" content="Nuestra Boda | Rossmery y Reynaldo">
-  <meta property="og:description" content="Sábado 26 de septiembre de 2026, 4:00 PM. Te esperamos para celebrar este día tan especial.">
-  <meta property="og:image" content="https://reynaldoyrossmery.onrender.com/og-image.jpg?v=1">
-  <meta property="og:image:secure_url" content="https://reynaldoyrossmery.onrender.com/og-image.jpg?v=1">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:description" content="Sabado 26 de septiembre de 2026, 4:00 PM. Te esperamos para celebrar este dia tan especial.">
+  <meta property="og:image" content="og-image.jpg">
   <meta property="og:locale" content="es_PE">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Nuestra Boda | Rossmery y Reynaldo">
-  <meta name="twitter:description" content="Sábado 26 de septiembre de 2026, 4:00 PM.">
-  <meta name="twitter:image" content="https://reynaldoyrossmery.onrender.com/og-image.jpg?v=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=26">
 </head>
 <body>
+  <nav class="topbar" aria-label="Navegacion principal">
+    <a href="#inicio" data-sheet-link>Inicio</a>
+    <a href="#historia" data-sheet-link>Nuestra historia</a>
+    <a href="#ceremonia" data-sheet-link>Ceremonia</a>
+    <a href="#fotos" data-sheet-link>Fotos</a>
+    <a href="#regalos" data-sheet-link>Regalos</a>
+    <a href="#confirmacion" data-sheet-link>Confirmar</a>
+  </nav>
+
   <main class="invite">
-    <img class="floral floral--top-left" src="floral-peach-corners.png" alt="" aria-hidden="true">
-    <img class="floral floral--top-right" src="floral-peach-corners.png" alt="" aria-hidden="true">
-    <img class="floral floral--middle-left" src="floral-white-frame.png" alt="" aria-hidden="true">
-    <img class="floral floral--middle-right" src="floral-white-frame.png" alt="" aria-hidden="true">
-    <img class="floral floral--bottom-left" src="floral-cream-roses.png" alt="" aria-hidden="true">
-    <img class="floral floral--bottom-right" src="floral-cream-roses.png" alt="" aria-hidden="true">
-    <section class="hero" aria-labelledby="titulo-boda">
-      <div class="hero__photo">
-        <div class="photo-stage">
-          <img class="photo-floral photo-floral--left" src="floral-photo-corner.png" alt="" aria-hidden="true">
-          <img class="photo-floral photo-floral--right" src="floral-photo-corner.png" alt="" aria-hidden="true">
-          <img class="main-photo" src="foto-portada.jpg" alt="Rossmery y Reynaldo en la playa">
+    <section class="sheet sheet--home is-active" id="inicio" data-sheet aria-labelledby="titulo-boda">
+      <img class="sheet-floral sheet-floral--left" src="floral-peach-corners.png" alt="" aria-hidden="true">
+      <img class="sheet-floral sheet-floral--right" src="floral-peach-corners.png" alt="" aria-hidden="true">
+      <div class="sheet__media">
+        <img src="assets/fotos/foto-07-atardecer-mar.png" alt="Rossmery y Reynaldo mirando el atardecer en el mar">
+      </div>
+      <div class="sheet__content sheet__content--center">
+        <img class="rings" src="wedding-rings.png" alt="" aria-hidden="true">
+        <p class="eyebrow">Nos casamos</p>
+        <h1 id="titulo-boda">Rossmery <span>&amp;</span> Reynaldo</h1>
+        <p class="hero__date">Sabado 26 de septiembre de 2026</p>
+        <p class="hero__time">4:00 PM</p>
+        <div class="countdown" aria-label="Cuenta regresiva">
+          <div>
+            <strong data-countdown-days>000</strong>
+            <span>Dias</span>
+          </div>
+          <div>
+            <strong data-countdown-hours>00</strong>
+            <span>Horas</span>
+          </div>
+          <div>
+            <strong data-countdown-minutes>00</strong>
+            <span>Minutos</span>
+          </div>
+          <div>
+            <strong data-countdown-seconds>00</strong>
+            <span>Segundos</span>
+          </div>
+        </div>
+        <div class="sheet-actions">
+          <a class="primary-action" href="https://dparte.wedding/reynaldoyrossmery" target="_blank" rel="noopener">Confirmar asistencia</a>
+          <a class="secondary-action" href="#historia" data-sheet-link>Ver historia</a>
         </div>
       </div>
-      <div class="hero__content">
+    </section>
+
+    <section class="sheet sheet--story" id="historia" data-sheet hidden aria-labelledby="titulo-historia">
+      <div class="story-page">
+        <header class="story-heading">
+          <p class="eyebrow">Nuestra historia</p>
+          <h2 id="titulo-historia">Una historia que sigue creciendo</h2>
+        </header>
+
+        <section class="story-quotes" aria-label="Palabras de los novios">
+          <figure class="story-quote story-quote--left">
+            <blockquote>"Apareciste tu, con esa manera tan especial de preocuparte por mi, de preguntarme como estaba y de hacerme sentir importante."</blockquote>
+            <figcaption>Rossmery</figcaption>
+          </figure>
+          <figure class="story-quote story-quote--right">
+            <blockquote>"Para mi, eres la promesa cumplida. Solo pedi a una mujer que me valore y me ame, y sinceramente tengo mucho mas de lo que pedi. Gracias por tu paciencia y tu comprension."</blockquote>
+            <figcaption>Reynaldo</figcaption>
+          </figure>
+        </section>
+
+        <section class="story-feature" aria-label="Como empezo nuestra historia">
+          <figure class="story-feature__photo">
+            <img src="assets/fotos/portada-pareja-flores.jpeg" alt="Rossmery y Reynaldo sonriendo juntos">
+          </figure>
+          <div class="story-feature__text">
+            <p class="eyebrow">Como ella me conocio</p>
+            <h3>Nuestra forma tan particular de conocernos</h3>
+            <p>Nuestra forma tan particular de conocernos llego justo en el momento en que creia haber cerrado las puertas al amor y pense que no volveria a enamorarme. Pero apareciste tu, con esa manera tan especial de preocuparte por mi, de preguntarme como estaba y de hacerme sentir importante.</p>
+            <p>Quizas nuestros caminos ya se habian cruzado antes sin imaginar que hoy estariamos aqui, comenzando una nueva etapa juntos. En estos anos hemos aprendido el uno del otro, hemos crecido y tambien hemos enfrentado desafios, tanto en tu salud como en la mia. Y aun asi, nunca soltamos nuestras manos, porque siempre supimos que estabamos juntos en todo momento.</p>
+            <p>Hoy tengo la certeza de que nuestra historia aun tiene muchas paginas por escribir. Porque aunque existan tormentas, siempre encontraremos la manera de volver a ver el sol brillar para nosotros.</p>
+          </div>
+        </section>
+
+        <section class="story-summary" aria-label="Lo que queremos construir">
+          <div>
+            <p class="eyebrow">Nuestro camino</p>
+            <h3>Lo que queremos construir</h3>
+            <p>Queremos una relacion donde el amor tambien sea cuidado, paciencia y compania. Seguir aprendiendo juntos, sostenernos en los dias dificiles y celebrar cada pequeno sol que vuelva a brillar para nosotros.</p>
+          </div>
+          <figure>
+            <img src="assets/fotos/historia-pareja-cafeteria.jpeg" alt="Rossmery y Reynaldo juntos">
+          </figure>
+        </section>
+
+        <div class="sheet-actions story-actions">
+          <a class="secondary-action" href="#inicio" data-sheet-link>Volver al inicio</a>
+          <a class="primary-action" href="#ceremonia" data-sheet-link>Ir a ceremonia</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet sheet--ceremony" id="ceremonia" data-sheet hidden aria-labelledby="titulo-ceremonia">
+      <div class="sheet__media">
+        <img src="assets/fotos/historia-brindis-retocada.png" alt="Rossmery y Reynaldo brindando juntos">
+      </div>
+      <div class="sheet__content">
+        <div class="ceremony-note">
+          <p>Este dia no solo celebra una fecha: celebra cada paso que dimos para llegar hasta aqui.</p>
+          <span>Queremos vivirlo contigo, con alegria, gratitud y mucho amor.</span>
+        </div>
+        <p class="eyebrow">Itinerario</p>
+        <h2 id="titulo-ceremonia">Ceremonia y recepcion</h2>
+        <div class="event-list">
+          <article class="event">
+            <div class="event__time">4:00 PM</div>
+            <div>
+              <h3>Ceremonia Civil</h3>
+              <p>Municipalidad de Villa Maria del Triunfo</p>
+              <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Municipalidad%20de%20Villa%20Maria%20del%20Triunfo" target="_blank" rel="noopener">Ver ubicacion</a>
+            </div>
+          </article>
+          <article class="event">
+            <div class="event__time">Luego</div>
+            <div>
+              <h3>Celebracion</h3>
+              <p>Calle 4 Mz J Lt 38 AA.HH Villa Limatambo, San Gabriel, Villa Maria del Triunfo</p>
+              <a class="map-link" href="https://maps.app.goo.gl/DGZYHcVfgGnzHaR46" target="_blank" rel="noopener">Ver ubicacion</a>
+            </div>
+          </article>
+        </div>
+        <div class="detail-strip">
+          <div>
+            <span>Dress code</span>
+            <strong>Formal</strong>
+          </div>
+          <p>Hay varios colores, pero el color blanco se reserva para la novia.</p>
+        </div>
+        <div class="sheet-actions">
+          <a class="secondary-action" href="#historia" data-sheet-link>Volver a historia</a>
+          <a class="primary-action" href="#fotos" data-sheet-link>Ir a fotos</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet sheet--photos" id="fotos" data-sheet hidden aria-labelledby="titulo-fotos">
+      <div class="sheet__content sheet__content--wide">
+        <p class="eyebrow">Nuestros recuerdos</p>
+        <h2 id="titulo-fotos">Fotos</h2>
+        <div class="gallery-grid">
+          <figure class="gallery-item gallery-item--wide">
+            <img src="assets/fotos/historia-pareja-cafeteria.jpeg" alt="Rossmery y Reynaldo juntos">
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/fotos/historia-pareja-brindis.jpeg" alt="Rossmery y Reynaldo brindando">
+          </figure>
+          <figure class="gallery-item gallery-item--wide">
+            <img src="assets/fotos/foto-04-playa-abrazo.png" alt="Rossmery y Reynaldo caminando en la orilla del mar">
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/fotos/historia-pareja-beso.jpeg" alt="Rossmery y Reynaldo juntos">
+          </figure>
+          <figure class="gallery-item gallery-item--tall">
+            <img src="assets/fotos/historia-pareja-descanso.jpeg" alt="Rossmery y Reynaldo sonriendo juntos">
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/fotos/historia-manos.jpeg" alt="Rossmery y Reynaldo tomados de la mano">
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/fotos/foto-07-atardecer-mar.png" alt="Rossmery y Reynaldo mirando el atardecer en el mar">
+          </figure>
+          <figure class="gallery-item gallery-item--wide">
+            <img src="assets/fotos/foto-13-bosque-luz.png" alt="Rossmery y Reynaldo en un camino de bosque">
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/fotos/historia-pareja-calle.jpeg" alt="Rossmery y Reynaldo en una salida juntos">
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/fotos/historia-pareja-selfie.jpeg" alt="Rossmery y Reynaldo en una selfie">
+          </figure>
+          <figure class="gallery-item gallery-item--wide">
+            <img src="assets/fotos/foto-10-parque-espaldas.png" alt="Rossmery y Reynaldo caminando de espaldas en el parque">
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/fotos/foto-04-playa-abrazo.png" alt="Rossmery y Reynaldo abrazados frente al mar">
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/fotos/foto-09-parque-cerca.png" alt="Rossmery y Reynaldo juntos en el parque">
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/fotos/foto-11-laguna.png" alt="Rossmery y Reynaldo frente a una laguna">
+          </figure>
+          <figure class="gallery-item gallery-item--wide">
+            <img src="assets/fotos/foto-12-atardecer-playa.png" alt="Rossmery y Reynaldo en la playa al atardecer">
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/fotos/foto-13-bosque-luz.png" alt="Rossmery y Reynaldo en un bosque iluminado">
+          </figure>
+        </div>
+        <div class="sheet-actions">
+          <a class="secondary-action" href="#ceremonia" data-sheet-link>Volver a ceremonia</a>
+          <a class="primary-action" href="#regalos" data-sheet-link>Ir a regalos</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet sheet--gifts" id="regalos" data-sheet hidden aria-labelledby="titulo-regalos">
+      <div class="sheet__media">
+        <video class="sheet__video" src="assets/videos/regalos-video.mp4" autoplay muted loop playsinline preload="metadata" poster="assets/fotos/historia-manos.jpeg" aria-label="Video de Rossmery y Reynaldo"></video>
+      </div>
+      <div class="sheet__content">
+        <p class="eyebrow">Con carino</p>
+        <h2 id="titulo-regalos">Regalos y obsequios</h2>
+        <p>Si deseas tener un detalle con nosotros y contribuir al comienzo de nuestra historia, sera bienvenido.</p>
+        <div class="gift-grid">
+          <article class="gift-card">
+            <h3>Cuenta BCP Soles</h3>
+            <p class="account">19172615111095</p>
+            <button data-copy="19172615111095" type="button">Copiar cuenta</button>
+          </article>
+          <article class="gift-card">
+            <h3>Cuenta interbancaria</h3>
+            <p class="account">00219117261511109553</p>
+            <button data-copy="00219117261511109553" type="button">Copiar CCI</button>
+          </article>
+          <article class="gift-card">
+            <h3>Yape</h3>
+            <p class="account">934473933</p>
+            <button data-copy="934473933" type="button">Copiar numero</button>
+          </article>
+        </div>
+        <div class="registry-box">
+          <h3>Un detalle para nuestro nuevo comienzo</h3>
+          <p>Mas que un regalo, sera una forma de acompanarnos en esta etapa que empezamos con tanta ilusion. Cada gesto lo recibiremos con alegria y gratitud.</p>
+          <a class="primary-action" href="https://dparte.wedding/reynaldoyrossmery/registry" target="_blank" rel="noopener">Mi lista de regalos</a>
+        </div>
+        <div class="address-box">
+          <h3>Envio de obsequios</h3>
+          <p>Si prefieres enviarnos un detalle a casa, puedes hacerlo a esta direccion. Lo recibiremos con mucho carino.</p>
+          <address>Av. Los Proceres 12, Sa5054 15054, Santiago de Surco</address>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Av.%20Los%20Proceres%2012%2C%20Sa5054%2015054%2C%20Santiago%20de%20Surco" target="_blank" rel="noopener">Ver ubicacion</a>
+        </div>
+        <div class="sheet-actions">
+          <a class="secondary-action" href="#fotos" data-sheet-link>Volver a fotos</a>
+          <a class="primary-action" href="#confirmacion" data-sheet-link>Ir a confirmar</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet sheet--confirm" id="confirmacion" data-sheet hidden aria-labelledby="titulo-confirmacion">
+      <div class="sheet__media">
+        <img src="assets/fotos/historia-selfie.jpeg" alt="Rossmery y Reynaldo sonriendo juntos">
+      </div>
+      <div class="sheet__content sheet__content--center">
         <img class="rings" src="wedding-rings.png" alt="" aria-hidden="true">
-        <p class="eyebrow">Nuestra boda</p>
-        <h1 id="titulo-boda">Rossmery <span>&amp;</span> Reynaldo</h1>
-        <p class="date">Sábado 26 de septiembre de 2026</p>
-        <p class="time">4:00 PM</p>
-        <a class="primary-action" href="https://dparte.wedding/reynaldoyrossmery" target="_blank" rel="noopener">Confirmar asistencia</a>
+        <p class="eyebrow">Te esperamos</p>
+        <h2 id="titulo-confirmacion">Confirma tu asistencia</h2>
+        <p>Ayudanos confirmando tu presencia para preparar con amor cada detalle de este dia.</p>
+        <div class="sheet-actions">
+          <a class="primary-action" href="https://dparte.wedding/reynaldoyrossmery" target="_blank" rel="noopener">Confirmar boda</a>
+          <a class="secondary-action" href="#inicio" data-sheet-link>Volver al inicio</a>
+        </div>
       </div>
-    </section>
-
-    <section class="section blessing" aria-label="Bendición">
-      <p class="section-kicker">Con la bendición de Dios</p>
-      <blockquote>
-        "El amor es paciente, es bondadoso; todo lo disculpa, todo lo cree, todo lo espera y todo lo soporta."
-      </blockquote>
-      <div class="gold-divider" aria-hidden="true"></div>
-      <p class="verse">1 Corintios 13:4,7</p>
-    </section>
-
-    <section class="section parents" aria-labelledby="padres">
-      <h2 id="padres">Nuestros padres</h2>
-      <div class="parent-grid">
-        <article>
-          <h3>Padres de la novia</h3>
-          <p>Arturo Pujadas Achulli</p>
-          <p>María Anita Márquez Félix</p>
-        </article>
-        <article>
-          <h3>Padres del novio</h3>
-          <p>Roumaldo Vega</p>
-          <p>Carmen Calero Adauto</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section message">
-      <div class="message__photo">
-        <img class="message__floral message__floral--left" src="floral-photo-corner.png" alt="" aria-hidden="true">
-        <img class="message__floral message__floral--right" src="floral-photo-corner.png" alt="" aria-hidden="true">
-        <img class="message__image" src="foto-recuerdo.jpg" alt="Rossmery y Reynaldo sonriendo juntos">
-      </div>
-      <div>
-        <p class="section-kicker">Te invitamos</p>
-        <h2>Queremos compartir este momento contigo</h2>
-        <p>Tenemos el gusto de invitarte a celebrar este día tan importante de nuestras vidas. Tu presencia será nuestro mejor regalo.</p>
-      </div>
-    </section>
-
-    <section class="section schedule" aria-labelledby="itinerario">
-      <img class="section-floral section-floral--schedule" src="floral-peach-corners.png" alt="" aria-hidden="true">
-      <h2 id="itinerario">Ceremonia y recepcion</h2>
-      <div class="event-list">
-        <article class="event">
-          <div class="event__mark" aria-hidden="true"></div>
-          <div class="event__time">4:00 PM</div>
-          <div>
-            <h3>Ceremonia Civil</h3>
-            <p>Municipalidad de Villa María del Triunfo</p>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Municipalidad%20de%20Villa%20Maria%20del%20Triunfo" target="_blank" rel="noopener">Ver ubicación</a>
-          </div>
-        </article>
-        <article class="event">
-          <div class="event__mark" aria-hidden="true"></div>
-          <div class="event__time">Recepcion</div>
-          <div>
-            <h3>Celebracion</h3>
-            <p>Calle 4 Mz J Lt 38 AA.HH Villa Limatambo, San Gabriel, Villa María del Triunfo</p>
-            <a class="map-link" href="https://maps.app.goo.gl/DGZYHcVfgGnzHaR46" target="_blank" rel="noopener">Ver ubicación</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section gifts" aria-labelledby="regalos">
-      <img class="section-floral section-floral--gifts-left" src="floral-photo-corner.png" alt="" aria-hidden="true">
-      <img class="section-floral section-floral--gifts-right" src="floral-photo-corner.png" alt="" aria-hidden="true">
-      <h2 id="regalos">Puedes hacernos un regalo</h2>
-      <p>Si deseas tener un detalle con nosotros y contribuir al comienzo de nuestra historia, será bienvenido.</p>
-      <div class="gift-grid">
-        <article class="gift-card">
-          <h3>Cuenta BCP Soles</h3>
-          <p class="account">19172615111095</p>
-          <button data-copy="19172615111095" type="button">Copiar cuenta</button>
-        </article>
-        <article class="gift-card">
-          <h3>Cuenta interbancaria</h3>
-          <p class="account">00219117261511109553</p>
-          <button data-copy="00219117261511109553" type="button">Copiar CCI</button>
-        </article>
-        <article class="gift-card">
-          <h3>Yape</h3>
-          <p class="account">934473933</p>
-          <button data-copy="934473933" type="button">Copiar número</button>
-        </article>
-      </div>
-      <div class="registry">
-        <p>Si deseas acompañarnos con un detalle elegido con mucho cariño, también hemos preparado nuestra lista de regalos.</p>
-        <a class="primary-action" href="https://dparte.wedding/reynaldoyrossmery/registry" target="_blank" rel="noopener">Mi lista de regalos</a>
-      </div>
-    </section>
-
-    <section class="section address" aria-labelledby="obsequio">
-      <div class="mini-divider" aria-hidden="true"></div>
-      <h2 id="obsequio">Puedes hacernos un obsequio</h2>
-      <p>Si deseas enviarnos un obsequio, puedes hacerlo a la siguiente dirección:</p>
-      <address>Av. Los Próceres 12, Sa5054 15054, Santiago de Surco</address>
-      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Av.%20Los%20Proceres%2012%2C%20Sa5054%2015054%2C%20Santiago%20de%20Surco" target="_blank" rel="noopener">Ver ubicación</a>
-    </section>
-
-    <section class="section dress" aria-labelledby="vestimenta">
-      <img class="section-floral section-floral--dress" src="floral-peach-corners.png" alt="" aria-hidden="true">
-      <h2 id="vestimenta">Código de Vestimenta</h2>
-      <p class="formal">Formal</p>
-      <p>Hay varios colores, pero el color blanco se reserva para la novia.</p>
-    </section>
-
-    <section class="section confirm" aria-labelledby="confirmacion">
-      <img class="section-floral section-floral--confirm-left" src="floral-cream-roses.png" alt="" aria-hidden="true">
-      <img class="section-floral section-floral--confirm-right" src="floral-cream-roses.png" alt="" aria-hidden="true">
-      <p class="section-kicker">Te esperamos</p>
-      <h2 id="confirmacion">Confirma tu asistencia</h2>
-      <p>Ayúdanos confirmando tu presencia para preparar con amor cada detalle de este día.</p>
-      <a class="primary-action" href="https://dparte.wedding/reynaldoyrossmery" target="_blank" rel="noopener">Confirmar boda</a>
     </section>
   </main>
 
+  <div class="photo-lightbox" data-lightbox hidden role="dialog" aria-modal="true" aria-label="Vista ampliada de foto">
+    <button class="photo-lightbox__close" type="button" data-lightbox-close aria-label="Cerrar foto ampliada">Cerrar</button>
+    <img data-lightbox-image src="" alt="">
+  </div>
+
   <div class="toast" role="status" aria-live="polite"></div>
-  <script src="script.js"></script>
+  <script src="script.js?v=26"></script>
 </body>
 </html>
