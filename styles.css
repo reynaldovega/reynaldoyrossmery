@@ -26,8 +26,8 @@ body {
   margin: 0;
   color: var(--ink);
   background: #e2e2e0;
-  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
-  font-weight: 300;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-weight: 400;
 }
 
 a,
@@ -91,11 +91,12 @@ img {
   box-shadow: none;
   display: inline-flex;
   align-items: center;
-  font-size: 0.72rem;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 0.84rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.01em;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: none;
   text-shadow: 0 2px 9px rgba(0, 0, 0, 0.5);
   transition: color 180ms ease, text-shadow 180ms ease;
 }
@@ -115,9 +116,9 @@ img {
 
 .topbar__brand {
   justify-self: center;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.65rem, 3vw, 2.35rem) !important;
-  font-weight: 500 !important;
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: clamp(2rem, 3.35vw, 2.75rem) !important;
+  font-weight: 400 !important;
   letter-spacing: 0 !important;
   line-height: 1;
   text-transform: none !important;
@@ -808,6 +809,7 @@ button {
   border-radius: 999px;
   text-decoration: none;
   cursor: pointer;
+  font-family: "Libre Baskerville", Georgia, serif;
   transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
@@ -1221,7 +1223,7 @@ address {
   }
 
   .topbar__brand {
-    font-size: 1.45rem !important;
+    font-size: 1.65rem !important;
   }
 
   .topbar a {
@@ -1229,8 +1231,8 @@ address {
     padding: 0 0 4px;
     display: inline-flex;
     align-items: center;
-    font-size: 0.56rem;
-    letter-spacing: 0.04em;
+    font-size: 0.66rem;
+    letter-spacing: 0;
   }
 
   .topbar a.is-active {
@@ -1497,8 +1499,8 @@ address {
   .topbar a {
     min-height: 0;
     padding: 0 0 3px;
-    font-size: 0.52rem;
-    letter-spacing: 0.04em;
+    font-size: 0.58rem;
+    letter-spacing: 0;
   }
 
   .topbar__left,
