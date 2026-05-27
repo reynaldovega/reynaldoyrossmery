@@ -1489,7 +1489,7 @@ address {
 
   .topbar__brand {
     order: -1;
-    font-size: clamp(1.45rem, 8vw, 2rem) !important;
+    font-size: clamp(1.28rem, 6.8vw, 1.68rem) !important;
   }
 
   .topbar__left,
@@ -1502,10 +1502,17 @@ address {
   .topbar a {
     min-height: 0;
     padding: 0 0 3px;
-    font-size: clamp(0.47rem, 2.4vw, 0.58rem);
+    font-size: clamp(0.45rem, 2.15vw, 0.54rem);
     letter-spacing: 0;
     line-height: 1.15;
     text-align: center;
+    -webkit-text-stroke: 0.25px rgba(20, 28, 16, 0.72);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.48);
+  }
+
+  .topbar.is-scrolled a {
+    -webkit-text-stroke: 0;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
   }
 
   .topbar__left,
@@ -1514,13 +1521,14 @@ address {
   }
 
   h1 {
-    font-size: clamp(2.45rem, 13vw, 3.45rem);
+    font-size: clamp(2.1rem, 10.8vw, 2.9rem);
     line-height: 0.92;
   }
 
   h2,
   .sheet--story h2 {
-    font-size: clamp(2rem, 10vw, 2.7rem);
+    font-size: clamp(1.72rem, 8.6vw, 2.28rem);
+    line-height: 1.02;
   }
 
   h3,
@@ -1562,7 +1570,7 @@ address {
   .hero__date,
   .hero__time {
     margin-bottom: 6px;
-    font-size: 0.95rem;
+    font-size: 0.82rem;
     line-height: 1.45;
   }
 
@@ -1579,7 +1587,7 @@ address {
   }
 
   .story-hero h2 {
-    font-size: clamp(2.25rem, 11vw, 3.35rem);
+    font-size: clamp(1.85rem, 9vw, 2.7rem);
     line-height: 0.98;
   }
 
@@ -1592,18 +1600,18 @@ address {
   .story-feature__text h3,
   .story-summary h3,
   .story-photo-summary h3 {
-    font-size: clamp(1.75rem, 9vw, 2.45rem);
+    font-size: clamp(1.45rem, 7.4vw, 2rem);
     line-height: 1.08;
   }
 
   .story-feature__text p,
   .story-summary p {
-    font-size: 0.94rem;
-    line-height: 1.7;
+    font-size: 0.82rem;
+    line-height: 1.58;
   }
 
   .story-quote blockquote {
-    font-size: clamp(1.25rem, 7vw, 1.7rem);
+    font-size: clamp(1.05rem, 5.8vw, 1.42rem);
   }
 
   .story-quote blockquote {
@@ -1620,11 +1628,11 @@ address {
   }
 
   .countdown strong {
-    font-size: clamp(1.65rem, 8vw, 2.05rem);
+    font-size: clamp(1.38rem, 7vw, 1.78rem);
   }
 
   .countdown span {
-    font-size: 0.62rem;
+    font-size: 0.54rem;
     letter-spacing: 0.1em;
   }
 
@@ -1642,6 +1650,68 @@ address {
     grid-auto-rows: 145px;
   }
 
+  .sheet__content {
+    font-size: 0.84rem;
+  }
+
+  .sheet__content > p,
+  .event p,
+  .detail-strip p,
+  .registry-box p,
+  .address-box p,
+  .gift-card p {
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .ceremony-note p {
+    font-size: clamp(1.22rem, 6.4vw, 1.66rem);
+    line-height: 1.14;
+  }
+
+  .ceremony-note span {
+    font-size: 0.76rem;
+    line-height: 1.48;
+  }
+
+  h3,
+  .gift-card h3,
+  .registry-box h3,
+  .address-box h3,
+  .event h3 {
+    font-size: 0.68rem;
+    line-height: 1.35;
+    letter-spacing: 0.11em;
+  }
+
+  .event__time {
+    min-height: 54px;
+    font-size: 0.96rem;
+  }
+
+  .detail-strip {
+    gap: 10px;
+  }
+
+  .detail-strip strong {
+    font-size: 1.08rem;
+  }
+
+  .primary-action,
+  .secondary-action,
+  .map-link,
+  button {
+    min-height: 36px;
+    padding-inline: 14px;
+    font-size: 0.78rem;
+    line-height: 1.2;
+  }
+
+  .gift-card button {
+    min-height: 34px;
+    font-size: 0.74rem;
+  }
+
   .photo-lightbox {
     padding: 14px;
   }
@@ -1655,10 +1725,11 @@ address {
   .photo-lightbox__close {
     top: 10px;
     right: 10px;
-    min-height: 34px;
-    padding: 0 12px;
+    min-height: 28px !important;
+    padding: 0 9px !important;
     border-radius: 999px;
-    font-size: 0.76rem;
+    font-size: 0.62rem !important;
+    box-shadow: none !important;
   }
 }
 
