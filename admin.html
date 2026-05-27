@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin confirmaciones | Rossmery y Reynaldo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=40">
+</head>
+<body class="admin-page">
+  <main class="admin-shell">
+    <section class="admin-hero">
+      <p class="eyebrow">Panel privado</p>
+      <h1>Confirmaciones</h1>
+      <p>Ingresa con tu usuario admin de Supabase para ver y descargar la lista de invitados.</p>
+    </section>
+
+    <section class="admin-card" data-admin-login>
+      <h2>Ingreso admin</h2>
+      <form class="admin-form" data-login-form>
+        <label>
+          <span>Correo</span>
+          <input name="email" type="email" autocomplete="email" required>
+        </label>
+        <label>
+          <span>Contrasena</span>
+          <input name="password" type="password" autocomplete="current-password" required>
+        </label>
+        <p data-admin-status role="status" aria-live="polite"></p>
+        <button class="primary-action" type="submit">Ingresar</button>
+      </form>
+    </section>
+
+    <section class="admin-card" data-admin-panel hidden>
+      <div class="admin-toolbar">
+        <div>
+          <h2>Invitados confirmados</h2>
+          <p><span data-confirmation-count>0</span> registros guardados.</p>
+        </div>
+        <div class="admin-actions">
+          <button class="secondary-action" type="button" data-refresh-confirmations>Actualizar</button>
+          <button class="primary-action" type="button" data-download-csv>Descargar CSV</button>
+          <button class="secondary-action" type="button" data-admin-logout>Salir</button>
+        </div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Pareja</th>
+              <th>Acompanante</th>
+              <th>Restriccion</th>
+              <th>Comentarios</th>
+            </tr>
+          </thead>
+          <tbody data-confirmations-body>
+            <tr>
+              <td colspan="7">Sin datos cargados.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=1"></script>
+  <script src="admin.js?v=1"></script>
+</body>
+</html>

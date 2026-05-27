@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=39">
+  <link rel="stylesheet" href="styles.css?v=40">
 </head>
 <body>
   <nav class="topbar" aria-label="Navegacion principal">
@@ -335,12 +335,54 @@
         <h2 id="titulo-confirmacion">Confirma tu asistencia</h2>
         <p>Ayudanos confirmando tu presencia para preparar con amor cada detalle de este dia.</p>
         <div class="sheet-actions">
-          <a class="primary-action" href="https://dparte.wedding/reynaldoyrossmery" target="_blank" rel="noopener">Confirmar boda</a>
+          <button class="primary-action" type="button" data-open-rsvp>Confirmar boda</button>
           <a class="secondary-action" href="#inicio" data-sheet-link>Volver al inicio</a>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="rsvp-modal" data-rsvp-modal hidden role="dialog" aria-modal="true" aria-labelledby="rsvp-title">
+    <div class="rsvp-modal__panel">
+      <button class="rsvp-modal__close" type="button" data-close-rsvp aria-label="Cerrar formulario">Cerrar</button>
+      <p class="eyebrow">Confirmacion</p>
+      <h2 id="rsvp-title">Confirmar asistencia</h2>
+      <form class="rsvp-form" data-rsvp-form>
+        <div class="form-grid">
+          <label>
+            <span>Nombre</span>
+            <input name="first_name" type="text" autocomplete="given-name" required>
+          </label>
+          <label>
+            <span>Apellido</span>
+            <input name="last_name" type="text" autocomplete="family-name" required>
+          </label>
+        </div>
+        <label>
+          <span>Correo electronico</span>
+          <input name="email" type="email" autocomplete="email" required>
+        </label>
+        <label class="form-check">
+          <input name="has_companion" type="checkbox" data-companion-toggle>
+          <span>Asistire con pareja o acompanante</span>
+        </label>
+        <label data-companion-field hidden>
+          <span>Nombre del acompanante <em>opcional</em></span>
+          <input name="companion_name" type="text" autocomplete="off">
+        </label>
+        <label>
+          <span>Restriccion alimentaria <em>opcional</em></span>
+          <input name="dietary_restrictions" type="text" autocomplete="off">
+        </label>
+        <label>
+          <span>Preguntas o comentarios <em>opcional</em></span>
+          <textarea name="comments" rows="3"></textarea>
+        </label>
+        <p class="rsvp-form__status" data-rsvp-status role="status" aria-live="polite"></p>
+        <button class="primary-action" type="submit">Enviar confirmacion</button>
+      </form>
+    </div>
+  </div>
 
   <div class="photo-lightbox" data-lightbox hidden role="dialog" aria-modal="true" aria-label="Vista ampliada de foto">
     <button class="photo-lightbox__close" type="button" data-lightbox-close aria-label="Cerrar foto ampliada">Cerrar</button>
@@ -348,7 +390,9 @@
   </div>
 
   <div class="toast" role="status" aria-live="polite"></div>
-  <script src="script.js?v=29"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=1"></script>
+  <script src="script.js?v=30"></script>
   <script>
     (() => {
       const topbar = document.querySelector(".topbar");

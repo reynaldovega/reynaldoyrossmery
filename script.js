@@ -76,6 +76,12 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
 const lightbox = document.querySelector("[data-lightbox]");
 const lightboxImage = document.querySelector("[data-lightbox-image]");
 const lightboxClose = document.querySelector("[data-lightbox-close]");
+const rsvpModal = document.querySelector("[data-rsvp-modal]");
+const rsvpForm = document.querySelector("[data-rsvp-form]");
+const rsvpStatus = document.querySelector("[data-rsvp-status]");
+const companionToggle = document.querySelector("[data-companion-toggle]");
+const companionField = document.querySelector("[data-companion-field]");
+let weddingDb = null;
 
 document.querySelectorAll(".gallery-item img, .story-carousel__slide img").forEach((image) => {
   image.addEventListener("click", () => {
@@ -150,6 +156,108 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !lightbox.hidden) {
     closeLightbox();
   }
+  if (event.key === "Escape" && rsvpModal && !rsvpModal.hidden) {
+    closeRsvpModal();
+  }
+});
+
+function getWeddingDb() {
+  if (weddingDb) {
+    return weddingDb;
+  }
+
+  const config = window.WEDDING_SUPABASE;
+  const isConfigured = config?.url && config?.anonKey && !config.url.includes("PEGA_AQUI") && !config.anonKey.includes("PEGA_AQUI");
+
+  if (!isConfigured || !window.supabase) {
+    return null;
+  }
+
+  weddingDb = window.supabase.createClient(config.url, config.anonKey);
+  return weddingDb;
+}
+
+function openRsvpModal() {
+  if (!rsvpModal) {
+    return;
+  }
+
+  rsvpModal.hidden = false;
+  document.body.classList.add("is-rsvp-open");
+  rsvpForm?.querySelector("input")?.focus();
+}
+
+function closeRsvpModal() {
+  if (!rsvpModal) {
+    return;
+  }
+
+  rsvpModal.hidden = true;
+  document.body.classList.remove("is-rsvp-open");
+}
+
+document.querySelectorAll("[data-open-rsvp]").forEach((button) => {
+  button.addEventListener("click", openRsvpModal);
+});
+
+document.querySelectorAll("[data-close-rsvp]").forEach((button) => {
+  button.addEventListener("click", closeRsvpModal);
+});
+
+rsvpModal?.addEventListener("click", (event) => {
+  if (event.target === rsvpModal) {
+    closeRsvpModal();
+  }
+});
+
+companionToggle?.addEventListener("change", () => {
+  companionField.hidden = !companionToggle.checked;
+});
+
+rsvpForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const db = getWeddingDb();
+  const formData = new FormData(rsvpForm);
+  const submitButton = rsvpForm.querySelector("button[type='submit']");
+  const hasCompanion = formData.get("has_companion") === "on";
+  const payload = {
+    first_name: String(formData.get("first_name") || "").trim(),
+    last_name: String(formData.get("last_name") || "").trim(),
+    email: String(formData.get("email") || "").trim(),
+    has_companion: hasCompanion,
+    companion_name: hasCompanion ? String(formData.get("companion_name") || "").trim() || null : null,
+    dietary_restrictions: String(formData.get("dietary_restrictions") || "").trim() || null,
+    comments: String(formData.get("comments") || "").trim() || null,
+    user_agent: navigator.userAgent,
+  };
+
+  if (!db) {
+    rsvpStatus.textContent = "Falta conectar Supabase. Revisa supabase-config.js.";
+    rsvpStatus.className = "rsvp-form__status is-error";
+    return;
+  }
+
+  submitButton.disabled = true;
+  rsvpStatus.textContent = "Enviando confirmacion...";
+  rsvpStatus.className = "rsvp-form__status";
+
+  const { error } = await db.from("rsvp_confirmations").insert(payload);
+
+  submitButton.disabled = false;
+
+  if (error) {
+    rsvpStatus.textContent = "No se pudo guardar. Intentalo nuevamente.";
+    rsvpStatus.className = "rsvp-form__status is-error";
+    return;
+  }
+
+  rsvpStatus.textContent = "Confirmacion enviada. Muchas gracias.";
+  rsvpStatus.className = "rsvp-form__status is-success";
+  rsvpForm.reset();
+  companionField.hidden = true;
+  showToast("Asistencia confirmada");
+  setTimeout(closeRsvpModal, 1200);
 });
 
 const weddingDate = new Date("2026-09-26T16:00:00-05:00");

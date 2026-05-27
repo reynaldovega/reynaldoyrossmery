@@ -1,0 +1,4 @@
+window.WEDDING_SUPABASE = {
+  url: "PEGA_AQUI_TU_SUPABASE_URL",
+  anonKey: "PEGA_AQUI_TU_SUPABASE_ANON_KEY",
+};
