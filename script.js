@@ -1,5 +1,6 @@
 const toast = document.querySelector(".toast");
 let toastTimer;
+const topbar = document.querySelector(".topbar");
 
 const sheets = Array.from(document.querySelectorAll("[data-sheet]"));
 const sheetLinks = Array.from(document.querySelectorAll("[data-sheet-link]"));
@@ -17,6 +18,9 @@ function showSheet(id, shouldUpdateHash = true) {
     const isActive = sheet.id === nextId;
     sheet.classList.toggle("is-active", isActive);
     sheet.hidden = !isActive;
+    if (isActive) {
+      sheet.scrollTop = 0;
+    }
   });
 
   sheetLinks.forEach((link) => {
@@ -38,6 +42,7 @@ function showSheet(id, shouldUpdateHash = true) {
   }
 
   window.scrollTo({ top: 0, behavior: "auto" });
+  updateTopbarShade();
 }
 
 sheetLinks.forEach((link) => {
@@ -72,13 +77,59 @@ const lightbox = document.querySelector("[data-lightbox]");
 const lightboxImage = document.querySelector("[data-lightbox-image]");
 const lightboxClose = document.querySelector("[data-lightbox-close]");
 
-document.querySelectorAll(".gallery-item img").forEach((image) => {
+document.querySelectorAll(".gallery-item img, .story-carousel__slide img").forEach((image) => {
   image.addEventListener("click", () => {
     lightboxImage.src = image.currentSrc || image.src;
     lightboxImage.alt = image.alt;
     lightbox.hidden = false;
     document.body.classList.add("is-lightbox-open");
   });
+});
+
+document.querySelectorAll("[data-story-carousel]").forEach((carousel) => {
+  if (carousel.dataset.carouselReady === "true") {
+    return;
+  }
+
+  carousel.dataset.carouselReady = "true";
+  const slides = Array.from(carousel.querySelectorAll(".story-carousel__slide"));
+  const previous = carousel.querySelector("[data-carousel-prev]");
+  const next = carousel.querySelector("[data-carousel-next]");
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    currentIndex = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle("is-current", slideIndex === currentIndex);
+    });
+  }
+
+  if (previous && next && slides.length) {
+    previous.addEventListener("click", () => showSlide(currentIndex - 1));
+    next.addEventListener("click", () => showSlide(currentIndex + 1));
+  }
+});
+
+function updateTopbarShade() {
+  if (!topbar) {
+    return;
+  }
+
+  const activeSheet = document.querySelector("[data-sheet].is-active");
+  const heroMedia = activeSheet?.querySelector(".sheet__media, .story-hero");
+  let shouldShade = window.scrollY > 24;
+
+  if (heroMedia) {
+    const mediaBottom = heroMedia.getBoundingClientRect().bottom;
+    shouldShade = mediaBottom <= topbar.offsetHeight + 6;
+  }
+
+  topbar.classList.toggle("is-scrolled", shouldShade);
+}
+
+window.addEventListener("scroll", updateTopbarShade, { passive: true });
+sheets.forEach((sheet) => {
+  sheet.addEventListener("scroll", updateTopbarShade, { passive: true });
 });
 
 function closeLightbox() {
@@ -137,5 +188,6 @@ function showToast(message) {
 window.showSheet = showSheet;
 
 showSheet(window.location.hash.slice(1) || "inicio", false);
+updateTopbarShade();
 updateCountdown();
 setInterval(updateCountdown, 1000);

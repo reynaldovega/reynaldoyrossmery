@@ -348,6 +348,58 @@
   </div>
 
   <div class="toast" role="status" aria-live="polite"></div>
-  <script src="script.js?v=28"></script>
+  <script src="script.js?v=29"></script>
+  <script>
+    (() => {
+      const topbar = document.querySelector(".topbar");
+      const sheets = Array.from(document.querySelectorAll("[data-sheet]"));
+
+      function updateTopbarShade() {
+        if (!topbar) {
+          return;
+        }
+
+        const activeSheet = document.querySelector("[data-sheet].is-active");
+        const heroMedia = activeSheet?.querySelector(".sheet__media, .story-hero");
+        let shouldShade = window.scrollY > 24;
+
+        if (heroMedia) {
+          shouldShade = heroMedia.getBoundingClientRect().bottom <= topbar.offsetHeight + 6;
+        }
+
+        topbar.classList.toggle("is-scrolled", shouldShade);
+      }
+
+      document.querySelectorAll("[data-story-carousel]").forEach((carousel) => {
+        if (carousel.dataset.carouselReady === "true") {
+          return;
+        }
+
+        carousel.dataset.carouselReady = "true";
+        const slides = Array.from(carousel.querySelectorAll(".story-carousel__slide"));
+        const previous = carousel.querySelector("[data-carousel-prev]");
+        const next = carousel.querySelector("[data-carousel-next]");
+        let currentIndex = Math.max(0, slides.findIndex((slide) => slide.classList.contains("is-current")));
+
+        function showSlide(index) {
+          currentIndex = (index + slides.length) % slides.length;
+          slides.forEach((slide, slideIndex) => {
+            slide.classList.toggle("is-current", slideIndex === currentIndex);
+          });
+        }
+
+        if (previous && next && slides.length) {
+          previous.addEventListener("click", () => showSlide(currentIndex - 1));
+          next.addEventListener("click", () => showSlide(currentIndex + 1));
+        }
+      });
+
+      window.addEventListener("scroll", updateTopbarShade, { passive: true });
+      sheets.forEach((sheet) => {
+        sheet.addEventListener("scroll", updateTopbarShade, { passive: true });
+      });
+      updateTopbarShade();
+    })();
+  </script>
 </body>
 </html>
