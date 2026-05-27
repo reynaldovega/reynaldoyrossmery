@@ -1483,33 +1483,49 @@ address {
   .topbar {
     grid-template-columns: 1fr;
     justify-items: center;
-    gap: 7px;
-    padding: 12px 8px;
+    gap: 8px;
+    padding: 10px 8px 9px;
   }
 
   .topbar__brand {
     order: -1;
+    font-size: clamp(1.45rem, 8vw, 2rem) !important;
   }
 
   .topbar__left,
   .topbar__right {
     justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
   }
 
   .topbar a {
     min-height: 0;
     padding: 0 0 3px;
-    font-size: 0.58rem;
+    font-size: clamp(0.47rem, 2.4vw, 0.58rem);
     letter-spacing: 0;
+    line-height: 1.15;
+    text-align: center;
   }
 
   .topbar__left,
   .topbar__right {
-    gap: 11px;
+    gap: 10px 16px;
   }
 
   h1 {
-    font-size: clamp(2.75rem, 15vw, 4.1rem);
+    font-size: clamp(2.45rem, 13vw, 3.45rem);
+    line-height: 0.92;
+  }
+
+  h2,
+  .sheet--story h2 {
+    font-size: clamp(2rem, 10vw, 2.7rem);
+  }
+
+  h3,
+  .eyebrow {
+    letter-spacing: 0.1em;
   }
 
   .sheet__media {
@@ -1524,6 +1540,36 @@ address {
     padding: 34px 16px 42px;
   }
 
+  .sheet--home .sheet__content {
+    padding-top: 134px;
+    justify-content: flex-start;
+  }
+
+  .sheet--home .rings {
+    width: 48px;
+    margin-top: 4px;
+    margin-bottom: 6px;
+  }
+
+  .sheet--home .eyebrow {
+    margin-bottom: 6px;
+  }
+
+  .sheet--home h1 {
+    margin-bottom: 8px;
+  }
+
+  .hero__date,
+  .hero__time {
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .hero__time {
+    margin-bottom: 14px;
+  }
+
   .story-page {
     padding: 0 0 42px;
   }
@@ -1533,7 +1579,31 @@ address {
   }
 
   .story-hero h2 {
-    font-size: clamp(2.5rem, 12vw, 4.2rem);
+    font-size: clamp(2.25rem, 11vw, 3.35rem);
+    line-height: 0.98;
+  }
+
+  .story-feature__text,
+  .story-summary > div,
+  .story-photo-summary {
+    padding-inline: 16px;
+  }
+
+  .story-feature__text h3,
+  .story-summary h3,
+  .story-photo-summary h3 {
+    font-size: clamp(1.75rem, 9vw, 2.45rem);
+    line-height: 1.08;
+  }
+
+  .story-feature__text p,
+  .story-summary p {
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
+
+  .story-quote blockquote {
+    font-size: clamp(1.25rem, 7vw, 1.7rem);
   }
 
   .story-quote blockquote {
@@ -1542,15 +1612,25 @@ address {
 
   .countdown {
     grid-template-columns: repeat(2, 1fr);
+    width: min(100%, 226px);
   }
 
   .countdown div {
-    padding: 13px 8px;
+    padding: 12px 8px;
+  }
+
+  .countdown strong {
+    font-size: clamp(1.65rem, 8vw, 2.05rem);
+  }
+
+  .countdown span {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
   }
 
   .sheet-actions {
     flex-direction: column;
-    width: min(100%, 260px);
+    width: min(100%, 236px);
     gap: 8px;
   }
 
@@ -1560,6 +1640,25 @@ address {
 
   .gallery-grid {
     grid-auto-rows: 145px;
+  }
+
+  .photo-lightbox {
+    padding: 14px;
+  }
+
+  .photo-lightbox img {
+    max-width: 94vw;
+    max-height: 74vh;
+    border-radius: 6px;
+  }
+
+  .photo-lightbox__close {
+    top: 10px;
+    right: 10px;
+    min-height: 34px;
+    padding: 0 12px;
+    border-radius: 999px;
+    font-size: 0.76rem;
   }
 }
 
