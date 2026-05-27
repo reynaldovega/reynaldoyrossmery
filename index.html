@@ -20,16 +20,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=27">
+  <link rel="stylesheet" href="styles.css?v=36">
 </head>
 <body>
   <nav class="topbar" aria-label="Navegacion principal">
-    <a href="#inicio" data-sheet-link>Inicio</a>
-    <a href="#historia" data-sheet-link>Nuestra historia</a>
-    <a href="#ceremonia" data-sheet-link>Ceremonia</a>
-    <a href="#fotos" data-sheet-link>Fotos</a>
-    <a href="#regalos" data-sheet-link>Regalos</a>
-    <a href="#confirmacion" data-sheet-link>Confirmar</a>
+    <div class="topbar__left">
+      <a href="#historia" data-sheet-link>Nuestra historia</a>
+      <a href="#ceremonia" data-sheet-link>Ceremonia y recepcion</a>
+      <a href="#regalos" data-sheet-link>Lista de regalos</a>
+    </div>
+    <a class="topbar__brand" href="#inicio" data-sheet-link>Reynaldo y Rossmery</a>
+    <div class="topbar__right">
+      <a href="#confirmacion" data-sheet-link>Confirmar asistencia</a>
+    </div>
   </nav>
 
   <main class="invite">
@@ -72,10 +75,13 @@
 
     <section class="sheet sheet--story" id="historia" data-sheet hidden aria-labelledby="titulo-historia">
       <div class="story-page">
-        <header class="story-heading">
-          <p class="eyebrow">Nuestra historia</p>
-          <h2 id="titulo-historia">Una historia que sigue creciendo</h2>
-        </header>
+        <section class="story-hero" aria-labelledby="titulo-historia">
+          <img src="assets/fotos/historia-pareja-descanso-retocada.png" alt="Rossmery y Reynaldo descansando juntos">
+          <div class="story-hero__content">
+            <p class="eyebrow">Nuestra historia</p>
+            <h2 id="titulo-historia">Una historia que sigue creciendo</h2>
+          </div>
+        </section>
 
         <section class="story-quotes" aria-label="Palabras de los novios">
           <figure class="story-quote story-quote--left">
@@ -110,6 +116,59 @@
           <figure>
             <img src="assets/fotos/historia-pareja-cafeteria.jpeg" alt="Rossmery y Reynaldo juntos">
           </figure>
+        </section>
+
+        <section class="story-photo-summary" aria-label="Resumen de fotos">
+          <p class="eyebrow">Las fotos resumen</p>
+          <h3>Cada recuerdo nos trajo hasta este dia</h3>
+          <div class="story-carousel" data-story-carousel>
+            <button class="story-carousel__arrow" type="button" data-carousel-prev aria-label="Foto anterior">&larr;</button>
+            <div class="story-carousel__viewport">
+              <figure class="story-carousel__slide is-current">
+                <img src="assets/fotos/historia-pareja-cafeteria.jpeg" alt="Rossmery y Reynaldo juntos">
+              </figure>
+              <figure class="story-carousel__slide">
+                <img src="assets/fotos/historia-pareja-brindis.jpeg" alt="Rossmery y Reynaldo brindando">
+              </figure>
+              <figure class="story-carousel__slide">
+                <img src="assets/fotos/foto-04-playa-abrazo.png" alt="Rossmery y Reynaldo caminando en la orilla del mar">
+              </figure>
+              <figure class="story-carousel__slide">
+                <img src="assets/fotos/historia-pareja-beso.jpeg" alt="Rossmery y Reynaldo juntos">
+              </figure>
+              <figure class="story-carousel__slide">
+                <img src="assets/fotos/historia-pareja-descanso.jpeg" alt="Rossmery y Reynaldo sonriendo juntos">
+              </figure>
+              <figure class="story-carousel__slide">
+                <img src="assets/fotos/historia-manos.jpeg" alt="Rossmery y Reynaldo tomados de la mano">
+              </figure>
+              <figure class="story-carousel__slide">
+                <img src="assets/fotos/foto-07-atardecer-mar.png" alt="Rossmery y Reynaldo mirando el atardecer en el mar">
+              </figure>
+              <figure class="story-carousel__slide">
+                <img src="assets/fotos/foto-13-bosque-luz.png" alt="Rossmery y Reynaldo en un camino de bosque">
+              </figure>
+              <figure class="story-carousel__slide">
+                <img src="assets/fotos/historia-pareja-calle.jpeg" alt="Rossmery y Reynaldo en una salida juntos">
+              </figure>
+              <figure class="story-carousel__slide">
+                <img src="assets/fotos/historia-pareja-selfie.jpeg" alt="Rossmery y Reynaldo en una selfie">
+              </figure>
+              <figure class="story-carousel__slide">
+                <img src="assets/fotos/foto-10-parque-espaldas.png" alt="Rossmery y Reynaldo caminando de espaldas en el parque">
+              </figure>
+              <figure class="story-carousel__slide">
+                <img src="assets/fotos/foto-09-parque-cerca.png" alt="Rossmery y Reynaldo juntos en el parque">
+              </figure>
+              <figure class="story-carousel__slide">
+                <img src="assets/fotos/foto-11-laguna.png" alt="Rossmery y Reynaldo frente a una laguna">
+              </figure>
+              <figure class="story-carousel__slide">
+                <img src="assets/fotos/foto-12-atardecer-playa.png" alt="Rossmery y Reynaldo en la playa al atardecer">
+              </figure>
+            </div>
+            <button class="story-carousel__arrow" type="button" data-carousel-next aria-label="Foto siguiente">&rarr;</button>
+          </div>
         </section>
 
         <div class="sheet-actions story-actions">
@@ -289,6 +348,6 @@
   </div>
 
   <div class="toast" role="status" aria-live="polite"></div>
-  <script src="script.js?v=26"></script>
+  <script src="script.js?v=28"></script>
 </body>
 </html>

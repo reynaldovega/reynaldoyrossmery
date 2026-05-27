@@ -41,49 +41,113 @@ img {
 }
 
 .topbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   z-index: 20;
-  display: flex;
-  justify-content: center;
-  gap: 6px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(12px, 2.6vw, 34px);
   width: 100%;
   margin: 0 auto;
-  padding: 9px 10px;
-  background: rgba(251, 250, 246, 0.92);
-  border-bottom: 1px solid rgba(180, 134, 52, 0.18);
-  backdrop-filter: blur(14px);
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+  padding: 24px clamp(18px, 4vw, 54px);
+  background: transparent;
+  border-bottom: 0;
+  overflow: visible;
+  transition: padding 220ms ease;
 }
 
-.topbar::-webkit-scrollbar {
-  display: none;
+.topbar.is-scrolled {
+  padding-block: 18px;
+  background: rgba(251, 250, 246, 0.92);
+  box-shadow: 0 10px 28px rgba(39, 48, 31, 0.12);
+}
+
+.topbar__left,
+.topbar__right {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 26px);
+}
+
+.topbar__left {
+  justify-content: flex-start;
+}
+
+.topbar__right {
+  justify-content: flex-end;
 }
 
 .topbar a {
-  flex: 0 0 auto;
-  padding: 9px 12px;
-  color: var(--olive-dark);
-  border-radius: 999px;
+  position: relative;
+  min-height: 0;
+  padding: 0 0 5px;
+  color: #fffdf6;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
+  text-shadow: 0 2px 9px rgba(0, 0, 0, 0.5);
+  transition: color 180ms ease, text-shadow 180ms ease;
+}
+
+.topbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.45);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.topbar__brand {
+  justify-self: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.65rem, 3vw, 2.35rem) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  line-height: 1;
+  text-transform: none !important;
 }
 
 .topbar a:hover,
 .topbar a.is-active {
-  color: white;
-  background: var(--olive);
+  color: #fff;
+}
+
+.topbar a:hover::after,
+.topbar a.is-active::after {
+  opacity: 0.9;
+  transform: scaleX(1);
+}
+
+.topbar.is-scrolled a {
+  color: var(--olive-dark);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), 0 0 9px rgba(255, 255, 255, 0.6);
+}
+
+.topbar.is-scrolled a:hover,
+.topbar.is-scrolled a.is-active {
+  color: var(--olive-dark);
+  text-shadow: none;
 }
 
 .invite {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 52px);
+  min-height: 100vh;
   margin: 0;
   background: var(--paper);
   box-shadow: none;
@@ -111,7 +175,7 @@ img {
 
 .sheet {
   position: relative;
-  min-height: calc(100vh - 52px);
+  min-height: 100vh;
   display: none;
   grid-template-columns: minmax(0, 0.92fr) minmax(380px, 1.08fr);
   background:
@@ -136,10 +200,82 @@ img {
   background: #fffdf8;
 }
 
+.sheet--ceremony,
+.sheet--gifts,
+.sheet--confirm {
+  grid-template-columns: 1fr;
+}
+
 .story-page {
   width: 100%;
-  min-height: calc(100vh - 52px);
-  padding: clamp(34px, 5vw, 72px) clamp(28px, 6vw, 82px);
+  min-height: 100vh;
+  padding: 0 0 clamp(38px, 5vw, 72px);
+}
+
+.story-hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(620px, 88vh, 880px);
+  margin-bottom: clamp(42px, 6vw, 76px);
+  overflow: hidden;
+  color: #fffdf8;
+  text-align: center;
+  background: #11150e;
+}
+
+.story-hero::before {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  background: url("assets/fotos/historia-pareja-descanso-retocada.png") center 42% / cover no-repeat;
+  filter: blur(15px);
+  opacity: 0.78;
+  transform: scale(1.04);
+}
+
+.story-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(18, 24, 15, 0.44), transparent 34%),
+    linear-gradient(0deg, rgba(18, 24, 15, 0.48), rgba(18, 24, 15, 0.1) 55%, rgba(18, 24, 15, 0.25));
+}
+
+.story-hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: clamp(72px, 10vh, 110px) 0 clamp(36px, 6vh, 70px);
+  object-fit: contain;
+  object-position: center;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.story-hero__content {
+  position: relative;
+  z-index: 3;
+  width: min(900px, calc(100% - 40px));
+  padding-top: 70px;
+}
+
+.story-hero .eyebrow,
+.story-hero h2 {
+  color: #fffdf8;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.38);
+}
+
+.story-hero h2 {
+  margin-bottom: 0;
+  font-size: clamp(3rem, 6.4vw, 6rem);
+}
+
+.story-hero h2::after {
+  margin-inline: auto;
+  background: linear-gradient(90deg, transparent, rgba(255, 253, 248, 0.82), transparent);
 }
 
 .story-heading {
@@ -151,6 +287,22 @@ img {
 .story-heading h2::after {
   margin-inline: auto;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.story-intro-photo {
+  max-width: 980px;
+  margin: 0 auto clamp(34px, 5vw, 62px);
+  overflow: hidden;
+  border-radius: 8px;
+  background: #11150e;
+  box-shadow: 0 18px 45px rgba(64, 80, 47, 0.14);
+}
+
+.story-intro-photo img {
+  width: 100%;
+  max-height: clamp(320px, 54vh, 560px);
+  object-fit: contain;
+  object-position: center;
 }
 
 .story-quotes {
@@ -262,6 +414,75 @@ img {
   margin-top: 0;
 }
 
+.story-photo-summary {
+  max-width: 1120px;
+  margin: 0 auto clamp(42px, 6vw, 72px);
+  text-align: center;
+}
+
+.story-photo-summary h3 {
+  margin: 0 auto clamp(18px, 3vw, 30px);
+  max-width: 760px;
+  color: var(--ink);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.05;
+  text-transform: none;
+}
+
+.story-carousel {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) 52px;
+  align-items: center;
+  gap: clamp(10px, 2vw, 20px);
+}
+
+.story-carousel__viewport {
+  position: relative;
+  min-height: clamp(280px, 52vw, 560px);
+  overflow: hidden;
+  background: #f7f3ec;
+  border-radius: 8px;
+  box-shadow: 0 18px 45px rgba(64, 80, 47, 0.16);
+}
+
+.story-carousel__slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 260ms ease, transform 260ms ease;
+  pointer-events: none;
+}
+
+.story-carousel__slide.is-current {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.story-carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #11150e;
+}
+
+.story-carousel__arrow {
+  width: 52px;
+  min-height: 52px;
+  padding: 0;
+  border-radius: 50%;
+  color: #fffdf8;
+  background: var(--olive-dark);
+  border-color: var(--olive-dark);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
 .sheet--photos.is-active {
   display: grid;
 }
@@ -279,7 +500,7 @@ img {
 
 .sheet__media {
   position: relative;
-  min-height: calc(100vh - 52px);
+  min-height: 100vh;
   overflow: hidden;
 }
 
@@ -294,12 +515,14 @@ img {
 .sheet__video {
   width: 100%;
   height: 100%;
-  min-height: calc(100vh - 52px);
+  min-height: 100vh;
   object-fit: cover;
   object-position: center;
 }
 
 .sheet--home .sheet__media {
+  grid-column: 1 / -1;
+  grid-row: 1;
   background:
     linear-gradient(rgba(25, 29, 22, 0.18), rgba(25, 29, 22, 0.18)),
     #eef4ee;
@@ -308,6 +531,12 @@ img {
 .sheet--home .sheet__media img {
   object-fit: cover;
   object-position: center;
+}
+
+.sheet--home .sheet__media::after {
+  background:
+    linear-gradient(180deg, rgba(18, 24, 15, 0.4), transparent 30%),
+    linear-gradient(0deg, rgba(18, 24, 15, 0.54), rgba(18, 24, 15, 0.12) 58%, rgba(18, 24, 15, 0.22));
 }
 
 .sheet--story .sheet__media img {
@@ -337,7 +566,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100vh - 52px);
+  min-height: 100vh;
   padding: 74px clamp(28px, 5vw, 58px) 62px;
 }
 
@@ -369,7 +598,7 @@ img {
 }
 
 .sheet__content--wide {
-  min-height: calc(100vh - 52px);
+  min-height: 100vh;
   padding-inline: clamp(24px, 5vw, 56px);
   text-align: center;
 }
@@ -388,14 +617,87 @@ img {
 }
 
 .sheet-floral--left {
-  top: 72px;
+  top: 100px;
   left: -220px;
   transform: scaleX(-1);
 }
 
 .sheet-floral--right {
-  top: 72px;
+  top: 100px;
   right: -185px;
+}
+
+.sheet--home .sheet__content {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  color: #fffdf8;
+  padding: 86px clamp(28px, 5vw, 58px) 54px;
+}
+
+.sheet--home .rings {
+  filter: brightness(0) invert(1) drop-shadow(0 8px 14px rgba(0, 0, 0, 0.28));
+}
+
+.sheet--home .eyebrow,
+.sheet--home .hero__date,
+.sheet--home .hero__time,
+.sheet--home p {
+  color: #fffdf8;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.34);
+}
+
+.sheet--home h1 {
+  color: #fffdf8;
+  text-shadow: 0 3px 22px rgba(0, 0, 0, 0.34);
+}
+
+.sheet--home h1 span {
+  color: #f4dca7;
+}
+
+.sheet--home .sheet__content::before {
+  display: none;
+}
+
+.sheet--home h1 {
+  margin-bottom: 10px;
+  font-size: clamp(2.9rem, 7vw, 4.75rem);
+}
+
+.sheet--home .countdown div {
+  padding: 12px 8px;
+}
+
+.sheet--home .sheet-actions {
+  margin-top: 16px;
+}
+
+.sheet--ceremony .sheet__content,
+.sheet--gifts .sheet__content,
+.sheet--confirm .sheet__content {
+  min-height: auto;
+  padding-top: clamp(54px, 7vw, 86px);
+  padding-bottom: clamp(58px, 8vw, 92px);
+}
+
+.sheet--ceremony .sheet__media,
+.sheet--gifts .sheet__media,
+.sheet--confirm .sheet__media {
+  height: clamp(420px, 72vh, 620px);
+  min-height: 0;
+}
+
+.sheet--ceremony .sheet__media img,
+.sheet--gifts .sheet__video,
+.sheet--confirm .sheet__media img {
+  height: 100%;
+  min-height: 0;
+}
+
+.sheet--ceremony .sheet__media img,
+.sheet--confirm .sheet__media img {
+  object-fit: contain;
+  background: #11150e;
 }
 
 .rings {
@@ -896,23 +1198,42 @@ address {
 
 @media (max-width: 880px) {
   .topbar {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    justify-items: stretch;
+    gap: 8px;
+    padding: 14px 12px;
+    background: transparent;
+  }
+
+  .topbar.is-scrolled {
+    padding-block: 12px;
+  }
+
+  .topbar__left,
+  .topbar__right {
     justify-content: flex-start;
-    gap: 4px;
-    padding: 7px 10px;
-    background: rgba(251, 250, 246, 0.96);
+    gap: 12px;
+  }
+
+  .topbar__right {
+    justify-content: flex-end;
+  }
+
+  .topbar__brand {
+    font-size: 1.45rem !important;
   }
 
   .topbar a {
-    min-height: 32px;
-    padding: 0 10px;
+    min-height: 0;
+    padding: 0 0 4px;
     display: inline-flex;
     align-items: center;
-    font-size: 0.64rem;
-    letter-spacing: 0.06em;
+    font-size: 0.56rem;
+    letter-spacing: 0.04em;
   }
 
   .topbar a.is-active {
-    box-shadow: 0 8px 18px rgba(64, 80, 47, 0.14);
+    box-shadow: none;
   }
 
   .invite {
@@ -928,14 +1249,32 @@ address {
   }
 
   .story-page {
-    padding: 32px 18px 46px;
+    padding: 0 0 46px;
+  }
+
+  .story-hero {
+    min-height: clamp(500px, 76vh, 680px);
+    margin-bottom: 34px;
+  }
+
+  .story-hero__content {
+    padding-top: 92px;
   }
 
   .story-heading {
     margin-bottom: 26px;
   }
 
+  .story-intro-photo {
+    margin-bottom: 34px;
+  }
+
+  .story-intro-photo img {
+    max-height: 430px;
+  }
+
   .story-quotes {
+    padding-inline: 18px;
     gap: 28px;
     margin-bottom: 38px;
   }
@@ -998,12 +1337,48 @@ address {
     padding: 38px 18px 48px;
   }
 
+  .sheet--home .sheet__media,
+  .sheet--home .sheet__media img,
+  .sheet--ceremony .sheet__media,
+  .sheet--gifts .sheet__media,
+  .sheet--confirm .sheet__media {
+    height: clamp(360px, 66vh, 520px);
+    min-height: 0;
+  }
+
+  .sheet--ceremony .sheet__media img,
+  .sheet--gifts .sheet__video,
+  .sheet--confirm .sheet__media img {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .sheet--home .sheet__content {
+    min-height: 100vh;
+    padding-top: 102px;
+  }
+
   .sheet__content::before {
     display: none;
   }
 
   .sheet--photos .sheet__content {
-    min-height: calc(100vh - 52px);
+    min-height: 100vh;
+  }
+
+  .story-carousel {
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    gap: 8px;
+  }
+
+  .story-carousel__viewport {
+    min-height: clamp(240px, 62vw, 430px);
+  }
+
+  .story-carousel__arrow {
+    width: 42px;
+    min-height: 42px;
+    font-size: 1.05rem;
   }
 
   .sheet__content--center,
@@ -1103,15 +1478,31 @@ address {
 
 @media (max-width: 520px) {
   .topbar {
-    gap: 3px;
-    padding: 6px 8px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 7px;
+    padding: 12px 8px;
+  }
+
+  .topbar__brand {
+    order: -1;
+  }
+
+  .topbar__left,
+  .topbar__right {
+    justify-content: center;
   }
 
   .topbar a {
-    min-height: 29px;
-    padding: 0 9px;
-    font-size: 0.58rem;
-    letter-spacing: 0.05em;
+    min-height: 0;
+    padding: 0 0 3px;
+    font-size: 0.52rem;
+    letter-spacing: 0.04em;
+  }
+
+  .topbar__left,
+  .topbar__right {
+    gap: 11px;
   }
 
   h1 {
@@ -1123,7 +1514,7 @@ address {
   }
 
   .sheet--home .sheet__media {
-    height: clamp(300px, 50vh, 420px);
+    height: 100vh;
   }
 
   .sheet__content {
@@ -1131,7 +1522,15 @@ address {
   }
 
   .story-page {
-    padding-inline: 16px;
+    padding: 0 0 42px;
+  }
+
+  .story-hero {
+    min-height: clamp(460px, 74vh, 620px);
+  }
+
+  .story-hero h2 {
+    font-size: clamp(2.5rem, 12vw, 4.2rem);
   }
 
   .story-quote blockquote {
