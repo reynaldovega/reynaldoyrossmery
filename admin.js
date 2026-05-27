@@ -117,20 +117,20 @@ loginForm?.addEventListener("submit", async (event) => {
   }
 
   const formData = new FormData(loginForm);
-  adminStatus.textContent = "Ingresando...";
-  const { error } = await adminDb.auth.signInWithPassword({
+  adminStatus.textContent = "Enviando enlace de ingreso...";
+  const { error } = await adminDb.auth.signInWithOtp({
     email: String(formData.get("email") || "").trim(),
-    password: String(formData.get("password") || ""),
+    options: {
+      emailRedirectTo: `${window.location.origin}/admin.html`,
+    },
   });
 
   if (error) {
-    adminStatus.textContent = "No se pudo ingresar. Revisa correo y contrasena.";
+    adminStatus.textContent = "No se pudo enviar el enlace. Revisa el correo o la configuracion de Supabase.";
     return;
   }
 
-  adminStatus.textContent = "";
-  setAdminView(true);
-  await loadConfirmations();
+  adminStatus.textContent = "Te enviamos un enlace de ingreso. Abre tu correo y haz clic para entrar.";
 });
 
 document.querySelector("[data-refresh-confirmations]")?.addEventListener("click", loadConfirmations);
