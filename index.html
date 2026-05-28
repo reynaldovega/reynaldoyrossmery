@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=40">
+  <link rel="stylesheet" href="styles.css?v=41">
 </head>
 <body>
   <nav class="topbar" aria-label="Navegacion principal">
@@ -31,7 +31,7 @@
     </div>
     <a class="topbar__brand" href="#inicio" data-sheet-link>Reynaldo y Rossmery</a>
     <div class="topbar__right">
-      <a href="#confirmacion" data-sheet-link>Confirmar asistencia</a>
+      <a class="topbar__cta" href="#confirmacion" data-sheet-link>Confirmar asistencia</a>
     </div>
   </nav>
 
@@ -340,6 +340,24 @@
         </div>
       </div>
     </section>
+
+    <footer class="site-footer" aria-label="Opciones finales">
+      <div class="site-footer__questions">
+        <p>Tienes preguntas?</p>
+        <a href="mailto:reynaldo.vega.c@gmail.com">Envianos un e-mail</a>
+      </div>
+      <nav class="site-footer__nav" aria-label="Navegacion secundaria">
+        <a href="#inicio" data-sheet-link>Reynaldo y Rossmery</a>
+        <a href="#historia" data-sheet-link>Nuestra historia</a>
+        <a href="#ceremonia" data-sheet-link>Ceremonia y recepcion</a>
+        <a href="#regalos" data-sheet-link>Lista de regalos</a>
+        <a href="#confirmacion" data-sheet-link>Confirmar asistencia</a>
+      </nav>
+      <div class="site-footer__share">
+        <p>Compartir</p>
+        <button class="footer-share-button" type="button" data-open-share>Compartir invitacion</button>
+      </div>
+    </footer>
   </main>
 
   <div class="rsvp-modal" data-rsvp-modal hidden role="dialog" aria-modal="true" aria-labelledby="rsvp-title">
@@ -393,10 +411,40 @@
     <img data-lightbox-image src="" alt="">
   </div>
 
+  <div class="share-modal" data-share-modal hidden role="dialog" aria-modal="true" aria-labelledby="share-title">
+    <div class="share-modal__panel">
+      <button class="share-modal__close" type="button" data-close-share aria-label="Cerrar compartir">Cerrar</button>
+      <p class="eyebrow">Compartir</p>
+      <h2 id="share-title">Comparte nuestra invitacion</h2>
+      <div class="share-copy">
+        <input data-share-url type="text" readonly aria-label="Enlace de la invitacion">
+        <button type="button" data-copy-share>Copiar URL</button>
+      </div>
+      <div class="share-options" aria-label="Redes sociales">
+        <a class="share-option share-option--whatsapp" data-share-whatsapp target="_blank" rel="noopener" href="#">
+          <span>WA</span>
+          WhatsApp
+        </a>
+        <a class="share-option share-option--facebook" data-share-facebook target="_blank" rel="noopener" href="#">
+          <span>f</span>
+          Facebook
+        </a>
+        <button class="share-option share-option--instagram" type="button" data-copy-share>
+          <span>IG</span>
+          Instagram
+        </button>
+        <button class="share-option share-option--tiktok" type="button" data-copy-share>
+          <span>TT</span>
+          TikTok
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="toast" role="status" aria-live="polite"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js?v=2"></script>
-  <script src="script.js?v=32"></script>
+  <script src="script.js?v=33"></script>
   <script>
     (() => {
       const topbar = document.querySelector(".topbar");

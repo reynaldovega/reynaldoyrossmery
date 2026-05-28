@@ -129,6 +129,15 @@ img {
   color: #fff;
 }
 
+.topbar__right .topbar__cta {
+  min-height: 42px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 253, 248, 0.48);
+  border-radius: 4px;
+  background: rgba(251, 250, 246, 0.16);
+  box-shadow: 0 12px 28px rgba(18, 24, 15, 0.18);
+}
+
 .topbar a:hover::after,
 .topbar a.is-active::after {
   opacity: 0.9;
@@ -143,6 +152,13 @@ img {
 .topbar.is-scrolled a:hover,
 .topbar.is-scrolled a.is-active {
   color: var(--olive-dark);
+  text-shadow: none;
+}
+
+.topbar.is-scrolled .topbar__right .topbar__cta {
+  color: #fffdf8;
+  background: var(--olive);
+  border-color: var(--olive);
   text-shadow: none;
 }
 
@@ -1199,6 +1215,165 @@ address {
   opacity: 1;
 }
 
+.site-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, auto) minmax(0, 1fr);
+  gap: clamp(24px, 5vw, 80px);
+  align-items: start;
+  padding: clamp(48px, 7vw, 82px) clamp(28px, 7vw, 92px);
+  border-top: 1px solid rgba(180, 134, 52, 0.26);
+  background: #e1e2df;
+}
+
+.site-footer p {
+  margin: 0 0 18px;
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.site-footer a,
+.footer-share-button {
+  color: var(--ink);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.site-footer__nav {
+  display: grid;
+  gap: 9px;
+  justify-items: center;
+  text-align: center;
+}
+
+.site-footer__share {
+  justify-self: end;
+  text-align: left;
+}
+
+.footer-share-button {
+  min-height: 0;
+  padding: 0 0 4px;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.share-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 34px);
+  background: rgba(12, 16, 10, 0.56);
+}
+
+.share-modal[hidden] {
+  display: none;
+}
+
+.is-share-open {
+  overflow: hidden;
+}
+
+.share-modal__panel {
+  position: relative;
+  width: min(100%, 520px);
+  padding: clamp(24px, 4vw, 36px);
+  border-radius: 8px;
+  background: #fffdf8;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+}
+
+.share-modal__panel h2 {
+  margin-bottom: 18px;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.share-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  min-height: 34px;
+  padding-inline: 12px;
+  color: var(--olive-dark);
+  background: transparent;
+  border-color: rgba(79, 99, 63, 0.24);
+  box-shadow: none;
+  font-size: 0.78rem;
+}
+
+.share-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.share-copy input {
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid rgba(79, 99, 63, 0.24);
+  border-radius: 8px;
+  color: var(--ink);
+  background: white;
+  font: inherit;
+}
+
+.share-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.share-option {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  min-height: 92px;
+  padding: 12px 8px;
+  border: 1px solid rgba(79, 99, 63, 0.16);
+  border-radius: 8px;
+  color: var(--ink);
+  background: rgba(238, 244, 238, 0.55);
+  box-shadow: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+
+.share-option span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: white;
+  background: var(--olive);
+  font-size: 0.8rem;
+}
+
+.share-option--whatsapp span {
+  background: #2c8b57;
+}
+
+.share-option--facebook span {
+  background: #31589f;
+}
+
+.share-option--instagram span {
+  background: #b44c75;
+}
+
+.share-option--tiktok span {
+  background: #11150e;
+}
+
 .rsvp-modal {
   position: fixed;
   inset: 0;
@@ -1462,8 +1637,14 @@ address {
     padding: 0 0 4px;
     display: inline-flex;
     align-items: center;
-    font-size: 0.66rem;
+    font-size: 0.72rem;
     letter-spacing: 0;
+  }
+
+  .topbar__right .topbar__cta {
+    min-height: 34px;
+    padding: 0 12px;
+    border-radius: 4px;
   }
 
   .topbar a.is-active {
@@ -1733,12 +1914,17 @@ address {
   .topbar a {
     min-height: 0;
     padding: 0 0 3px;
-    font-size: clamp(0.45rem, 2.15vw, 0.54rem);
+    font-size: clamp(0.58rem, 2.75vw, 0.68rem);
     letter-spacing: 0;
     line-height: 1.15;
     text-align: center;
     -webkit-text-stroke: 0.25px rgba(20, 28, 16, 0.72);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.48);
+  }
+
+  .topbar__right .topbar__cta {
+    min-height: 30px;
+    padding: 0 10px;
   }
 
   .topbar.is-scrolled a {
@@ -1875,6 +2061,43 @@ address {
 
   .sheet-actions a {
     width: 100%;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 36px 22px 44px;
+    text-align: center;
+  }
+
+  .site-footer__share {
+    justify-self: center;
+    text-align: center;
+  }
+
+  .site-footer__nav {
+    gap: 10px;
+  }
+
+  .site-footer a,
+  .footer-share-button {
+    font-size: 0.82rem;
+  }
+
+  .share-modal__panel {
+    padding: 22px 16px;
+  }
+
+  .share-modal__panel h2 {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+  }
+
+  .share-copy {
+    grid-template-columns: 1fr;
+  }
+
+  .share-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .gallery-grid {

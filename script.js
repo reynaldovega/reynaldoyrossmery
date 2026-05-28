@@ -81,6 +81,10 @@ const rsvpForm = document.querySelector("[data-rsvp-form]");
 const rsvpStatus = document.querySelector("[data-rsvp-status]");
 const companionToggle = document.querySelector("[data-companion-toggle]");
 const companionField = document.querySelector("[data-companion-field]");
+const shareModal = document.querySelector("[data-share-modal]");
+const shareUrlInput = document.querySelector("[data-share-url]");
+const shareWhatsapp = document.querySelector("[data-share-whatsapp]");
+const shareFacebook = document.querySelector("[data-share-facebook]");
 let weddingDb = null;
 
 document.querySelectorAll(".gallery-item img, .story-carousel__slide img").forEach((image) => {
@@ -159,6 +163,9 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && rsvpModal && !rsvpModal.hidden) {
     closeRsvpModal();
   }
+  if (event.key === "Escape" && shareModal && !shareModal.hidden) {
+    closeShareModal();
+  }
 });
 
 function getWeddingDb() {
@@ -202,6 +209,72 @@ document.querySelectorAll("[data-open-rsvp]").forEach((button) => {
 
 document.querySelectorAll("[data-close-rsvp]").forEach((button) => {
   button.addEventListener("click", closeRsvpModal);
+});
+
+function getShareUrl() {
+  return `${window.location.origin}${window.location.pathname}${window.location.hash || "#inicio"}`;
+}
+
+function updateShareLinks() {
+  const url = getShareUrl();
+  const text = `Te comparto la invitacion de Reynaldo y Rossmery: ${url}`;
+  if (shareUrlInput) {
+    shareUrlInput.value = url;
+  }
+  if (shareWhatsapp) {
+    shareWhatsapp.href = `https://wa.me/?text=${encodeURIComponent(text)}`;
+  }
+  if (shareFacebook) {
+    shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+  }
+}
+
+function openShareModal() {
+  if (!shareModal) {
+    return;
+  }
+
+  updateShareLinks();
+  shareModal.hidden = false;
+  document.body.classList.add("is-share-open");
+  shareUrlInput?.select();
+}
+
+function closeShareModal() {
+  if (!shareModal) {
+    return;
+  }
+
+  shareModal.hidden = true;
+  document.body.classList.remove("is-share-open");
+}
+
+async function copyShareUrl() {
+  const url = getShareUrl();
+  try {
+    await navigator.clipboard.writeText(url);
+    showToast("URL copiada");
+  } catch {
+    showToast(url);
+  }
+}
+
+document.querySelectorAll("[data-open-share]").forEach((button) => {
+  button.addEventListener("click", openShareModal);
+});
+
+document.querySelectorAll("[data-close-share]").forEach((button) => {
+  button.addEventListener("click", closeShareModal);
+});
+
+document.querySelectorAll("[data-copy-share]").forEach((button) => {
+  button.addEventListener("click", copyShareUrl);
+});
+
+shareModal?.addEventListener("click", (event) => {
+  if (event.target === shareModal) {
+    closeShareModal();
+  }
 });
 
 rsvpModal?.addEventListener("click", (event) => {
