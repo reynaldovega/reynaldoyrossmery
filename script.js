@@ -227,7 +227,7 @@ function getShareUrl() {
 
 function updateShareLinks() {
   const url = getShareUrl();
-  const text = `Te comparto la invitacion de Reynaldo y Rossmery: ${url}`;
+  const text = `Te comparto la invitación de Reynaldo y Rossmery: ${url}`;
   if (shareUrlInput) {
     shareUrlInput.value = url;
   }
@@ -319,8 +319,8 @@ function updateMusicUi() {
   const isMuted = musicAudio.muted || volumeValue <= 0;
   const isPlaying = !musicAudio.paused && !isMuted;
   musicToggle.setAttribute("aria-pressed", String(isPlaying));
-  musicToggle.setAttribute("aria-label", isPlaying ? "Desactivar musica" : "Activar musica");
-  musicStatus.textContent = isPlaying ? "Musica activada" : "Musica desactivada";
+  musicToggle.setAttribute("aria-label", isPlaying ? "Desactivar música" : "Activar música");
+  musicStatus.textContent = isPlaying ? "Música activada" : "Música desactivada";
   musicWidget?.classList.toggle("is-muted", isMuted || !isPlaying);
   if (musicPercent) {
     musicPercent.textContent = `${Math.max(0, Math.min(100, volumeValue))}%`;
@@ -456,7 +456,7 @@ if (musicAudio && musicToggle && musicVolume) {
       musicResumeOnInteractionReady = false;
     } catch {
       prepareMusicResumeOnInteraction();
-      showToast("Toca nuevamente para activar la musica");
+      showToast("Toca nuevamente para activar la música");
     }
     updateMusicUi();
   });
@@ -540,7 +540,7 @@ rsvpForm?.addEventListener("submit", async (event) => {
   }
 
   submitButton.disabled = true;
-  rsvpStatus.textContent = "Enviando confirmacion...";
+  rsvpStatus.textContent = "Enviando confirmación...";
   rsvpStatus.className = "rsvp-form__status";
 
   let { error } = await db.from("rsvp_confirmations").insert(payload);
@@ -559,7 +559,7 @@ rsvpForm?.addEventListener("submit", async (event) => {
     return;
   }
 
-  rsvpStatus.textContent = "Confirmacion enviada. Muchas gracias.";
+  rsvpStatus.textContent = "Confirmación enviada. Muchas gracias.";
   rsvpStatus.className = "rsvp-form__status is-success";
   rsvpForm.reset();
   companionField.hidden = true;
