@@ -1356,6 +1356,13 @@ address {
   text-decoration: none;
 }
 
+.share-option img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
 .share-option span {
   display: grid;
   place-items: center;
