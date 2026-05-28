@@ -335,18 +335,30 @@ if (musicAudio && musicToggle && musicVolume) {
 
   function getMusicPreference() {
     try {
-      return window.localStorage.getItem(musicPreferenceKey);
+      const savedPreference = window.localStorage.getItem(musicPreferenceKey);
+      if (savedPreference) {
+        return savedPreference;
+      }
     } catch {
-      return null;
+      // Fall back to the cookie below.
     }
+
+    const cookiePreference = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith(`${musicPreferenceKey}=`))
+      ?.split("=")[1];
+
+    return cookiePreference ? decodeURIComponent(cookiePreference) : null;
   }
 
   function saveMusicPreference(value) {
     try {
       window.localStorage.setItem(musicPreferenceKey, value);
     } catch {
-      return;
+      // Fall back to the cookie below.
     }
+
+    document.cookie = `${musicPreferenceKey}=${encodeURIComponent(value)}; path=/; max-age=31536000; SameSite=Lax`;
   }
 
   async function startMusicFromPageLoad() {
@@ -431,13 +443,14 @@ if (musicAudio && musicToggle && musicVolume) {
       return;
     }
 
+    saveMusicPreference("on");
+
     if (Number(musicVolume.value) <= 0) {
       musicVolume.value = "10";
       musicAudio.volume = 0.1;
     }
 
     musicAudio.muted = false;
-    saveMusicPreference("on");
     try {
       await musicAudio.play();
       musicResumeOnInteractionReady = false;
