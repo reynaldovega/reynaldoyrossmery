@@ -6,6 +6,11 @@ const tableBody = document.querySelector("[data-confirmations-body]");
 const countNode = document.querySelector("[data-confirmation-count]");
 let confirmations = [];
 
+function isMissingAttendanceColumn(error) {
+  const text = `${error?.message || ""} ${error?.details || ""} ${error?.hint || ""}`;
+  return text.includes("attendance_confirmed");
+}
+
 function getAdminDb() {
   const config = window.WEDDING_SUPABASE;
   const isConfigured = config?.url && config?.anonKey && !config.url.includes("PEGA_AQUI") && !config.anonKey.includes("PEGA_AQUI");
@@ -50,7 +55,7 @@ function renderRows() {
       <td>${escapeHtml(row.first_name || "")}</td>
       <td>${escapeHtml(row.last_name || "")}</td>
       <td>${escapeHtml(row.email || "")}</td>
-      <td>${row.attendance_confirmed ? "Si" : "No"}</td>
+      <td>${row.attendance_confirmed === false ? "No" : "Si"}</td>
       <td>${row.has_companion ? "Si" : "No"}</td>
       <td>${escapeHtml(row.companion_name || "")}</td>
       <td>${escapeHtml(row.dietary_restrictions || "")}</td>
@@ -74,17 +79,32 @@ async function loadConfirmations() {
     return;
   }
 
-  const { data, error } = await adminDb
+  let { data, error } = await adminDb
     .from("rsvp_confirmations")
     .select("created_at, first_name, last_name, email, attendance_confirmed, has_companion, companion_name, dietary_restrictions, comments")
     .order("created_at", { ascending: false });
 
+  if (error && isMissingAttendanceColumn(error)) {
+    const fallback = await adminDb
+      .from("rsvp_confirmations")
+      .select("created_at, first_name, last_name, email, has_companion, companion_name, dietary_restrictions, comments")
+      .order("created_at", { ascending: false });
+    data = fallback.data;
+    error = fallback.error;
+    if (!error) {
+      adminStatus.textContent = "Data cargada. Falta agregar la columna attendance_confirmed en Supabase.";
+    }
+  }
+
   if (error) {
-    adminStatus.textContent = "No se pudo cargar la data. Revisa permisos RLS o el usuario admin.";
+    adminStatus.textContent = `No se pudo cargar la data: ${error.message}`;
     return;
   }
 
-  confirmations = data || [];
+  confirmations = (data || []).map((row) => ({
+    attendance_confirmed: true,
+    ...row,
+  }));
   renderRows();
 }
 
@@ -95,7 +115,7 @@ function downloadCsv() {
     row.first_name,
     row.last_name,
     row.email,
-    row.attendance_confirmed ? "Si" : "No",
+    row.attendance_confirmed === false ? "No" : "Si",
     row.has_companion ? "Si" : "No",
     row.companion_name || "",
     row.dietary_restrictions || "",

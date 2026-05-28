@@ -243,12 +243,18 @@ rsvpForm?.addEventListener("submit", async (event) => {
   rsvpStatus.textContent = "Enviando confirmacion...";
   rsvpStatus.className = "rsvp-form__status";
 
-  const { error } = await db.from("rsvp_confirmations").insert(payload);
+  let { error } = await db.from("rsvp_confirmations").insert(payload);
+
+  if (error && `${error.message || ""} ${error.details || ""} ${error.hint || ""}`.includes("attendance_confirmed")) {
+    const { attendance_confirmed: _attendanceConfirmed, ...fallbackPayload } = payload;
+    const fallback = await db.from("rsvp_confirmations").insert(fallbackPayload);
+    error = fallback.error;
+  }
 
   submitButton.disabled = false;
 
   if (error) {
-    rsvpStatus.textContent = "No se pudo guardar. Intentalo nuevamente.";
+    rsvpStatus.textContent = `No se pudo guardar: ${error.message}`;
     rsvpStatus.className = "rsvp-form__status is-error";
     return;
   }
