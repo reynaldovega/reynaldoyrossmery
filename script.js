@@ -2,6 +2,12 @@ const toast = document.querySelector(".toast");
 let toastTimer;
 const topbar = document.querySelector(".topbar");
 
+document.addEventListener("pointerdown", (event) => {
+  if (event.pointerType === "touch") {
+    document.body.classList.add("is-touch-input");
+  }
+}, { passive: true });
+
 const sheets = Array.from(document.querySelectorAll("[data-sheet]"));
 const sheetLinks = Array.from(document.querySelectorAll("[data-sheet-link]"));
 const validSheets = new Set(sheets.map((sheet) => sheet.id));
@@ -11,6 +17,10 @@ const sheetAliases = {
 };
 
 function showSheet(id, shouldUpdateHash = true) {
+  if (typeof setMusicPanelOpen === "function") {
+    setMusicPanelOpen(false);
+  }
+
   const requestedId = sheetAliases[id] || id;
   const nextId = validSheets.has(requestedId) ? requestedId : "inicio";
 
@@ -278,6 +288,7 @@ const musicVolume = document.querySelector("[data-music-volume]");
 const musicStatus = document.querySelector("[data-music-status]");
 const musicPercent = document.querySelector("[data-music-percent]");
 let musicPanelTimer;
+let musicResumeOnInteractionReady = false;
 const musicPreferenceKey = "weddingMusicPreference";
 
 function setMusicPanelOpen(isOpen) {
@@ -289,9 +300,11 @@ function setMusicPanelOpen(isOpen) {
   clearTimeout(musicPanelTimer);
   if (isOpen) {
     musicPanelTimer = setTimeout(() => {
-      if (!musicWidget.matches(":hover")) {
+      const isTouchLike = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+      if (isTouchLike || !musicWidget.matches(":hover")) {
         musicWidget.classList.remove("is-open");
         musicToggle?.blur();
+        musicVolume?.blur();
       }
     }, 1800);
   }
@@ -351,11 +364,46 @@ if (musicAudio && musicToggle && musicVolume) {
     musicAudio.muted = false;
     try {
       await musicAudio.play();
+      musicResumeOnInteractionReady = false;
     } catch {
+      prepareMusicResumeOnInteraction();
       updateMusicUi();
       return;
     }
     updateMusicUi();
+  }
+
+  function prepareMusicResumeOnInteraction() {
+    if (musicResumeOnInteractionReady || getMusicPreference() === "off") {
+      return;
+    }
+
+    musicResumeOnInteractionReady = true;
+
+    const resume = async (event) => {
+      if (getMusicPreference() === "off") {
+        musicResumeOnInteractionReady = false;
+        return;
+      }
+
+      if (musicWidget?.contains(event.target)) {
+        return;
+      }
+
+      document.removeEventListener("pointerdown", resume, true);
+      document.removeEventListener("keydown", resume, true);
+      musicAudio.muted = false;
+      try {
+        await musicAudio.play();
+      } catch {
+        return;
+      }
+      musicResumeOnInteractionReady = false;
+      updateMusicUi();
+    };
+
+    document.addEventListener("pointerdown", resume, true);
+    document.addEventListener("keydown", resume, true);
   }
 
   function shouldAutoStartMusic() {
@@ -378,6 +426,7 @@ if (musicAudio && musicToggle && musicVolume) {
     if (!musicAudio.paused && !musicAudio.muted) {
       musicAudio.pause();
       saveMusicPreference("off");
+      musicResumeOnInteractionReady = false;
       updateMusicUi();
       return;
     }
@@ -391,7 +440,9 @@ if (musicAudio && musicToggle && musicVolume) {
     saveMusicPreference("on");
     try {
       await musicAudio.play();
+      musicResumeOnInteractionReady = false;
     } catch {
+      prepareMusicResumeOnInteraction();
       showToast("Toca nuevamente para activar la musica");
     }
     updateMusicUi();
@@ -405,6 +456,7 @@ if (musicAudio && musicToggle && musicVolume) {
     if (nextVolume <= 0 && !musicAudio.paused) {
       musicAudio.pause();
       saveMusicPreference("off");
+      musicResumeOnInteractionReady = false;
     } else if (nextVolume > 0 && !musicAudio.paused) {
       saveMusicPreference("on");
     }
