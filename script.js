@@ -278,6 +278,7 @@ const musicVolume = document.querySelector("[data-music-volume]");
 const musicStatus = document.querySelector("[data-music-status]");
 const musicPercent = document.querySelector("[data-music-percent]");
 let musicPanelTimer;
+const musicPreferenceKey = "weddingMusicPreference";
 
 function setMusicPanelOpen(isOpen) {
   if (!musicWidget) {
@@ -319,7 +320,29 @@ if (musicAudio && musicToggle && musicVolume) {
   musicAudio.volume = initialVolume / 100;
   musicAudio.muted = initialVolume <= 0;
 
+  function getMusicPreference() {
+    try {
+      return window.localStorage.getItem(musicPreferenceKey);
+    } catch {
+      return null;
+    }
+  }
+
+  function saveMusicPreference(value) {
+    try {
+      window.localStorage.setItem(musicPreferenceKey, value);
+    } catch {
+      return;
+    }
+  }
+
   async function startMusicFromPageLoad() {
+    if (getMusicPreference() === "off") {
+      musicAudio.pause();
+      updateMusicUi();
+      return;
+    }
+
     if (Number(musicVolume.value) <= 0) {
       updateMusicUi();
       return;
@@ -340,6 +363,7 @@ if (musicAudio && musicToggle && musicVolume) {
 
     if (!musicAudio.paused && !musicAudio.muted) {
       musicAudio.pause();
+      saveMusicPreference("off");
       updateMusicUi();
       return;
     }
@@ -352,6 +376,7 @@ if (musicAudio && musicToggle && musicVolume) {
     musicAudio.muted = false;
     try {
       await musicAudio.play();
+      saveMusicPreference("on");
     } catch {
       showToast("Toca nuevamente para activar la musica");
     }
@@ -365,6 +390,9 @@ if (musicAudio && musicToggle && musicVolume) {
     musicAudio.muted = nextVolume <= 0;
     if (nextVolume <= 0 && !musicAudio.paused) {
       musicAudio.pause();
+      saveMusicPreference("off");
+    } else if (nextVolume > 0 && !musicAudio.paused) {
+      saveMusicPreference("on");
     }
     updateMusicUi();
   });
@@ -379,7 +407,7 @@ if (musicAudio && musicToggle && musicVolume) {
   updateMusicUi();
   window.addEventListener("load", startMusicFromPageLoad, { once: true });
   document.addEventListener("visibilitychange", () => {
-    if (!document.hidden && musicAudio.paused) {
+    if (!document.hidden && musicAudio.paused && getMusicPreference() !== "off") {
       startMusicFromPageLoad();
     }
   });
