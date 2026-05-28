@@ -358,6 +358,20 @@ if (musicAudio && musicToggle && musicVolume) {
     updateMusicUi();
   }
 
+  function shouldAutoStartMusic() {
+    return getMusicPreference() !== "off" && Number(musicVolume.value) > 0;
+  }
+
+  function scheduleMusicAutostart() {
+    if (!shouldAutoStartMusic()) {
+      updateMusicUi();
+      return;
+    }
+
+    startMusicFromPageLoad();
+    setTimeout(startMusicFromPageLoad, 450);
+  }
+
   musicToggle.addEventListener("click", async () => {
     setMusicPanelOpen(true);
 
@@ -374,9 +388,9 @@ if (musicAudio && musicToggle && musicVolume) {
     }
 
     musicAudio.muted = false;
+    saveMusicPreference("on");
     try {
       await musicAudio.play();
-      saveMusicPreference("on");
     } catch {
       showToast("Toca nuevamente para activar la musica");
     }
@@ -405,10 +419,16 @@ if (musicAudio && musicToggle && musicVolume) {
   musicAudio.addEventListener("play", updateMusicUi);
   musicAudio.addEventListener("pause", updateMusicUi);
   updateMusicUi();
-  window.addEventListener("load", startMusicFromPageLoad, { once: true });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", scheduleMusicAutostart, { once: true });
+  } else {
+    scheduleMusicAutostart();
+  }
+  window.addEventListener("load", scheduleMusicAutostart, { once: true });
+  window.addEventListener("pageshow", scheduleMusicAutostart);
   document.addEventListener("visibilitychange", () => {
-    if (!document.hidden && musicAudio.paused && getMusicPreference() !== "off") {
-      startMusicFromPageLoad();
+    if (!document.hidden && musicAudio.paused && shouldAutoStartMusic()) {
+      scheduleMusicAutostart();
     }
   });
 }
