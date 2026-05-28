@@ -362,6 +362,10 @@
           <span>Correo electronico</span>
           <input name="email" type="email" autocomplete="email" required>
         </label>
+        <label class="form-check rsvp-confirm-check">
+          <input name="attendance_confirmed" type="checkbox" required>
+          <span>Confirmo mi asistencia a la boda</span>
+        </label>
         <label class="form-check">
           <input name="has_companion" type="checkbox" data-companion-toggle>
           <span>Asistire con pareja o acompanante</span>
@@ -391,8 +395,8 @@
 
   <div class="toast" role="status" aria-live="polite"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase-config.js?v=1"></script>
-  <script src="script.js?v=30"></script>
+  <script src="supabase-config.js?v=2"></script>
+  <script src="script.js?v=31"></script>
   <script>
     (() => {
       const topbar = document.querySelector(".topbar");

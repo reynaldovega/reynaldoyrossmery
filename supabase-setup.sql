@@ -5,6 +5,7 @@ create table if not exists public.rsvp_confirmations (
   first_name text not null,
   last_name text not null,
   email text not null,
+  attendance_confirmed boolean not null default true,
   has_companion boolean not null default false,
   companion_name text,
   dietary_restrictions text,
@@ -24,11 +25,14 @@ to anon
 with check (true);
 
 -- 4) Solo tu usuario admin autenticado puede leer/exportar.
--- Cambia TU_CORREO_ADMIN por el correo con el que iniciaras sesion en /admin.html.
+-- Cambia reynaldo.vega.c@gmail.com por el correo con el que iniciaras sesion en /admin.html.
 drop policy if exists "Admin puede leer confirmaciones" on public.rsvp_confirmations;
 create policy "Admin puede leer confirmaciones"
 on public.rsvp_confirmations
 for select
 to authenticated
-using (auth.email() = 'TU_CORREO_ADMIN');
+using (auth.email() = 'reynaldo.vega.c@gmail.com');
 
+-- Si la tabla ya existia antes de agregar este campo, ejecuta tambien esta linea.
+alter table public.rsvp_confirmations
+add column if not exists attendance_confirmed boolean not null default true;

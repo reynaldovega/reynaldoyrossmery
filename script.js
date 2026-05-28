@@ -225,6 +225,7 @@ rsvpForm?.addEventListener("submit", async (event) => {
     first_name: String(formData.get("first_name") || "").trim(),
     last_name: String(formData.get("last_name") || "").trim(),
     email: String(formData.get("email") || "").trim(),
+    attendance_confirmed: formData.get("attendance_confirmed") === "on",
     has_companion: hasCompanion,
     companion_name: hasCompanion ? String(formData.get("companion_name") || "").trim() || null : null,
     dietary_restrictions: String(formData.get("dietary_restrictions") || "").trim() || null,

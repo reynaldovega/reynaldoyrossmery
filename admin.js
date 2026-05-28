@@ -40,7 +40,7 @@ function renderRows() {
   countNode.textContent = confirmations.length;
 
   if (!confirmations.length) {
-    tableBody.innerHTML = '<tr><td colspan="8">Todavia no hay confirmaciones.</td></tr>';
+    tableBody.innerHTML = '<tr><td colspan="9">Todavia no hay confirmaciones.</td></tr>';
     return;
   }
 
@@ -50,6 +50,7 @@ function renderRows() {
       <td>${escapeHtml(row.first_name || "")}</td>
       <td>${escapeHtml(row.last_name || "")}</td>
       <td>${escapeHtml(row.email || "")}</td>
+      <td>${row.attendance_confirmed ? "Si" : "No"}</td>
       <td>${row.has_companion ? "Si" : "No"}</td>
       <td>${escapeHtml(row.companion_name || "")}</td>
       <td>${escapeHtml(row.dietary_restrictions || "")}</td>
@@ -75,7 +76,7 @@ async function loadConfirmations() {
 
   const { data, error } = await adminDb
     .from("rsvp_confirmations")
-    .select("created_at, first_name, last_name, email, has_companion, companion_name, dietary_restrictions, comments")
+    .select("created_at, first_name, last_name, email, attendance_confirmed, has_companion, companion_name, dietary_restrictions, comments")
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -88,12 +89,13 @@ async function loadConfirmations() {
 }
 
 function downloadCsv() {
-  const headers = ["Fecha", "Nombre", "Apellido", "Correo", "Viene con pareja", "Acompanante", "Restriccion alimentaria", "Comentarios"];
+  const headers = ["Fecha", "Nombre", "Apellido", "Correo", "Confirma asistencia", "Viene con pareja", "Acompanante", "Restriccion alimentaria", "Comentarios"];
   const rows = confirmations.map((row) => [
     formatDate(row.created_at),
     row.first_name,
     row.last_name,
     row.email,
+    row.attendance_confirmed ? "Si" : "No",
     row.has_companion ? "Si" : "No",
     row.companion_name || "",
     row.dietary_restrictions || "",
