@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=42">
+  <link rel="stylesheet" href="styles.css?v=44">
 </head>
 <body>
   <nav class="topbar" aria-label="Navegacion principal">
@@ -344,6 +344,26 @@
     </footer>
   </main>
 
+  <aside class="music-widget" data-music-widget aria-label="Musica de fondo">
+    <audio data-music-audio src="assets/audio/love-romantic-guitar-tunetank-347184-web-suave.mp3" preload="auto" loop autoplay></audio>
+    <button class="music-widget__toggle" type="button" data-music-toggle aria-label="Activar musica" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 9v6h4l5 4V5L8 9H4z"></path>
+        <path class="music-widget__wave" d="M16 9.5c1.2 1.4 1.2 3.6 0 5"></path>
+        <path class="music-widget__wave music-widget__wave--wide" d="M18.5 7c2.3 2.8 2.3 7.2 0 10"></path>
+        <path class="music-widget__off" d="M17 8l4 4m0-4l-4 4"></path>
+      </svg>
+    </button>
+    <div class="music-widget__panel">
+      <div class="music-widget__status" data-music-status>Musica desactivada</div>
+      <label class="music-widget__volume">
+        <span>Volumen <strong data-music-percent>10%</strong></span>
+        <input data-music-volume type="range" min="0" max="100" value="10" aria-label="Volumen de la musica">
+      </label>
+      <a href="https://pixabay.com/music/acoustic-group-acoustic-emotions-of-love-347184/" target="_blank" rel="noopener">Fuente: Pixabay / Tunetank</a>
+    </div>
+  </aside>
+
   <div class="rsvp-modal" data-rsvp-modal hidden role="dialog" aria-modal="true" aria-labelledby="rsvp-title">
     <div class="rsvp-modal__panel">
       <button class="rsvp-modal__close" type="button" data-close-rsvp aria-label="Cerrar formulario">Cerrar</button>
@@ -424,7 +444,7 @@
   <div class="toast" role="status" aria-live="polite"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js?v=2"></script>
-  <script src="script.js?v=34"></script>
+  <script src="script.js?v=39"></script>
   <script>
     (() => {
       const topbar = document.querySelector(".topbar");

@@ -271,6 +271,113 @@ document.querySelectorAll("[data-copy-share]").forEach((button) => {
   button.addEventListener("click", copyShareUrl);
 });
 
+const musicWidget = document.querySelector("[data-music-widget]");
+const musicAudio = document.querySelector("[data-music-audio]");
+const musicToggle = document.querySelector("[data-music-toggle]");
+const musicVolume = document.querySelector("[data-music-volume]");
+const musicStatus = document.querySelector("[data-music-status]");
+const musicPercent = document.querySelector("[data-music-percent]");
+let musicPanelTimer;
+
+function setMusicPanelOpen(isOpen) {
+  if (!musicWidget) {
+    return;
+  }
+
+  musicWidget.classList.toggle("is-open", isOpen);
+  clearTimeout(musicPanelTimer);
+  if (isOpen) {
+    musicPanelTimer = setTimeout(() => {
+      if (!musicWidget.matches(":hover") && !musicWidget.matches(":focus-within")) {
+        musicWidget.classList.remove("is-open");
+      }
+    }, 3600);
+  }
+}
+
+function updateMusicUi() {
+  if (!musicAudio || !musicToggle || !musicStatus) {
+    return;
+  }
+
+  const volumeValue = musicVolume ? Number(musicVolume.value) : Math.round(musicAudio.volume * 100);
+  const isMuted = musicAudio.muted || volumeValue <= 0;
+  const isPlaying = !musicAudio.paused && !isMuted;
+  musicToggle.setAttribute("aria-pressed", String(isPlaying));
+  musicToggle.setAttribute("aria-label", isPlaying ? "Desactivar musica" : "Activar musica");
+  musicStatus.textContent = isPlaying ? "Musica activada" : "Musica desactivada";
+  musicWidget?.classList.toggle("is-muted", isMuted || !isPlaying);
+  if (musicPercent) {
+    musicPercent.textContent = `${Math.max(0, Math.min(100, volumeValue))}%`;
+  }
+}
+
+if (musicAudio && musicToggle && musicVolume) {
+  const initialVolume = 10;
+  musicVolume.value = String(initialVolume);
+  musicAudio.volume = initialVolume / 100;
+  musicAudio.muted = initialVolume <= 0;
+
+  async function startMusicFromPageLoad() {
+    if (Number(musicVolume.value) <= 0) {
+      updateMusicUi();
+      return;
+    }
+
+    musicAudio.muted = false;
+    try {
+      await musicAudio.play();
+    } catch {
+      updateMusicUi();
+      return;
+    }
+    updateMusicUi();
+  }
+
+  musicToggle.addEventListener("click", async () => {
+    setMusicPanelOpen(true);
+
+    if (!musicAudio.paused && !musicAudio.muted) {
+      musicAudio.pause();
+      updateMusicUi();
+      return;
+    }
+
+    if (Number(musicVolume.value) <= 0) {
+      musicVolume.value = "10";
+      musicAudio.volume = 0.1;
+    }
+
+    musicAudio.muted = false;
+    try {
+      await musicAudio.play();
+    } catch {
+      showToast("Toca nuevamente para activar la musica");
+    }
+    updateMusicUi();
+  });
+
+  musicVolume.addEventListener("input", () => {
+    const nextVolume = Number(musicVolume.value);
+    musicAudio.volume = nextVolume / 100;
+    musicAudio.muted = nextVolume <= 0;
+    if (nextVolume <= 0 && !musicAudio.paused) {
+      musicAudio.pause();
+    }
+    updateMusicUi();
+  });
+
+  musicAudio.addEventListener("play", updateMusicUi);
+  musicAudio.addEventListener("pause", updateMusicUi);
+  updateMusicUi();
+  window.addEventListener("load", startMusicFromPageLoad, { once: true });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && musicAudio.paused) {
+      startMusicFromPageLoad();
+    }
+  });
+}
+
 shareModal?.addEventListener("click", (event) => {
   if (event.target === shareModal) {
     closeShareModal();
