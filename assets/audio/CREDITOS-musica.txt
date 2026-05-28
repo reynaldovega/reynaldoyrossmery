@@ -1,0 +1,28 @@
+Musica de fondo de la web
+
+Archivo usado:
+love-romantic-guitar-tunetank-347184-web-suave.mp3
+
+Archivo original conservado:
+love-romantic-guitar-tunetank-347184.mp3
+
+Titulo:
+Love Romantic Guitar Music
+
+Autor:
+Tunetank
+
+Fuente:
+https://pixabay.com/music/acoustic-group-acoustic-emotions-of-love-347184/
+
+Licencia indicada por la fuente:
+Pixabay Content License
+
+Fecha de incorporacion a la web:
+2026-05-28
+
+Proceso aplicado:
+Version suavizada para web con reduccion de picos, filtro de aspereza, compresion ligera y limitador.
+
+Nota:
+Guardar tambien una captura de la pagina de descarga y, si Pixabay permite descargarlo, el certificado/licencia del recurso.
