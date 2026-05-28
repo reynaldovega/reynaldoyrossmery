@@ -40,14 +40,15 @@ function renderRows() {
   countNode.textContent = confirmations.length;
 
   if (!confirmations.length) {
-    tableBody.innerHTML = '<tr><td colspan="7">Todavia no hay confirmaciones.</td></tr>';
+    tableBody.innerHTML = '<tr><td colspan="8">Todavia no hay confirmaciones.</td></tr>';
     return;
   }
 
   tableBody.innerHTML = confirmations.map((row) => `
     <tr>
       <td>${formatDate(row.created_at)}</td>
-      <td>${escapeHtml(`${row.first_name || ""} ${row.last_name || ""}`.trim())}</td>
+      <td>${escapeHtml(row.first_name || "")}</td>
+      <td>${escapeHtml(row.last_name || "")}</td>
       <td>${escapeHtml(row.email || "")}</td>
       <td>${row.has_companion ? "Si" : "No"}</td>
       <td>${escapeHtml(row.companion_name || "")}</td>
