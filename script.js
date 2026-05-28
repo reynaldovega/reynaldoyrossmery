@@ -288,10 +288,11 @@ function setMusicPanelOpen(isOpen) {
   clearTimeout(musicPanelTimer);
   if (isOpen) {
     musicPanelTimer = setTimeout(() => {
-      if (!musicWidget.matches(":hover") && !musicWidget.matches(":focus-within")) {
+      if (!musicWidget.matches(":hover")) {
         musicWidget.classList.remove("is-open");
+        musicToggle?.blur();
       }
-    }, 3600);
+    }, 1800);
   }
 }
 
@@ -358,6 +359,7 @@ if (musicAudio && musicToggle && musicVolume) {
   });
 
   musicVolume.addEventListener("input", () => {
+    setMusicPanelOpen(true);
     const nextVolume = Number(musicVolume.value);
     musicAudio.volume = nextVolume / 100;
     musicAudio.muted = nextVolume <= 0;
@@ -365,6 +367,11 @@ if (musicAudio && musicToggle && musicVolume) {
       musicAudio.pause();
     }
     updateMusicUi();
+  });
+
+  musicVolume.addEventListener("change", () => {
+    setMusicPanelOpen(false);
+    musicVolume.blur();
   });
 
   musicAudio.addEventListener("play", updateMusicUi);

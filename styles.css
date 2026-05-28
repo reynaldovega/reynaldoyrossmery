@@ -1238,7 +1238,6 @@ address {
 }
 
 .music-widget:hover,
-.music-widget:focus-within,
 .music-widget.is-open {
   opacity: 1;
 }
@@ -1260,7 +1259,6 @@ address {
 }
 
 .music-widget:hover .music-widget__toggle,
-.music-widget:focus-within .music-widget__toggle,
 .music-widget.is-open .music-widget__toggle {
   background: rgba(51, 65, 39, 0.92);
   border-color: rgba(255, 253, 248, 0.62);
@@ -1318,7 +1316,6 @@ address {
 }
 
 .music-widget:hover .music-widget__panel,
-.music-widget:focus-within .music-widget__panel,
 .music-widget.is-open .music-widget__panel {
   opacity: 1;
   pointer-events: auto;
@@ -1365,6 +1362,40 @@ address {
 
 .music-widget__panel a {
   text-decoration-color: rgba(79, 99, 63, 0.36);
+}
+
+@media (hover: none) {
+  .music-widget:hover {
+    opacity: 0.34;
+  }
+
+  .music-widget.is-open {
+    opacity: 1;
+  }
+
+  .music-widget:hover .music-widget__toggle {
+    background: rgba(51, 65, 39, 0.54);
+    border-color: rgba(255, 253, 248, 0.32);
+    box-shadow: 0 10px 28px rgba(18, 24, 15, 0.14);
+  }
+
+  .music-widget.is-open .music-widget__toggle {
+    background: rgba(51, 65, 39, 0.92);
+    border-color: rgba(255, 253, 248, 0.62);
+    box-shadow: 0 14px 34px rgba(18, 24, 15, 0.22);
+  }
+
+  .music-widget:hover .music-widget__panel {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+  }
+
+  .music-widget.is-open .music-widget__panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
 }
 
 .site-footer {
@@ -2364,12 +2395,15 @@ address {
   }
 
   .rsvp-modal {
-    padding: 12px;
+    align-items: start;
+    padding: 18px 18px 12px;
   }
 
   .rsvp-modal__panel {
-    max-height: 88vh;
-    padding: 22px 16px;
+    width: min(100%, 360px);
+    max-height: 82vh;
+    padding: 18px 16px 16px;
+    border-radius: 7px;
   }
 
   .form-grid {
@@ -2377,18 +2411,66 @@ address {
   }
 
   .rsvp-modal__panel h2 {
-    font-size: clamp(1.7rem, 8vw, 2.2rem);
+    max-width: 190px;
+    margin-bottom: 12px;
+    font-size: clamp(1.42rem, 7vw, 1.86rem);
+    line-height: 1.05;
+  }
+
+  .rsvp-modal__panel .eyebrow {
+    margin-bottom: 8px;
+    font-size: 0.62rem;
+  }
+
+  .rsvp-modal__close {
+    top: 10px;
+    right: 10px;
+    min-height: 28px;
+    padding-inline: 10px;
+    font-size: 0.7rem;
   }
 
   .rsvp-form label span,
   .rsvp-form__status {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
   }
 
   .rsvp-form input,
   .rsvp-form textarea {
-    min-height: 38px;
-    font-size: 0.82rem;
+    min-height: 34px;
+    padding: 7px 9px;
+    border-radius: 6px;
+    font-size: 0.76rem;
+  }
+
+  .rsvp-form {
+    gap: 9px;
+  }
+
+  .rsvp-form label {
+    gap: 5px;
+  }
+
+  .form-check {
+    gap: 8px !important;
+  }
+
+  .form-check input {
+    width: 15px;
+    min-height: 15px;
+  }
+
+  .form-check span {
+    line-height: 1.18;
+  }
+
+  .rsvp-form textarea {
+    max-height: 76px;
+  }
+
+  .rsvp-form .primary-action {
+    min-height: 34px;
+    font-size: 0.72rem;
   }
 
   .admin-shell {
