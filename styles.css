@@ -532,11 +532,11 @@ img {
 .sheet__media::before {
   content: "";
   position: absolute;
-  inset: -24px;
+  inset: -40px;
   background: #11150e;
-  filter: blur(15px);
+  filter: blur(18px);
   opacity: 0;
-  transform: scale(1.04);
+  transform: scale(1.02);
 }
 
 .sheet__media::after {
@@ -749,17 +749,17 @@ img {
 }
 
 .sheet--ceremony .sheet__media::before {
-  background: url("assets/fotos/historia-brindis-retocada.png") center 20% / cover no-repeat;
+  background: url("assets/fotos/historia-brindis-retocada.png") center 24% / contain no-repeat;
   opacity: 0.78;
 }
 
 .sheet--gifts .sheet__media::before {
-  background: url("assets/fotos/historia-manos.jpeg") center / cover no-repeat;
+  background: url("assets/fotos/historia-manos.jpeg") center / contain no-repeat;
   opacity: 0.7;
 }
 
 .sheet--confirm .sheet__media::before {
-  background: url("assets/fotos/historia-selfie.jpeg") center / cover no-repeat;
+  background: url("assets/fotos/historia-selfie.jpeg") center / contain no-repeat;
   opacity: 0.78;
 }
 
