@@ -532,11 +532,11 @@ img {
 .sheet__media::before {
   content: "";
   position: absolute;
-  inset: -40px;
+  inset: -70px;
   background: #11150e;
-  filter: blur(18px);
+  filter: blur(20px);
   opacity: 0;
-  transform: scale(1.02);
+  transform: scale(1.09);
 }
 
 .sheet__media::after {
@@ -716,9 +716,11 @@ img {
 .sheet--ceremony .sheet__content,
 .sheet--gifts .sheet__content,
 .sheet--confirm .sheet__content {
+  margin-top: clamp(-72px, -5vw, -38px);
   min-height: auto;
-  padding-top: clamp(54px, 7vw, 86px);
+  padding-top: clamp(38px, 5vw, 64px);
   padding-bottom: clamp(58px, 8vw, 92px);
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.94), var(--ivory) 28%);
 }
 
 .sheet--ceremony .sheet__media,
@@ -749,17 +751,17 @@ img {
 }
 
 .sheet--ceremony .sheet__media::before {
-  background: url("assets/fotos/historia-brindis-retocada.png") center 24% / contain no-repeat;
+  background: url("assets/fotos/historia-brindis-retocada.png") center 24% / cover no-repeat;
   opacity: 0.78;
 }
 
 .sheet--gifts .sheet__media::before {
-  background: url("assets/fotos/historia-manos.jpeg") center / contain no-repeat;
+  background: url("assets/fotos/historia-manos.jpeg") center / cover no-repeat;
   opacity: 0.7;
 }
 
 .sheet--confirm .sheet__media::before {
-  background: url("assets/fotos/historia-selfie.jpeg") center / contain no-repeat;
+  background: url("assets/fotos/historia-selfie.jpeg") center / cover no-repeat;
   opacity: 0.78;
 }
 
@@ -2014,6 +2016,13 @@ address {
   .sheet__content {
     min-height: auto;
     padding: 38px 18px 48px;
+  }
+
+  .sheet--ceremony .sheet__content,
+  .sheet--gifts .sheet__content,
+  .sheet--confirm .sheet__content {
+    margin-top: -42px;
+    padding-top: 34px;
   }
 
   .sheet--home .sheet__media,
