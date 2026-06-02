@@ -1663,10 +1663,26 @@ address {
   width: min(100%, 640px);
   max-height: min(92vh, 820px);
   overflow-y: auto;
+  scrollbar-color: rgba(79, 99, 63, 0.62) rgba(79, 99, 63, 0.1);
+  scrollbar-width: thin;
   padding: clamp(24px, 4vw, 38px);
   border-radius: 8px;
   background: #fffdf8;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+}
+
+.rsvp-modal__panel::-webkit-scrollbar {
+  width: 7px;
+}
+
+.rsvp-modal__panel::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: rgba(79, 99, 63, 0.1);
+}
+
+.rsvp-modal__panel::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(79, 99, 63, 0.62);
 }
 
 .rsvp-modal__panel h2 {
@@ -1703,6 +1719,10 @@ address {
   gap: 7px;
   color: var(--ink);
   font-weight: 700;
+}
+
+.rsvp-form [hidden] {
+  display: none;
 }
 
 .rsvp-form label span {
@@ -1747,6 +1767,10 @@ address {
   margin: 0;
   font-size: 0.86rem;
   line-height: 1.4;
+}
+
+.rsvp-form__status:empty {
+  display: none;
 }
 
 .rsvp-form__status.is-error {
@@ -2480,13 +2504,13 @@ address {
 
   .rsvp-modal {
     align-items: start;
-    padding: 18px 18px 12px;
+    padding: 6px 7px;
   }
 
   .rsvp-modal__panel {
-    width: min(100%, 360px);
-    max-height: 82vh;
-    padding: 18px 16px 16px;
+    width: min(100%, 390px);
+    max-height: calc(100dvh - 12px);
+    padding: 13px 13px 12px;
     border-radius: 7px;
   }
 
@@ -2496,13 +2520,13 @@ address {
 
   .rsvp-modal__panel h2 {
     max-width: 190px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     font-size: clamp(1.42rem, 7vw, 1.86rem);
     line-height: 1.05;
   }
 
   .rsvp-modal__panel .eyebrow {
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     font-size: 0.62rem;
   }
 
@@ -2521,18 +2545,18 @@ address {
 
   .rsvp-form input,
   .rsvp-form textarea {
-    min-height: 34px;
-    padding: 7px 9px;
+    min-height: 31px;
+    padding: 5px 8px;
     border-radius: 6px;
     font-size: 0.76rem;
   }
 
   .rsvp-form {
-    gap: 9px;
+    gap: 7px;
   }
 
   .rsvp-form label {
-    gap: 5px;
+    gap: 3px;
   }
 
   .form-check {
@@ -2549,7 +2573,7 @@ address {
   }
 
   .rsvp-form textarea {
-    max-height: 76px;
+    max-height: 56px;
   }
 
   .rsvp-form .primary-action {
