@@ -86,6 +86,7 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
 const lightbox = document.querySelector("[data-lightbox]");
 const lightboxImage = document.querySelector("[data-lightbox-image]");
 const lightboxClose = document.querySelector("[data-lightbox-close]");
+const lightboxTools = document.querySelector("[data-lightbox-tools]");
 const rsvpModal = document.querySelector("[data-rsvp-modal]");
 const rsvpForm = document.querySelector("[data-rsvp-form]");
 const rsvpStatus = document.querySelector("[data-rsvp-status]");
@@ -102,9 +103,15 @@ function openLightbox(src, alt = "", mode = "") {
     return;
   }
 
+  const isHd = mode === "hd";
   lightboxImage.src = src;
   lightboxImage.alt = alt;
-  lightbox.classList.toggle("photo-lightbox--hd", mode === "hd");
+  lightbox.classList.toggle("photo-lightbox--hd", isHd);
+  lightbox.classList.toggle("photo-lightbox--portrait", isHd);
+  lightbox.classList.remove("photo-lightbox--landscape", "photo-lightbox--zoom");
+  if (lightboxTools) {
+    lightboxTools.hidden = !isHd;
+  }
   lightbox.hidden = false;
   document.body.classList.add("is-lightbox-open");
 }
@@ -125,6 +132,25 @@ document.querySelectorAll("[data-lightbox-trigger]").forEach((trigger) => {
       trigger.dataset.lightboxMode || ""
     );
   });
+});
+
+document.querySelectorAll("[data-lightbox-view]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const view = button.dataset.lightboxView;
+    lightbox?.classList.toggle("photo-lightbox--portrait", view === "portrait");
+    lightbox?.classList.toggle("photo-lightbox--landscape", view === "landscape");
+    lightbox?.classList.remove("photo-lightbox--zoom");
+  });
+});
+
+document.querySelector("[data-lightbox-zoom]")?.addEventListener("click", () => {
+  lightbox?.classList.toggle("photo-lightbox--zoom");
+});
+
+document.querySelector("[data-lightbox-reset]")?.addEventListener("click", () => {
+  lightbox?.classList.add("photo-lightbox--portrait");
+  lightbox?.classList.remove("photo-lightbox--landscape", "photo-lightbox--zoom");
+  lightbox?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 });
 
 document.querySelectorAll("[data-story-carousel]").forEach((carousel) => {
@@ -175,7 +201,10 @@ sheets.forEach((sheet) => {
 
 function closeLightbox() {
   lightbox.hidden = true;
-  lightbox.classList.remove("photo-lightbox--hd");
+  lightbox.classList.remove("photo-lightbox--hd", "photo-lightbox--portrait", "photo-lightbox--landscape", "photo-lightbox--zoom");
+  if (lightboxTools) {
+    lightboxTools.hidden = true;
+  }
   lightboxImage.removeAttribute("src");
   lightboxImage.alt = "";
   document.body.classList.remove("is-lightbox-open");

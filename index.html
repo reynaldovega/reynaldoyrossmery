@@ -421,6 +421,12 @@
 
   <div class="photo-lightbox" data-lightbox hidden role="dialog" aria-modal="true" aria-label="Vista ampliada de foto">
     <button class="photo-lightbox__close" type="button" data-lightbox-close aria-label="Cerrar foto ampliada">Cerrar</button>
+    <div class="photo-lightbox__tools" data-lightbox-tools hidden aria-label="Controles de paleta HD">
+      <button type="button" data-lightbox-view="portrait">Vertical</button>
+      <button type="button" data-lightbox-view="landscape">Horizontal</button>
+      <button type="button" data-lightbox-zoom>Zoom</button>
+      <button type="button" data-lightbox-reset>Ajustar</button>
+    </div>
     <img data-lightbox-image src="" alt="">
   </div>
 
@@ -453,7 +459,7 @@
   <div class="toast" role="status" aria-live="polite"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js?v=2"></script>
-  <script src="script.js?v=47"></script>
+  <script src="script.js?v=48"></script>
   <script>
     (() => {
       const topbar = document.querySelector(".topbar");
