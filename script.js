@@ -98,6 +98,32 @@ const shareWhatsapp = document.querySelector("[data-share-whatsapp]");
 const shareFacebook = document.querySelector("[data-share-facebook]");
 let weddingDb = null;
 
+function setLightboxHdView(view) {
+  if (!lightbox || !lightboxImage) {
+    return;
+  }
+
+  lightbox.classList.toggle("photo-lightbox--portrait", view === "portrait");
+  lightbox.classList.toggle("photo-lightbox--landscape", view === "landscape");
+  lightbox.classList.toggle("photo-lightbox--zoom", view === "zoom");
+
+  const widths = {
+    portrait: "min(620px, 160vw)",
+    landscape: "min(980px, 260vw)",
+    zoom: "min(1280px, 340vw)",
+  };
+
+  lightboxImage.style.width = widths[view] || widths.portrait;
+  lightboxImage.style.maxWidth = "none";
+  lightboxImage.style.maxHeight = "none";
+
+  document.querySelectorAll("[data-lightbox-view], [data-lightbox-zoom]").forEach((button) => {
+    const isActive = button.dataset.lightboxView === view || (button.hasAttribute("data-lightbox-zoom") && view === "zoom");
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+  });
+}
+
 function openLightbox(src, alt = "", mode = "") {
   if (!lightbox || !lightboxImage || !src) {
     return;
@@ -107,10 +133,14 @@ function openLightbox(src, alt = "", mode = "") {
   lightboxImage.src = src;
   lightboxImage.alt = alt;
   lightbox.classList.toggle("photo-lightbox--hd", isHd);
-  lightbox.classList.toggle("photo-lightbox--portrait", isHd);
   lightbox.classList.remove("photo-lightbox--landscape", "photo-lightbox--zoom");
   if (lightboxTools) {
     lightboxTools.hidden = !isHd;
+  }
+  if (isHd) {
+    setLightboxHdView("portrait");
+  } else {
+    lightboxImage.removeAttribute("style");
   }
   lightbox.hidden = false;
   document.body.classList.add("is-lightbox-open");
@@ -136,20 +166,16 @@ document.querySelectorAll("[data-lightbox-trigger]").forEach((trigger) => {
 
 document.querySelectorAll("[data-lightbox-view]").forEach((button) => {
   button.addEventListener("click", () => {
-    const view = button.dataset.lightboxView;
-    lightbox?.classList.toggle("photo-lightbox--portrait", view === "portrait");
-    lightbox?.classList.toggle("photo-lightbox--landscape", view === "landscape");
-    lightbox?.classList.remove("photo-lightbox--zoom");
+    setLightboxHdView(button.dataset.lightboxView);
   });
 });
 
 document.querySelector("[data-lightbox-zoom]")?.addEventListener("click", () => {
-  lightbox?.classList.toggle("photo-lightbox--zoom");
+  setLightboxHdView("zoom");
 });
 
 document.querySelector("[data-lightbox-reset]")?.addEventListener("click", () => {
-  lightbox?.classList.add("photo-lightbox--portrait");
-  lightbox?.classList.remove("photo-lightbox--landscape", "photo-lightbox--zoom");
+  setLightboxHdView("portrait");
   lightbox?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 });
 
@@ -206,6 +232,7 @@ function closeLightbox() {
     lightboxTools.hidden = true;
   }
   lightboxImage.removeAttribute("src");
+  lightboxImage.removeAttribute("style");
   lightboxImage.alt = "";
   document.body.classList.remove("is-lightbox-open");
 }

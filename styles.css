@@ -1262,6 +1262,11 @@ blockquote {
   background: rgba(255, 255, 255, 0.2);
 }
 
+.photo-lightbox__tools button.is-active {
+  color: var(--olive-dark);
+  background: #fffdf8;
+}
+
 .gallery-item--wide {
   grid-column: span 2;
 }
