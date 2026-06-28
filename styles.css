@@ -1084,6 +1084,22 @@ blockquote {
   margin-bottom: 0;
 }
 
+.palette-card {
+  margin: 18px 0 0;
+  padding: 10px;
+  border: 1px solid rgba(180, 134, 52, 0.24);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 16px 34px rgba(64, 80, 47, 0.1);
+}
+
+.palette-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
 .ceremony-note {
   max-width: 720px;
   margin-bottom: clamp(26px, 4vw, 44px);
@@ -2465,6 +2481,11 @@ address {
 
   .detail-strip strong {
     font-size: 1.08rem;
+  }
+
+  .palette-card {
+    margin-top: 14px;
+    padding: 6px;
   }
 
   .primary-action,
