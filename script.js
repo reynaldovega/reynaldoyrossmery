@@ -97,12 +97,33 @@ const shareWhatsapp = document.querySelector("[data-share-whatsapp]");
 const shareFacebook = document.querySelector("[data-share-facebook]");
 let weddingDb = null;
 
+function openLightbox(src, alt = "", mode = "") {
+  if (!lightbox || !lightboxImage || !src) {
+    return;
+  }
+
+  lightboxImage.src = src;
+  lightboxImage.alt = alt;
+  lightbox.classList.toggle("photo-lightbox--hd", mode === "hd");
+  lightbox.hidden = false;
+  document.body.classList.add("is-lightbox-open");
+}
+
 document.querySelectorAll(".gallery-item img, .story-carousel__slide img").forEach((image) => {
   image.addEventListener("click", () => {
-    lightboxImage.src = image.currentSrc || image.src;
-    lightboxImage.alt = image.alt;
-    lightbox.hidden = false;
-    document.body.classList.add("is-lightbox-open");
+    openLightbox(image.currentSrc || image.src, image.alt);
+  });
+});
+
+document.querySelectorAll("[data-lightbox-trigger]").forEach((trigger) => {
+  trigger.addEventListener("click", (event) => {
+    event.preventDefault();
+    const image = trigger.querySelector("img");
+    openLightbox(
+      trigger.href || image?.currentSrc || image?.src,
+      image?.alt || trigger.getAttribute("aria-label") || "",
+      trigger.dataset.lightboxMode || ""
+    );
   });
 });
 
@@ -154,6 +175,7 @@ sheets.forEach((sheet) => {
 
 function closeLightbox() {
   lightbox.hidden = true;
+  lightbox.classList.remove("photo-lightbox--hd");
   lightboxImage.removeAttribute("src");
   lightboxImage.alt = "";
   document.body.classList.remove("is-lightbox-open");

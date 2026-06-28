@@ -1121,6 +1121,7 @@ blockquote {
 
 .palette-card a {
   display: block;
+  cursor: zoom-in;
 }
 
 .palette-card img {
@@ -1187,6 +1188,7 @@ blockquote {
   place-items: center;
   padding: clamp(18px, 4vw, 42px);
   background: rgba(10, 12, 9, 0.86);
+  overflow: auto;
 }
 
 .photo-lightbox[hidden] {
@@ -1201,6 +1203,17 @@ blockquote {
   object-fit: contain;
   border-radius: 6px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+}
+
+.photo-lightbox--hd {
+  place-items: start center;
+  padding-top: 64px;
+}
+
+.photo-lightbox--hd img {
+  width: min(1720px, calc(100vw - 32px));
+  max-width: none;
+  max-height: none;
 }
 
 .photo-lightbox__close {
