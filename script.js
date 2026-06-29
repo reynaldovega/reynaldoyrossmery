@@ -111,7 +111,7 @@ function setLightboxHdView(view) {
   const widths = isMobile
     ? {
         portrait: "min(520px, 135vw)",
-        landscape: "min(680px, 175vw)",
+        landscape: "min(700px, calc(100vh - 156px))",
         zoom: "min(1200px, 310vw)",
       }
     : {
@@ -123,7 +123,11 @@ function setLightboxHdView(view) {
   lightboxImage.style.width = widths[view] || widths.portrait;
   lightboxImage.style.maxWidth = "none";
   lightboxImage.style.maxHeight = "none";
-  lightbox.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  requestAnimationFrame(() => {
+    const nextLeft = view === "portrait" ? 0 : Math.max(0, (lightbox.scrollWidth - lightbox.clientWidth) / 2);
+    const nextTop = view === "portrait" ? 0 : Math.max(0, (lightbox.scrollHeight - lightbox.clientHeight) / 2);
+    lightbox.scrollTo({ top: nextTop, left: nextLeft, behavior: "smooth" });
+  });
 
   document.querySelectorAll("[data-lightbox-view], [data-lightbox-zoom]").forEach((button) => {
     const isActive = button.dataset.lightboxView === view || (button.hasAttribute("data-lightbox-zoom") && view === "zoom");

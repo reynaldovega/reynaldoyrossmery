@@ -2608,6 +2608,19 @@ address {
     padding: 66px 10px 76px;
   }
 
+  .photo-lightbox--hd.photo-lightbox--landscape,
+  .photo-lightbox--hd.photo-lightbox--zoom {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .photo-lightbox--hd.photo-lightbox--landscape .photo-lightbox__stage,
+  .photo-lightbox--hd.photo-lightbox--zoom .photo-lightbox__stage {
+    min-width: 0;
+    margin: 0;
+    padding: 0 24px;
+  }
+
   .photo-lightbox__close {
     top: 10px;
     right: 10px;
@@ -2638,7 +2651,9 @@ address {
   }
 
   .photo-lightbox--hd.photo-lightbox--landscape img {
-    width: min(680px, 175vw);
+    width: min(700px, calc(100vh - 156px));
+    transform: rotate(90deg);
+    transform-origin: center;
   }
 
   .photo-lightbox--hd.photo-lightbox--zoom img {
