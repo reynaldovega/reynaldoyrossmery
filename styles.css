@@ -2605,20 +2605,38 @@ address {
 
   .photo-lightbox {
     align-items: center;
+    justify-content: center;
     padding: 66px 10px 76px;
   }
 
-  .photo-lightbox--hd.photo-lightbox--landscape,
   .photo-lightbox--hd.photo-lightbox--zoom {
+    display: block;
     align-items: flex-start;
     justify-content: flex-start;
   }
 
-  .photo-lightbox--hd.photo-lightbox--landscape .photo-lightbox__stage,
   .photo-lightbox--hd.photo-lightbox--zoom .photo-lightbox__stage {
+    display: block;
+    width: max-content;
     min-width: 0;
     margin: 0;
-    padding: 0 24px;
+    padding: 0 50vw;
+  }
+
+  .photo-lightbox--hd.photo-lightbox--zoom img {
+    display: block;
+  }
+
+  .photo-lightbox--hd.photo-lightbox--landscape {
+    overflow: hidden;
+  }
+
+  .photo-lightbox--hd.photo-lightbox--landscape .photo-lightbox__stage {
+    width: calc(100vw - 20px);
+    height: calc(100vh - 150px);
+    min-width: 0;
+    margin: auto;
+    padding: 0;
   }
 
   .photo-lightbox__close {

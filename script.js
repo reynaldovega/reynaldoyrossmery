@@ -87,6 +87,7 @@ const lightbox = document.querySelector("[data-lightbox]");
 const lightboxImage = document.querySelector("[data-lightbox-image]");
 const lightboxClose = document.querySelector("[data-lightbox-close]");
 const lightboxTools = document.querySelector("[data-lightbox-tools]");
+const lightboxStage = document.querySelector(".photo-lightbox__stage");
 const rsvpModal = document.querySelector("[data-rsvp-modal]");
 const rsvpForm = document.querySelector("[data-rsvp-form]");
 const rsvpStatus = document.querySelector("[data-rsvp-status]");
@@ -97,6 +98,22 @@ const shareUrlInput = document.querySelector("[data-share-url]");
 const shareWhatsapp = document.querySelector("[data-share-whatsapp]");
 const shareFacebook = document.querySelector("[data-share-facebook]");
 let weddingDb = null;
+
+function centerLightboxScroll(view) {
+  if (!lightbox || view === "portrait" || view === "landscape") {
+    return;
+  }
+
+  const center = () => {
+    const nextLeft = Math.max(0, (lightbox.scrollWidth - lightbox.clientWidth) / 2);
+    const nextTop = Math.max(0, (lightbox.scrollHeight - lightbox.clientHeight) / 2);
+    lightbox.scrollTo({ top: nextTop, left: nextLeft, behavior: "auto" });
+  };
+
+  requestAnimationFrame(center);
+  setTimeout(center, 80);
+  setTimeout(center, 220);
+}
 
 function setLightboxHdView(view) {
   if (!lightbox || !lightboxImage) {
@@ -123,11 +140,11 @@ function setLightboxHdView(view) {
   lightboxImage.style.width = widths[view] || widths.portrait;
   lightboxImage.style.maxWidth = "none";
   lightboxImage.style.maxHeight = "none";
-  requestAnimationFrame(() => {
-    const nextLeft = view === "portrait" ? 0 : Math.max(0, (lightbox.scrollWidth - lightbox.clientWidth) / 2);
-    const nextTop = view === "portrait" ? 0 : Math.max(0, (lightbox.scrollHeight - lightbox.clientHeight) / 2);
-    lightbox.scrollTo({ top: nextTop, left: nextLeft, behavior: "smooth" });
-  });
+  if (lightboxStage) {
+    lightboxStage.scrollLeft = 0;
+  }
+  lightbox.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  centerLightboxScroll(view);
 
   document.querySelectorAll("[data-lightbox-view], [data-lightbox-zoom]").forEach((button) => {
     const isActive = button.dataset.lightboxView === view || (button.hasAttribute("data-lightbox-zoom") && view === "zoom");
