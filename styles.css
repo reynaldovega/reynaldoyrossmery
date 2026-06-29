@@ -1085,6 +1085,7 @@ blockquote {
 }
 
 .palette-card {
+  position: relative;
   max-width: 980px;
   margin: 18px auto 0;
   padding: 14px;
@@ -1092,9 +1093,25 @@ blockquote {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 16px 34px rgba(64, 80, 47, 0.1);
+  overflow: hidden;
+}
+
+.palette-card::after {
+  content: "";
+  position: absolute;
+  right: -34px;
+  top: -36px;
+  width: clamp(150px, 18vw, 245px);
+  aspect-ratio: 3 / 2;
+  background: url("assets/fotos/COLORES%20BUQUET.png") center / cover no-repeat;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
 .palette-card figcaption {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -1120,6 +1137,8 @@ blockquote {
 }
 
 .palette-card a {
+  position: relative;
+  z-index: 1;
   display: block;
   cursor: zoom-in;
 }
