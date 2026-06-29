@@ -103,20 +103,27 @@ function setLightboxHdView(view) {
     return;
   }
 
+  const isMobile = window.matchMedia("(max-width: 700px)").matches;
   lightbox.classList.toggle("photo-lightbox--portrait", view === "portrait");
   lightbox.classList.toggle("photo-lightbox--landscape", view === "landscape");
   lightbox.classList.toggle("photo-lightbox--zoom", view === "zoom");
 
-  const widths = {
-    portrait: "min(620px, 160vw)",
-    landscape: "min(760px, calc(100vh - 170px))",
-    zoom: "min(1280px, 340vw)",
-  };
+  const widths = isMobile
+    ? {
+        portrait: "min(520px, 135vw)",
+        landscape: "min(680px, 175vw)",
+        zoom: "min(1200px, 310vw)",
+      }
+    : {
+        portrait: "min(980px, calc(100vw - 120px))",
+        landscape: "min(980px, calc(100vw - 120px))",
+        zoom: "min(1500px, calc(100vw - 72px))",
+      };
 
   lightboxImage.style.width = widths[view] || widths.portrait;
   lightboxImage.style.maxWidth = "none";
   lightboxImage.style.maxHeight = "none";
-  lightbox.scrollTo({ top: 0, left: 0, behavior: view === "landscape" ? "auto" : "smooth" });
+  lightbox.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
   document.querySelectorAll("[data-lightbox-view], [data-lightbox-zoom]").forEach((button) => {
     const isActive = button.dataset.lightboxView === view || (button.hasAttribute("data-lightbox-zoom") && view === "zoom");

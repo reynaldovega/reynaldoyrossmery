@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=53">
+  <link rel="stylesheet" href="styles.css?v=54">
 </head>
 <body>
   <nav class="topbar" aria-label="Navegación principal">
@@ -427,7 +427,9 @@
       <button type="button" data-lightbox-zoom>Zoom</button>
       <button type="button" data-lightbox-reset>Ajustar</button>
     </div>
-    <img data-lightbox-image src="" alt="">
+    <div class="photo-lightbox__stage">
+      <img data-lightbox-image src="" alt="">
+    </div>
   </div>
 
   <div class="share-modal" data-share-modal hidden role="dialog" aria-modal="true" aria-labelledby="share-title">
@@ -459,7 +461,7 @@
   <div class="toast" role="status" aria-live="polite"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js?v=2"></script>
-  <script src="script.js?v=50"></script>
+  <script src="script.js?v=51"></script>
   <script>
     (() => {
       const topbar = document.querySelector(".topbar");

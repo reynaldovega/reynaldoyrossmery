@@ -1184,15 +1184,25 @@ blockquote {
   position: fixed;
   inset: 0;
   z-index: 100;
-  display: grid;
-  place-items: center;
-  padding: clamp(18px, 4vw, 42px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 24px 92px;
   background: rgba(10, 12, 9, 0.86);
   overflow: auto;
 }
 
 .photo-lightbox[hidden] {
   display: none;
+}
+
+.photo-lightbox__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  min-width: min(100%, 320px);
+  margin: auto;
 }
 
 .photo-lightbox img {
@@ -1206,24 +1216,13 @@ blockquote {
 }
 
 .photo-lightbox--hd {
-  place-items: start center;
-  padding-top: 64px;
+  align-items: center;
 }
 
 .photo-lightbox--hd img {
-  width: min(1720px, calc(100vw - 32px));
+  width: min(980px, calc(100vw - 120px));
   max-width: none;
   max-height: none;
-}
-
-.photo-lightbox--hd.photo-lightbox--landscape {
-  place-items: center;
-  overflow: hidden;
-}
-
-.photo-lightbox--hd.photo-lightbox--landscape img {
-  transform: rotate(90deg);
-  transform-origin: center;
 }
 
 .photo-lightbox__close {
@@ -1275,6 +1274,12 @@ blockquote {
 .photo-lightbox__tools button.is-active {
   color: var(--olive-dark);
   background: #fffdf8;
+}
+
+@media (min-width: 701px) {
+  .photo-lightbox__tools [data-lightbox-view] {
+    display: none;
+  }
 }
 
 .gallery-item--wide {
@@ -2599,46 +2604,45 @@ address {
   }
 
   .photo-lightbox {
-    display: block;
-    padding: 72px 10px 82px;
-    text-align: center;
+    align-items: center;
+    padding: 66px 10px 76px;
   }
 
   .photo-lightbox__close {
     top: 10px;
     right: 10px;
-    min-height: 34px;
-    padding: 0 12px;
+    min-height: 32px;
+    padding: 0 11px;
   }
 
   .photo-lightbox__tools {
     bottom: 10px;
-    gap: 5px;
-    padding: 5px;
+    gap: 4px;
+    padding: 4px;
     overflow-x: auto;
-    border-radius: 18px;
+    border-radius: 16px;
   }
 
   .photo-lightbox__tools button {
-    min-height: 32px;
-    padding: 0 9px;
-    font-size: 0.7rem;
+    min-height: 28px;
+    padding: 0 8px;
+    font-size: 0.64rem;
   }
 
   .photo-lightbox--hd img {
-    width: min(760px, 205vw);
+    width: min(520px, 135vw);
   }
 
   .photo-lightbox--hd.photo-lightbox--portrait img {
-    width: min(620px, 160vw);
+    width: min(520px, 135vw);
   }
 
   .photo-lightbox--hd.photo-lightbox--landscape img {
-    width: min(760px, calc(100vh - 170px));
+    width: min(680px, 175vw);
   }
 
   .photo-lightbox--hd.photo-lightbox--zoom img {
-    width: min(1280px, 340vw);
+    width: min(1200px, 310vw);
   }
 
   .primary-action,
