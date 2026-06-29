@@ -1216,6 +1216,16 @@ blockquote {
   max-height: none;
 }
 
+.photo-lightbox--hd.photo-lightbox--landscape {
+  place-items: center;
+  overflow: hidden;
+}
+
+.photo-lightbox--hd.photo-lightbox--landscape img {
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
 .photo-lightbox__close {
   position: fixed;
   top: 18px;
@@ -2624,7 +2634,7 @@ address {
   }
 
   .photo-lightbox--hd.photo-lightbox--landscape img {
-    width: min(980px, 260vw);
+    width: min(760px, calc(100vh - 170px));
   }
 
   .photo-lightbox--hd.photo-lightbox--zoom img {

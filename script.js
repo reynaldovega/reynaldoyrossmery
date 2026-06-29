@@ -109,13 +109,14 @@ function setLightboxHdView(view) {
 
   const widths = {
     portrait: "min(620px, 160vw)",
-    landscape: "min(980px, 260vw)",
+    landscape: "min(760px, calc(100vh - 170px))",
     zoom: "min(1280px, 340vw)",
   };
 
   lightboxImage.style.width = widths[view] || widths.portrait;
   lightboxImage.style.maxWidth = "none";
   lightboxImage.style.maxHeight = "none";
+  lightbox.scrollTo({ top: 0, left: 0, behavior: view === "landscape" ? "auto" : "smooth" });
 
   document.querySelectorAll("[data-lightbox-view], [data-lightbox-zoom]").forEach((button) => {
     const isActive = button.dataset.lightboxView === view || (button.hasAttribute("data-lightbox-zoom") && view === "zoom");
