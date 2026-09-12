@@ -2,6 +2,35 @@ const toast = document.querySelector(".toast");
 let toastTimer;
 const topbar = document.querySelector(".topbar");
 
+function getPersonInitials(fullName) {
+  const words = fullName.trim().split(/\s+/).filter(Boolean);
+  if (!words.length) {
+    return "";
+  }
+  if (words.length === 1) {
+    return words[0].slice(0, 2).toUpperCase();
+  }
+  return `${words[0][0]}${words[words.length - 1][0]}`.toUpperCase();
+}
+
+document.querySelectorAll("[data-party-member]").forEach((card) => {
+  const key = card.dataset.partyMember;
+  const fullName = window.WEDDING_PARTY?.[key]?.trim();
+  if (!fullName) {
+    return;
+  }
+
+  const initials = card.querySelector(".person__initials");
+  const name = card.querySelector("h4");
+  if (initials) {
+    initials.textContent = getPersonInitials(fullName);
+  }
+  if (name) {
+    name.textContent = fullName;
+  }
+  card.classList.toggle("person--pending", fullName === "A" || fullName === "B");
+});
+
 document.addEventListener("pointerdown", (event) => {
   if (event.pointerType === "touch") {
     document.body.classList.add("is-touch-input");

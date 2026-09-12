@@ -3180,25 +3180,47 @@ address {
 }
 
 .people-hero {
+  --people-hero-image: url("assets/fotos/familia-fondo-floral.png");
   position: relative;
+  isolation: isolate;
   display: grid;
   justify-items: center;
-  min-height: 290px;
+  min-height: clamp(360px, 48vh, 540px);
   margin: 0 0 clamp(30px, 5vw, 58px);
   padding: clamp(54px, 7vw, 82px) clamp(24px, 8vw, 96px);
   overflow: hidden;
   text-align: center;
-  background:
-    linear-gradient(rgba(255, 253, 248, 0.12), rgba(255, 253, 248, 0.12)),
-    url("assets/fotos/familia-fondo-floral.png") center / cover no-repeat;
+  background: #e7e6e1;
   border: 1px solid rgba(180, 134, 52, 0.2);
   box-shadow: 0 20px 55px rgba(64, 80, 47, 0.1);
 }
 
 .people-hero--court {
+  --people-hero-image: url("assets/fotos/cortejo-fondo-floral.png");
+}
+
+.people-hero::before,
+.people-hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.people-hero::before {
+  z-index: -2;
+  inset: -34px;
+  background: var(--people-hero-image) center / cover no-repeat;
+  filter: blur(20px) saturate(0.76);
+  opacity: 0.64;
+  transform: scale(1.06);
+}
+
+.people-hero::after {
+  z-index: -1;
+  inset: 0;
   background:
     linear-gradient(rgba(255, 253, 248, 0.08), rgba(255, 253, 248, 0.08)),
-    url("assets/fotos/cortejo-fondo-floral.png") center / cover no-repeat;
+    var(--people-hero-image) center / contain no-repeat;
 }
 
 .people-hero h2 {
@@ -3207,6 +3229,14 @@ address {
   margin-bottom: 12px;
   color: var(--olive-dark);
   font-size: clamp(3rem, 7vw, 5.6rem);
+}
+
+@media (min-width: 881px) {
+  .people-hero {
+    width: calc(100% + (2 * clamp(20px, 5vw, 64px)));
+    margin-left: calc(-1 * clamp(20px, 5vw, 64px));
+    margin-right: calc(-1 * clamp(20px, 5vw, 64px));
+  }
 }
 
 .people-hero h2::after {
@@ -3530,7 +3560,7 @@ address {
 }
 
 .people-closing-banner--landscape {
-  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  grid-template-columns: minmax(260px, 0.82fr) minmax(320px, 1.18fr);
   min-height: clamp(270px, 34vw, 390px);
   padding: clamp(38px, 6vw, 72px);
   color: #745b43;
@@ -3582,15 +3612,18 @@ address {
 }
 
 .closing-message {
-  justify-self: center;
+  justify-self: start;
+  width: min(100%, 340px);
+  margin-left: clamp(6px, 2vw, 24px);
   font-family: "Parisienne", "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2.35rem, 5vw, 4.5rem);
+  font-size: clamp(2.05rem, 3.7vw, 3.45rem);
   font-style: italic;
-  line-height: 0.95;
+  line-height: 1.08;
+  letter-spacing: 0.012em;
   text-align: center;
   color: #795b45;
   text-shadow: 0 1px 7px rgba(255, 253, 248, 0.92);
-  transform: rotate(-2.5deg);
+  transform: rotate(-1.5deg);
 }
 
 .closing-details {
