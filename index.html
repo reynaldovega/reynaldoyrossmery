@@ -17,15 +17,14 @@
   <meta property="og:locale" content="es_PE">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://reynaldoyrossmery.onrender.com/og-portada.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=58">
+  <link rel="stylesheet" href="styles.css?v=66">
 </head>
 <body>
   <nav class="topbar" aria-label="Navegación principal">
     <div class="topbar__left">
       <a href="#historia" data-sheet-link>Nuestra historia</a>
+      <a href="#familia" data-sheet-link>Familia</a>
+      <a href="#cortejo" data-sheet-link>Cortejo</a>
       <a href="#ceremonia" data-sheet-link>Ceremonia y recepción</a>
       <a href="#regalos" data-sheet-link>Lista de regalos</a>
     </div>
@@ -174,6 +173,118 @@
       </div>
     </section>
 
+    <section class="sheet sheet--people sheet--family" id="familia" data-sheet hidden aria-labelledby="titulo-familia">
+      <div class="people-page">
+        <header class="people-hero">
+          <img class="people-hero__floral people-hero__floral--left" src="floral-peach-corners.png" alt="" aria-hidden="true">
+          <img class="people-hero__floral people-hero__floral--right" src="floral-peach-corners.png" alt="" aria-hidden="true">
+          <p class="eyebrow">Dos familias</p>
+          <h2 id="titulo-familia">Un mismo amor</h2>
+          <p>Con la bendición de nuestras familias, comenzamos este nuevo capítulo.</p>
+        </header>
+
+        <div class="family-groups">
+          <section class="family-card family-card--rose" aria-labelledby="padres-novia">
+            <p class="people-ornament" aria-hidden="true">❧</p>
+            <h3 id="padres-novia">Padres de la novia</h3>
+            <div class="people-list people-list--two">
+              <article class="person">
+                <span class="person__initials" aria-hidden="true">MM</span>
+                <h4>María Anita Márquez Félix</h4>
+              </article>
+              <article class="person">
+                <span class="person__initials" aria-hidden="true">AP</span>
+                <h4>Arturo Pujadas Achulli</h4>
+              </article>
+            </div>
+          </section>
+
+          <section class="family-card family-card--sage" aria-labelledby="padres-novio">
+            <p class="people-ornament" aria-hidden="true">❧</p>
+            <h3 id="padres-novio">Padres del novio</h3>
+            <div class="people-list people-list--two">
+              <article class="person">
+                <span class="person__initials" aria-hidden="true">RV</span>
+                <h4>Roumaldo Vega Huataquispe</h4>
+              </article>
+              <article class="person">
+                <span class="person__initials" aria-hidden="true">CC</span>
+                <h4>Carmen Calero Adauto</h4>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <section class="sponsors-card" aria-labelledby="titulo-padrinos">
+          <p class="eyebrow">Gracias por caminar a nuestro lado</p>
+          <h3 id="titulo-padrinos">Nuestros padrinos</h3>
+          <div class="people-list people-list--two">
+            <article class="person person--featured">
+              <span class="person__initials person__initials--padrino" aria-hidden="true"></span>
+              <span class="person__role">Padrino</span>
+              <h4>Elder Junior Fernández Ibarra</h4>
+            </article>
+            <article class="person person--featured">
+              <span class="person__initials person__initials--madrina" aria-hidden="true"></span>
+              <span class="person__role">Madrina</span>
+              <h4>Edith Yesenia Medina Tinta</h4>
+            </article>
+          </div>
+        </section>
+
+        <section class="people-closing-banner people-closing-banner--family" aria-label="Mensaje sobre la familia">
+          <blockquote class="people-quote">“La familia es el primer hogar del amor,<br>y hoy, ese amor nos une.”</blockquote>
+          <span class="closing-flourish" aria-hidden="true"><i></i>♥<i></i></span>
+        </section>
+      </div>
+    </section>
+
+    <section class="sheet sheet--people sheet--court" id="cortejo" data-sheet hidden aria-labelledby="titulo-cortejo">
+      <div class="people-page">
+        <header class="people-hero people-hero--court">
+          <img class="people-hero__floral people-hero__floral--left" src="floral-peach-corners.png" alt="" aria-hidden="true">
+          <img class="people-hero__floral people-hero__floral--right" src="floral-peach-corners.png" alt="" aria-hidden="true">
+          <p class="eyebrow">Personas especiales</p>
+          <h2 id="titulo-cortejo">Nuestro cortejo</h2>
+          <p>Quienes nos acompañan y hacen este gran día aún más especial.</p>
+        </header>
+
+        <section class="court-group court-group--ladies" aria-labelledby="damas-honor">
+          <p class="people-ornament" aria-hidden="true">❀</p>
+          <h3 id="damas-honor">Damas de honor</h3>
+          <p class="court-group__intro">Amigas que hacen esta historia aún más especial.</p>
+          <div class="people-list people-list--four">
+            <article class="person"><span class="person__initials" aria-hidden="true">BG</span><h4>Brenda Gamboa</h4></article>
+            <article class="person"><span class="person__initials" aria-hidden="true">SC</span><h4>Sheyla Cano</h4></article>
+            <article class="person"><span class="person__initials" aria-hidden="true">CO</span><h4>Camila Orihuela</h4></article>
+            <article class="person person--pending"><span class="person__initials" aria-hidden="true">A</span><h4>A</h4></article>
+          </div>
+        </section>
+
+        <section class="court-group court-group--gentlemen" aria-labelledby="caballeros-honor">
+          <p class="people-ornament" aria-hidden="true">◆</p>
+          <h3 id="caballeros-honor">Caballeros de honor</h3>
+          <p class="court-group__intro">Amigos que siempre están en las buenas y en las mejores.</p>
+          <div class="people-list people-list--four">
+            <article class="person"><span class="person__initials" aria-hidden="true">JQ</span><h4>Joaquin Quispe</h4></article>
+            <article class="person"><span class="person__initials" aria-hidden="true">JR</span><h4>Juan Rojas</h4></article>
+            <article class="person"><span class="person__initials" aria-hidden="true">AB</span><h4>Angel Benavides</h4></article>
+            <article class="person person--pending"><span class="person__initials" aria-hidden="true">B</span><h4>B</h4></article>
+          </div>
+        </section>
+
+        <blockquote class="people-quote people-quote--court">“La amistad también se celebra. Gracias por ser parte de este día.”</blockquote>
+
+        <section class="people-closing-banner people-closing-banner--landscape" aria-label="Recuerdo de nuestra boda">
+          <div class="closing-message">Juntos hacemos la vida<br>más especial</div>
+          <div class="closing-details">
+            <p><span aria-hidden="true">♡</span><strong>26 de septiembre de 2026</strong></p>
+            <p><span aria-hidden="true">⌖</span><strong>Lima, Perú</strong></p>
+          </div>
+        </section>
+      </div>
+    </section>
+
     <section class="sheet sheet--ceremony" id="ceremonia" data-sheet hidden aria-labelledby="titulo-ceremonia">
       <div class="sheet__media">
         <img src="assets/fotos/historia-brindis-retocada.png" alt="Rossmery y Reynaldo brindando juntos">
@@ -191,6 +302,7 @@
             <div class="event__time">4:00 PM</div>
             <div>
               <h3>Ceremonia Religiosa</h3>
+              <p class="event__venue">Parroquia Anunciación</p>
               <p>Av. Simón Bolívar S/N Cdra.13 - San Gabriel Alto, Bolivar 13, Villa María del Triunfo</p>
               <a class="map-link" href="https://maps.app.goo.gl/vKGbmmV81czqSAEj8" target="_blank" rel="noopener">Ver ubicación</a>
             </div>
@@ -346,6 +458,8 @@
       <nav class="site-footer__nav" aria-label="Navegación secundaria">
         <a href="#inicio" data-sheet-link>Reynaldo y Rossmery</a>
         <a href="#historia" data-sheet-link>Nuestra historia</a>
+        <a href="#familia" data-sheet-link>Familia</a>
+        <a href="#cortejo" data-sheet-link>Nuestro cortejo</a>
         <a href="#ceremonia" data-sheet-link>Ceremonia y recepción</a>
         <a href="#regalos" data-sheet-link>Lista de regalos</a>
         <a href="#confirmacion" data-sheet-link>Confirmar asistencia</a>

@@ -1,3 +1,67 @@
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("assets/fonts/cormorant-garamond-300.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("assets/fonts/cormorant-garamond-400.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("assets/fonts/cormorant-garamond-500.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("assets/fonts/cormorant-garamond-600.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("assets/fonts/cormorant-garamond-italic-400.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Libre Baskerville";
+  src: url("assets/fonts/libre-baskerville-400.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Libre Baskerville";
+  src: url("assets/fonts/libre-baskerville-700.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Parisienne";
+  src: url("assets/fonts/parisienne-regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --ivory: #fbfaf6;
   --paper: #ffffff;
@@ -116,7 +180,7 @@ img {
 
 .topbar__brand {
   justify-self: center;
-  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-family: "Parisienne", "Cormorant Garamond", Georgia, serif !important;
   font-size: clamp(2rem, 3.35vw, 2.75rem) !important;
   font-weight: 400 !important;
   letter-spacing: 0 !important;
@@ -3090,6 +3154,574 @@ address {
 
   .palette-card img {
     transition: none;
+  }
+}
+
+/* Familia y cortejo */
+.sheet--people {
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+  overflow-y: auto;
+  background:
+    radial-gradient(circle at 8% 18%, rgba(196, 126, 142, 0.12), transparent 24%),
+    radial-gradient(circle at 92% 76%, rgba(79, 99, 63, 0.1), transparent 26%),
+    #fffdf8;
+}
+
+.sheet--people.is-active {
+  display: grid;
+}
+
+.people-page {
+  width: min(1240px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(108px, 12vw, 142px) clamp(20px, 5vw, 64px) clamp(54px, 7vw, 90px);
+}
+
+.people-hero {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  min-height: 290px;
+  margin: 0 0 clamp(30px, 5vw, 58px);
+  padding: clamp(54px, 7vw, 82px) clamp(24px, 8vw, 96px);
+  overflow: hidden;
+  text-align: center;
+  background:
+    linear-gradient(rgba(255, 253, 248, 0.12), rgba(255, 253, 248, 0.12)),
+    url("assets/fotos/familia-fondo-floral.png") center / cover no-repeat;
+  border: 1px solid rgba(180, 134, 52, 0.2);
+  box-shadow: 0 20px 55px rgba(64, 80, 47, 0.1);
+}
+
+.people-hero--court {
+  background:
+    linear-gradient(rgba(255, 253, 248, 0.08), rgba(255, 253, 248, 0.08)),
+    url("assets/fotos/cortejo-fondo-floral.png") center / cover no-repeat;
+}
+
+.people-hero h2 {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 12px;
+  color: var(--olive-dark);
+  font-size: clamp(3rem, 7vw, 5.6rem);
+}
+
+.people-hero h2::after {
+  margin-inline: auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.people-hero > p:not(.eyebrow) {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+  margin: 0;
+  padding: 4px 14px;
+  color: var(--muted);
+  background: rgba(255, 253, 248, 0.7);
+  border-radius: 999px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+  font-style: italic;
+}
+
+.people-hero__floral {
+  position: absolute;
+  bottom: -105px;
+  width: clamp(210px, 34vw, 390px);
+  display: none;
+  pointer-events: none;
+}
+
+.people-hero__floral--left {
+  left: -95px;
+  transform: scaleX(-1);
+}
+
+.people-hero__floral--right {
+  right: -95px;
+}
+
+.family-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 3vw, 34px);
+}
+
+.family-card,
+.sponsors-card,
+.court-group {
+  position: relative;
+  padding: clamp(32px, 4vw, 52px) clamp(20px, 3vw, 38px);
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid rgba(180, 134, 52, 0.18);
+  box-shadow: 0 18px 48px rgba(64, 80, 47, 0.08);
+}
+
+.family-card--rose,
+.court-group--ladies {
+  background: linear-gradient(145deg, #fffaf8, #f8e9e7);
+}
+
+.family-card--sage,
+.court-group--gentlemen {
+  background: linear-gradient(145deg, #fbfdf9, #eaf1e7);
+}
+
+.people-ornament {
+  margin-bottom: 8px;
+  color: var(--rose);
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.family-card h3,
+.sponsors-card h3,
+.court-group h3 {
+  margin-bottom: clamp(24px, 4vw, 38px);
+  color: var(--olive-dark);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.75rem, 3vw, 2.45rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.people-list {
+  display: grid;
+  gap: clamp(22px, 3vw, 40px);
+  align-items: start;
+}
+
+.people-list--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.people-list--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.person {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  min-width: 0;
+}
+
+.person__initials {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(82px, 10vw, 116px);
+  aspect-ratio: 1;
+  margin-bottom: 28px;
+  color: var(--olive-dark);
+  background: rgba(255, 255, 255, 0.52);
+  border: 1px solid rgba(79, 99, 63, 0.52);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 8px rgba(255, 255, 255, 0.32);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 2.55rem);
+}
+
+.person__initials::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  width: clamp(46px, 6vw, 62px);
+  height: 30px;
+  background: url("assets/fotos/adorno-corona-oliva-v2.png") center / contain no-repeat;
+  opacity: 0.92;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.court-group--ladies .person__initials::after {
+  background-image: url("assets/fotos/adorno-floral-rosa-v2.png");
+  bottom: -20px;
+  width: clamp(66px, 8vw, 88px);
+  height: 42px;
+}
+
+.court-group--gentlemen .person__initials {
+  color: #183f6d;
+  border-color: rgba(44, 102, 164, 0.55);
+}
+
+.court-group--gentlemen .person__initials::after {
+  bottom: 5px;
+  width: 34px;
+  height: 22px;
+  background-image: url("assets/fotos/icono-corbata-azul-v2.png");
+}
+
+.person__initials--padrino,
+.person__initials--madrina {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.person__initials--padrino {
+  background-image: url("assets/fotos/icono-corbata-azul-v2.png");
+  background-size: 62% auto;
+  border-color: rgba(44, 102, 164, 0.64);
+}
+
+.person__initials--madrina {
+  background-image: url("assets/fotos/icono-ramo-rosa.png");
+  background-size: auto 72%;
+  border-color: rgba(196, 126, 142, 0.7);
+}
+
+.person__initials--padrino::after,
+.person__initials--madrina::after {
+  display: none;
+}
+
+.family-card--rose .person__initials,
+.court-group--ladies .person__initials {
+  color: #9d5968;
+  border-color: rgba(196, 126, 142, 0.68);
+}
+
+.person h4 {
+  max-width: 220px;
+  margin: 0;
+  color: var(--ink);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.18rem, 2vw, 1.52rem);
+  font-weight: 500;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.person__role {
+  margin: -5px 0 6px;
+  color: var(--rose);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.12rem;
+  font-style: italic;
+}
+
+.person--pending .person__initials {
+  border-style: dashed;
+}
+
+.person--pending h4 {
+  color: var(--muted);
+}
+
+.sponsors-card {
+  margin-top: clamp(22px, 4vw, 42px);
+  background: linear-gradient(110deg, #f7efe8, #fffdf8 50%, #eef3ea);
+}
+
+.family-card::before,
+.sponsors-card::before,
+.court-group::before {
+  content: "";
+  position: absolute;
+  left: -34px;
+  bottom: -52px;
+  width: 150px;
+  height: 150px;
+  background: url("floral-peach-corners.png") left bottom / contain no-repeat;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.family-card::after,
+.sponsors-card::after,
+.court-group::after {
+  content: "";
+  position: absolute;
+  top: -54px;
+  right: -38px;
+  width: 150px;
+  height: 150px;
+  background: url("floral-peach-corners.png") right top / contain no-repeat;
+  opacity: 0.12;
+  transform: rotate(180deg);
+  pointer-events: none;
+}
+
+.sponsors-card > .eyebrow {
+  margin-bottom: 8px;
+}
+
+.sponsors-card h3 {
+  margin-bottom: clamp(28px, 4vw, 42px);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.court-group + .court-group {
+  margin-top: clamp(24px, 4vw, 42px);
+}
+
+.court-group__intro {
+  margin: -24px auto clamp(28px, 4vw, 42px);
+  color: var(--muted);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  font-style: italic;
+}
+
+.people-quote {
+  max-width: 720px;
+  margin: clamp(34px, 6vw, 68px) auto 0;
+  color: var(--olive-dark);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.45rem, 3vw, 2.2rem);
+  font-style: italic;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.people-quote--court {
+  margin-bottom: clamp(34px, 5vw, 58px);
+}
+
+.people-closing-banner {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(220px, 30vw, 330px);
+  margin-top: clamp(34px, 6vw, 68px);
+  overflow: hidden;
+  border: 1px solid rgba(180, 134, 52, 0.2);
+  box-shadow: 0 18px 48px rgba(64, 80, 47, 0.1);
+}
+
+.people-closing-banner--family {
+  background:
+    linear-gradient(rgba(255, 253, 248, 0.42), rgba(255, 250, 244, 0.54)),
+    url("assets/fotos/familia-cierre-paisaje.png") center / cover no-repeat;
+}
+
+.people-closing-banner--family .people-quote {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 28px clamp(62px, 12vw, 150px);
+  color: var(--olive-dark);
+}
+
+.closing-flourish {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: -52px;
+  color: #967349;
+  font-size: 0.85rem;
+}
+
+.closing-flourish i {
+  display: block;
+  width: 54px;
+  height: 1px;
+  background: rgba(150, 115, 73, 0.55);
+}
+
+.people-closing-banner--landscape {
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  min-height: clamp(270px, 34vw, 390px);
+  padding: clamp(38px, 6vw, 72px);
+  color: #745b43;
+  background:
+    linear-gradient(90deg,
+      rgba(255, 250, 242, 0.58) 0%,
+      rgba(255, 250, 242, 0.22) 36%,
+      rgba(255, 250, 242, 0.08) 55%,
+      rgba(255, 250, 242, 0.38) 100%),
+    url("assets/fotos/foto-13-bosque-luz.png") center 58% / cover no-repeat;
+  border-color: rgba(150, 115, 73, 0.22);
+  box-shadow: 0 18px 48px rgba(64, 80, 47, 0.07);
+}
+
+.people-closing-banner--landscape::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(180, 134, 52, 0.2);
+  pointer-events: none;
+}
+
+.people-closing-banner--landscape::after {
+  content: "";
+  position: absolute;
+  inset: auto -54px -92px auto;
+  width: clamp(220px, 34vw, 400px);
+  aspect-ratio: 1;
+  background: url("floral-peach-corners.png") right bottom / contain no-repeat;
+  filter: saturate(0.6) brightness(1.08);
+  opacity: 0.34;
+  pointer-events: none;
+}
+
+.closing-message,
+.closing-details {
+  position: relative;
+  z-index: 2;
+}
+
+.closing-message::before,
+.closing-details::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -34px -48px;
+  background: radial-gradient(ellipse, rgba(255, 250, 242, 0.58), rgba(255, 250, 242, 0) 72%);
+  pointer-events: none;
+}
+
+.closing-message {
+  justify-self: center;
+  font-family: "Parisienne", "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.35rem, 5vw, 4.5rem);
+  font-style: italic;
+  line-height: 0.95;
+  text-align: center;
+  color: #795b45;
+  text-shadow: 0 1px 7px rgba(255, 253, 248, 0.92);
+  transform: rotate(-2.5deg);
+}
+
+.closing-details {
+  justify-self: center;
+  padding: 22px 0 22px clamp(24px, 4vw, 50px);
+  border-left: 1px solid rgba(150, 115, 73, 0.4);
+}
+
+.closing-details p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: var(--olive-dark);
+  font-size: 0.9rem;
+  text-shadow: 0 1px 6px rgba(255, 253, 248, 0.94);
+  text-transform: uppercase;
+}
+
+.closing-details p:last-child {
+  margin-bottom: 0;
+}
+
+.closing-details span {
+  font-size: 1.3rem;
+}
+
+.event__venue {
+  margin: 2px 0 4px;
+  color: var(--olive-dark);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+@media (max-width: 1060px) and (min-width: 881px) {
+  .topbar {
+    gap: 12px;
+    padding-inline: 22px;
+  }
+
+  .topbar__left {
+    gap: 12px;
+  }
+
+  .topbar a {
+    font-size: 0.74rem;
+  }
+
+  .topbar__brand {
+    font-size: 1.8rem !important;
+  }
+}
+
+@media (max-width: 880px) and (min-width: 521px) {
+  .topbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand cta"
+      "links links";
+    gap: 9px 18px;
+    padding: 12px 18px;
+    background: rgba(251, 250, 246, 0.94);
+    border-bottom: 1px solid rgba(79, 99, 63, 0.16);
+  }
+
+  .topbar__left {
+    grid-area: links;
+    justify-content: center;
+    gap: clamp(14px, 3vw, 26px);
+  }
+
+  .topbar__brand {
+    grid-area: brand;
+    justify-self: start;
+  }
+
+  .topbar__right {
+    grid-area: cta;
+  }
+
+  .topbar a {
+    color: var(--olive-dark);
+    text-shadow: none;
+  }
+
+  .topbar a:hover,
+  .topbar a.is-active {
+    color: var(--olive-dark);
+  }
+}
+
+@media (max-width: 760px) {
+  .people-page {
+    padding-inline: 14px;
+  }
+
+  .family-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .people-list--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .people-closing-banner--landscape {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 44px 24px;
+  }
+
+  .closing-details {
+    justify-self: stretch;
+    padding: 20px 0 0;
+    border-top: 1px solid rgba(150, 115, 73, 0.36);
+    border-left: 0;
+  }
+
+  .closing-details p {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 430px) {
+  .people-list--two {
+    grid-template-columns: 1fr;
+  }
+
+  .people-hero__floral {
+    opacity: 0.2;
   }
 }
 
