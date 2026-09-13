@@ -18,6 +18,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://reynaldoyrossmery.onrender.com/og-portada.jpg">
   <link rel="stylesheet" href="styles.css?v=70">
+  <link rel="stylesheet" href="ring-surprise.css?v=3">
 </head>
 <body>
   <nav class="topbar" aria-label="Navegación principal">
@@ -43,7 +44,9 @@
       </div>
       <div class="sheet__content sheet__content--center">
         <h1 id="titulo-boda">Reynaldo <span>y</span> Rossmery</h1>
-        <img class="rings" src="wedding-rings.png" alt="" aria-hidden="true">
+        <button class="rings-surprise-trigger" type="button" aria-label="Abrir nuestra promesa, una sorpresa entre los aros" aria-haspopup="dialog" data-open-rings>
+          <img class="rings" src="wedding-rings.png" alt="" aria-hidden="true">
+        </button>
         <p class="eyebrow">Nos casamos</p>
         <p class="hero__date">Sábado 26 de septiembre de 2026</p>
         <p class="hero__time">3:30 p. m.</p>
@@ -576,6 +579,27 @@
     </div>
   </div>
 
+  <dialog class="ring-surprise" aria-labelledby="ring-surprise-title" aria-describedby="ring-surprise-phrase">
+    <div class="ring-surprise__panel">
+      <button class="ring-surprise__close" type="button" aria-label="Cerrar sorpresa">×</button>
+      <p class="ring-surprise__eyebrow">Un pequeño secreto de nuestro amor</p>
+      <h2 id="ring-surprise-title">Nuestra promesa</h2>
+      <div class="ring-photo-scene" aria-hidden="true">
+        <img class="ring-photo ring-photo--closed" src="assets/fotos/cofre-real-cerrado.png" alt="" width="1254" height="1254">
+        <img class="ring-photo ring-photo--half" src="assets/fotos/cofre-real-medio.png" alt="" width="1254" height="1254">
+        <img class="ring-photo ring-photo--open" src="assets/fotos/cofre-real-abierto.png" alt="" width="1254" height="1254">
+        <span class="ring-photo-glint ring-photo-glint--one"></span>
+        <span class="ring-photo-glint ring-photo-glint--two"></span>
+      </div>
+      <div class="ring-surprise__message">
+        <p id="ring-surprise-phrase">Dos aros, una promesa:<br><em>elegirnos cada día.</em></p>
+        <p class="ring-surprise__signature">Reynaldo y Rossmery</p>
+        <span class="ring-surprise__date">26 · 09 · 2026</span>
+      </div>
+      <button class="ring-surprise__replay" type="button">Volver a abrir el cofre</button>
+    </div>
+  </dialog>
+  <script src="ring-surprise.js?v=2"></script>
   <div class="toast" role="status" aria-live="polite"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js?v=2"></script>
