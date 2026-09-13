@@ -703,7 +703,7 @@ rsvpForm?.addEventListener("submit", async (event) => {
   setTimeout(closeRsvpModal, 1200);
 });
 
-const weddingDate = new Date("2026-09-26T16:00:00-05:00");
+const weddingDate = new Date("2026-09-26T15:30:00-05:00");
 const countdownNodes = {
   days: document.querySelector("[data-countdown-days]"),
   hours: document.querySelector("[data-countdown-hours]"),
