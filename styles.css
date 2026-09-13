@@ -3801,6 +3801,65 @@ address {
   }
 }
 
+/* On mobile the header occupies its own space instead of covering the photos. */
+@media (max-width: 880px) {
+  .topbar,
+  .topbar.is-scrolled {
+    position: relative;
+    padding: 12px;
+    background: #334127;
+  }
+  .topbar a,
+  .topbar.is-scrolled a,
+  .topbar a.is-active,
+  .topbar a:hover {
+    color: #fffdf6;
+    text-shadow: none;
+    -webkit-text-stroke: 0;
+  }
+  .topbar__brand.is-active { visibility: visible; pointer-events: auto; }
+  .topbar .topbar__right .topbar__cta,
+  .topbar.is-scrolled .topbar__right .topbar__cta {
+    color: #334127;
+    background: #fffdf6;
+  }
+  .story-hero img,
+  .sheet--ceremony .sheet__media img,
+  .sheet--gifts .sheet__video,
+  .sheet--confirm .sheet__media img {
+    padding: 12px 0;
+    object-fit: contain;
+  }
+  .story-hero,
+  .sheet--ceremony .sheet__media,
+  .sheet--gifts .sheet__media,
+  .sheet--confirm .sheet__media {
+    height: clamp(340px, 70svh, 620px);
+    min-height: 0;
+  }
+  .story-hero__content { padding-top: 0; }
+  .people-hero { padding-top: 48px; }
+  .sheet--ceremony .sheet__content,
+  .sheet--gifts .sheet__content,
+  .sheet--confirm .sheet__content { margin-top: 0; }
+  .sheet--home .sheet__content {
+    min-height: 70svh;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    transform: none;
+  }
+  .sheet--home .sheet__media { height: 100%; min-height: 0; }
+  .sheet--home .sheet__media img {
+    position: absolute; inset: 0;
+    height: 100%; min-height: 0;
+    object-fit: contain;
+  }
+  .sheet--home .sheet__media::before {
+    background: url("assets/fotos/foto-07-atardecer-mar.png") center / cover no-repeat;
+    opacity: 1;
+  }
+}
+
 @media print {
   body {
     background: white;
