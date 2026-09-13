@@ -3728,6 +3728,12 @@ address {
     padding: 150px 20px 48px;
   }
 
+  .people-hero::after {
+    background:
+      linear-gradient(rgba(255, 253, 248, 0.16), rgba(255, 253, 248, 0.16)),
+      var(--people-hero-image) 18% center / cover no-repeat;
+  }
+
   .people-hero h2 {
     max-width: 100%;
     font-size: clamp(2.2rem, 9vw, 3.8rem);
