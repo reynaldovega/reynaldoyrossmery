@@ -3159,7 +3159,7 @@ address {
 
 /* Familia y cortejo */
 .sheet--people {
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   min-height: 100vh;
   overflow-y: auto;
   background:
@@ -3173,10 +3173,16 @@ address {
 }
 
 .people-page {
-  width: min(1240px, 100%);
+  width: 100%;
+  min-width: 0;
   min-height: 100vh;
   margin: 0 auto;
-  padding: clamp(108px, 12vw, 142px) clamp(20px, 5vw, 64px) clamp(54px, 7vw, 90px);
+  padding: 0 0 clamp(54px, 7vw, 90px);
+}
+
+.people-page > :not(.people-hero) {
+  width: min(1112px, calc(100% - 40px));
+  margin-inline: auto;
 }
 
 .people-hero {
@@ -3184,14 +3190,16 @@ address {
   position: relative;
   isolation: isolate;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
   justify-items: center;
-  min-height: clamp(360px, 48vh, 540px);
+  min-height: clamp(620px, 88vh, 880px);
   margin: 0 0 clamp(30px, 5vw, 58px);
-  padding: clamp(54px, 7vw, 82px) clamp(24px, 8vw, 96px);
+  padding: 140px clamp(20px, 8vw, 96px) 64px;
   overflow: hidden;
   text-align: center;
   background: #e7e6e1;
-  border: 1px solid rgba(180, 134, 52, 0.2);
+  border: 0;
   box-shadow: 0 20px 55px rgba(64, 80, 47, 0.1);
 }
 
@@ -3231,14 +3239,6 @@ address {
   font-size: clamp(3rem, 7vw, 5.6rem);
 }
 
-@media (min-width: 881px) {
-  .people-hero {
-    width: calc(100% + (2 * clamp(20px, 5vw, 64px)));
-    margin-left: calc(-1 * clamp(20px, 5vw, 64px));
-    margin-right: calc(-1 * clamp(20px, 5vw, 64px));
-  }
-}
-
 .people-hero h2::after {
   margin-inline: auto;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
@@ -3248,11 +3248,12 @@ address {
   position: relative;
   z-index: 2;
   max-width: 620px;
+  min-width: 0;
   margin: 0;
   padding: 4px 14px;
   color: var(--muted);
   background: rgba(255, 253, 248, 0.7);
-  border-radius: 999px;
+  border-radius: 18px;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(1.25rem, 2.2vw, 1.7rem);
   font-style: italic;
@@ -3718,8 +3719,42 @@ address {
 }
 
 @media (max-width: 760px) {
-  .people-page {
-    padding-inline: 14px;
+  .people-page > :not(.people-hero) {
+    width: calc(100% - 28px);
+  }
+
+  .people-hero {
+    min-height: clamp(460px, 74svh, 620px);
+    padding: 150px 20px 48px;
+  }
+
+  .people-hero h2 {
+    max-width: 100%;
+    font-size: clamp(2.2rem, 9vw, 3.8rem);
+    overflow-wrap: anywhere;
+  }
+
+  .people-hero > p:not(.eyebrow) {
+    font-size: clamp(1.25rem, 4.8vw, 1.7rem);
+    line-height: 1.4;
+  }
+
+  .people-closing-banner--family .people-quote {
+    padding: 28px 20px;
+  }
+
+  .closing-message {
+    justify-self: center;
+    align-self: start;
+    margin-left: 0;
+    font-size: clamp(1.55rem, 6vw, 1.9rem);
+    line-height: 1.04;
+  }
+
+  .closing-details,
+  .closing-details strong {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .family-groups {
@@ -3732,8 +3767,10 @@ address {
 
   .people-closing-banner--landscape {
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    min-height: 390px;
     gap: 30px;
-    padding: 44px 24px;
+    padding: 24px;
   }
 
   .closing-details {

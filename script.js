@@ -267,7 +267,7 @@ function updateTopbarShade() {
   }
 
   const activeSheet = document.querySelector("[data-sheet].is-active");
-  const heroMedia = activeSheet?.querySelector(".sheet__media, .story-hero");
+  const heroMedia = activeSheet?.querySelector(".sheet__media, .story-hero, .people-hero");
   let shouldShade = window.scrollY > 24;
 
   if (heroMedia) {
