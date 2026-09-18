@@ -1,0 +1,122 @@
+.sheet--program { grid-template-columns:minmax(0,1fr); background:#fcf7f1; }
+.program-hero { min-height:88svh; padding:150px clamp(24px,7vw,100px) 72px; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:56px; background:linear-gradient(#fffaf180,#fffaf180),url('assets/fotos/cortejo-fondo-floral.png') center/cover; }
+.program-intro { text-align:center; max-width:540px; justify-self:center; }
+.program-intro h2 { font-family:'Parisienne',cursive; font-size:clamp(2.6rem,4.6vw,4.5rem); font-weight:400; line-height:1.15; }
+.program-intro h2::after { margin-inline:auto; }
+.program-intro > p:last-child { max-width:380px; margin:0 auto; font-size:.9rem; line-height:1.8; }
+.program-envelope-area { text-align:center; min-width:0; }
+.program-envelope { position:relative; display:block; width:min(100%,440px); aspect-ratio:1.5; margin:40px auto 28px; padding:0; min-height:0; border:1px solid #b68b7d; border-radius:4px; background:linear-gradient(130deg,#ba897e,#e8c4b8); box-shadow:0 18px 32px #76594833; cursor:pointer; perspective:1000px; isolation:isolate; }
+.program-envelope::before { content:''; position:absolute; inset:0; z-index:3; background:linear-gradient(145deg,#f1d8cc,#d7aaa0); clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%); }
+.program-envelope::after { content:''; position:absolute; inset:0; z-index:4; background:linear-gradient(160deg,#efd5c9,#dfb7aa); clip-path:polygon(0 100%,50% 43%,100% 100%); }
+.program-envelope__flap { position:absolute; inset:0; z-index:6; clip-path:polygon(0 0,100% 0,50% 57%); background:linear-gradient(160deg,#f9e5db,#c9988d); transform-origin:top; transition:transform 1.3s ease,z-index 0s .6s; filter:drop-shadow(0 3px 2px #7d514766); }
+.program-envelope__seal { position:absolute; z-index:7; top:42%; left:50%; transform:translate(-50%,-50%); width:72px; height:72px; display:grid; place-items:center; border-radius:50%; color:#734b37; white-space:nowrap; font:1.05rem 'Parisienne',cursive; background:radial-gradient(circle at 35% 25%,#ffe0bb,#bd8d68); border:5px double #c99b79; box-shadow:0 3px 8px #60483255; transition:opacity .4s,transform .6s; }
+.program-envelope__card { opacity:0; position:absolute; inset:10% 8% 6%; z-index:2; padding-top:18%; background:#fffaf3 url('floral-peach-corners.png') right top/40% auto no-repeat; color:#536147; font:2.6rem 'Parisienne',cursive; box-shadow:0 0 0 1px #d9c6ad; transition:transform 1s ease .8s; }
+.program-envelope__date { position:absolute; z-index:5; bottom:10%; left:0; right:0; color:#735a4f; font-size:.65rem; letter-spacing:.22em; }
+.program-opening .program-envelope__flap { transform:rotateX(180deg); z-index:1; }
+.program-opening .program-envelope__seal { opacity:0; transform:translate(-50%,-65%) scale(.85); }
+.program-opening .program-envelope__card { opacity:1; transform:translateY(-42%); }
+.program-envelope:focus-visible { outline:3px solid #795949; outline-offset:8px; }
+.program-envelope-hint { color:#7c6358; font:italic 1.3rem 'Cormorant Garamond',serif; }
+.program-letter { width:min(850px,calc(100% - 32px)); margin:54px auto 72px; scroll-margin-top:170px; }
+.program-letter[hidden], .program-face[hidden] { display:none; }
+.program-tabs { display:flex; justify-content:center; gap:10px; margin-bottom:20px; }
+.program-tabs button { min-height:44px; border:1px solid #bb9f85; background:#faf3eb; color:#5b6650; border-radius:30px; padding:10px 24px; box-shadow:none; font-size:.8rem; cursor:pointer; }
+.program-tabs button[aria-selected=true] { color:#fffaf3; background:#536147; border-color:#536147; }
+.program-face { position:relative; padding:48px clamp(20px,6vw,70px); border:1px solid #dfccb6; background:linear-gradient(#fffdf6dc,#fffdf6ed),url('assets/fotos/cortejo-fondo-floral.png') center/cover; box-shadow:0 18px 60px #7459411a; animation:programFace .45s ease both; }
+.program-face header { text-align:center; margin-bottom:30px; }
+.program-monogram { font:2.9rem 'Parisienne',cursive; color:#707e5e; margin:0 0 8px; }
+.program-face h3 { font:500 2.1rem 'Cormorant Garamond',serif; letter-spacing:.12em; margin-bottom:8px; }
+.program-place { font-style:italic; font-size:.8rem; color:#827064; }
+.program-timeline { list-style:none; padding:0; margin:0; }
+.program-timeline li { position:relative; display:grid; grid-template-columns:100px minmax(0,1fr); gap:24px; padding:13px 0; border-bottom:1px solid #c8b59a44; align-items:baseline; color:#414e37; font-size:.91rem; line-height:1.5; }
+.program-timeline time { color:#987151; font-size:.78rem; white-space:nowrap; }
+.program-face footer { text-align:center; color:#90705a; font:1.65rem 'Parisienne',cursive; margin-top:30px; }
+.program-close { display:block; margin:22px auto 0; color:#71614f; background:transparent; border:0; box-shadow:none; text-decoration:underline; min-height:44px; cursor:pointer; font-size:.75rem; }
+@keyframes programFace { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+@media(min-width:881px){ .topbar__left{gap:clamp(9px,1.2vw,18px)} .topbar{column-gap:18px} .topbar a{font-size:.75rem} }
+@media(max-width:880px){ .program-hero{grid-template-columns:1fr;gap:30px;padding:48px 22px 42px;min-height:auto} .program-intro h2{font-size:2.9rem} .program-envelope-area{width:min(440px,100%);justify-self:center} .program-envelope{margin-top:44px} .program-letter{scroll-margin-top:175px} }
+@media(max-width:430px){ .program-envelope__seal{width:58px;height:58px;font-size:.9rem} .program-face{padding:32px 18px} .program-timeline li{grid-template-columns:78px minmax(0,1fr);gap:12px;font-size:.85rem} .program-tabs button{padding-inline:18px} }
+@media(prefers-reduced-motion:reduce){ .sheet--program *, .sheet--program *::before,.sheet--program *::after{animation:none!important;transition:none!important} }
+/* Centered stationery and a two-page unfolding letter. */
+.program-hero { grid-template-columns:minmax(0,1fr); gap:20px; padding-top:130px; padding-bottom:48px; }
+.program-intro { max-width:760px; }
+.program-intro h2 { font-size:clamp(2.6rem,4vw,3.7rem); margin-bottom:16px; }
+.program-envelope-area { width:min(490px,100%); justify-self:center; padding-top:72px; }
+.program-envelope { width:100%; margin:24px auto 28px; background:linear-gradient(135deg,#b9897d,#eccabd); }
+.program-envelope__flap { transition:transform 2.5s cubic-bezier(.4,0,.2,1) .5s,z-index 0s 1.7s; }
+.program-envelope__seal { transition:opacity .9s ease,transform 1s ease; }
+.program-envelope__card { opacity:0; transition:opacity .6s ease 2s,transform 2.2s ease 2.3s; }
+.program-opening .program-envelope__card { opacity:1; transform:translateY(-65%); }
+.program-envelope__date { font-weight:400; }
+.program-letter { width:min(1180px,calc(100% - 40px)); margin:50px auto 80px; perspective:1800px; }
+.program-letter-title { text-align:center; font:500 clamp(1.7rem,3vw,2.6rem) 'Cormorant Garamond',serif; color:#536147; letter-spacing:.06em; margin:0 0 8px; outline:none; }
+.program-letter-subtitle { text-align:center; font:italic 1.2rem 'Cormorant Garamond',serif; color:#937c68; margin-bottom:32px; }
+.program-spread { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:stretch; filter:drop-shadow(0 20px 30px #715c3b22); perspective:1800px; }
+.program-face { min-width:0; padding:48px 36px 60px; border-color:#d9c9b0; box-shadow:none; background:#fffaf0; overflow:hidden; animation:none; }
+.program-face::before { content:''; position:absolute; inset:12px; border:1px solid #c7ab7659; pointer-events:none; }
+.program-face::after { content:''; position:absolute; inset:0; pointer-events:none; opacity:.48; background:url('floral-peach-corners.png') right top/180px auto no-repeat,url('floral-peach-corners.png') left bottom/150px auto no-repeat; }
+.program-face > * { position:relative; z-index:1; }
+#program-ceremonia { background:linear-gradient(90deg,#fffaf0 93%,#e9dfcd); transform-origin:right center; }
+#program-recepcion { background:linear-gradient(90deg,#e9dfcd,#fffaf0 7%); transform-origin:left center; display:flex; flex-direction:column; }
+#program-recepcion .program-timeline { margin-top:24px; }
+#program-recepcion .program-timeline li { padding-block:20px; }
+#program-recepcion footer { margin-top:auto; padding-top:55px; }
+.program-open #program-ceremonia { animation:programUnfoldLeft 2s ease both; }
+.program-open #program-recepcion { animation:programUnfoldRight 2.5s ease both; }
+.program-timeline li { grid-template-columns:85px minmax(0,1fr); gap:16px; padding:12px 0 12px 16px; }
+.program-timeline li::before { content:'◇'; position:absolute; left:0; top:14px; color:#bd9868; font-size:.55rem; }
+.program-face h3 { font-size:1.9rem; }
+.program-monogram { font-size:3.2rem; }
+@keyframes programUnfoldLeft { from { opacity:0; transform:rotateY(45deg); } to { opacity:1; transform:rotateY(0); } }
+@keyframes programUnfoldRight { from { opacity:0; transform:rotateY(-85deg); } to { opacity:1; transform:rotateY(0); } }
+@media(max-width:880px){
+ .program-hero { padding:40px 24px 38px; }
+ .program-envelope-area { padding-top:65px; }
+ .program-letter { width:calc(100% - 28px); }
+ .program-face { padding:38px 22px 45px; }
+ .program-timeline li { grid-template-columns:75px minmax(0,1fr); gap:8px; font-size:.83rem; }
+}
+@media(max-width:680px){
+ .program-spread { grid-template-columns:minmax(0,1fr); }
+ .program-face { padding:38px 24px 45px; }
+ #program-ceremonia { background:linear-gradient(#fffaf0 97%,#e9dfcd); transform-origin:center bottom; }
+ #program-recepcion { background:linear-gradient(#e9dfcd,#fffaf0 3%); transform-origin:center top; }
+ .program-open #program-ceremonia { animation:programMobileUnfold 1.4s ease both; }
+ .program-open #program-recepcion { animation:programMobileUnfold 2s ease both; }
+ .program-face::after { background-size:140px auto,120px auto; opacity:.3; }
+ .program-timeline li { font-size:.88rem; }
+ .program-envelope__seal { font-size:.85rem; }
+ .program-envelope-hint { font-size:1.1rem; }
+ .program-letter { scroll-margin-top:175px; }
+}
+@keyframes programMobileUnfold { from { opacity:0; transform:rotateX(-35deg) translateY(18px); } to { opacity:1; transform:none; } }
+@media(prefers-reduced-motion:reduce){ .sheet--program *, .sheet--program *::before,.sheet--program *::after{animation:none!important;transition:none!important} }
+/* The same folded paper travels from the envelope to the letter below. */
+.program-travelling .program-envelope__card { visibility:hidden; }
+.program-travelling .program-letter { visibility:hidden; }
+.program-flying-paper {
+ position:absolute; z-index:12; pointer-events:none; box-sizing:border-box;
+ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+ color:#657252; border:1px solid #cfb991;
+ background:linear-gradient(90deg,#fffaf0 96%,#e0d1b5);
+ box-shadow:0 18px 40px #715a3a33,inset 0 0 0 8px #fffaf0,inset 0 0 0 9px #d8c49e;
+ transform-origin:top left;
+}
+.program-flying-paper::before {content:'';position:absolute;inset:0;background:url('floral-peach-corners.png') right top/45% auto no-repeat;opacity:.45;}
+.program-flying-paper span {font:clamp(2rem,5vw,3.5rem) 'Parisienne',cursive;}
+.program-flying-paper small {font-size:.6rem;letter-spacing:.2em;}
+.program-flying-paper em {font:italic 1.1rem 'Cormorant Garamond',serif;text-align:center;padding:0 14px;}
+.program-open .program-envelope__card {visibility:hidden;}
+@media(prefers-reduced-motion:reduce){.program-flying-paper{display:none;}}
+/* Keep the names clear of the corner ornaments, including during the flight. */
+.program-envelope__card {
+ background-size:22% auto;
+ background-position:right -8px top -8px;
+ font-size:clamp(1.65rem,4.8vw,2.65rem);
+ white-space:nowrap;
+}
+.program-flying-paper::before {background-size:23% auto;background-position:right -8px top -8px;opacity:.32;}
+.program-flying-paper span {position:relative;z-index:1;font-size:clamp(1.7rem,4.5vw,3rem);white-space:nowrap;}
+.program-monogram {font-size:clamp(2.3rem,4.4vw,3.2rem);white-space:nowrap;}
+.program-face::after {background-size:95px auto,110px auto;background-position:right -12px top -12px,left -12px bottom -12px;opacity:.4;}
+@media(max-width:430px){.program-face::after{background-size:70px auto,90px auto;opacity:.3;}}

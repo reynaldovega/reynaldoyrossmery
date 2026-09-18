@@ -80,7 +80,7 @@ function showSheet(id, shouldUpdateHash = true) {
     }
   }
 
-  window.scrollTo({ top: 0, behavior: "auto" });
+  window.scrollTo({ top: 0, behavior: "instant" });
   updateTopbarShade();
 }
 
@@ -268,9 +268,9 @@ function updateTopbarShade() {
 
   const activeSheet = document.querySelector("[data-sheet].is-active");
   const heroMedia = activeSheet?.querySelector(".sheet__media, .story-hero, .people-hero");
-  let shouldShade = window.scrollY > 24;
+  let shouldShade = window.scrollY > 8 || (activeSheet?.scrollTop || 0) > 8;
 
-  if (heroMedia) {
+  if (heroMedia && !window.matchMedia("(max-width: 880px)").matches) {
     const mediaBottom = heroMedia.getBoundingClientRect().bottom;
     shouldShade = mediaBottom <= topbar.offsetHeight + 6;
   }
@@ -742,3 +742,5 @@ showSheet(window.location.hash.slice(1) || "inicio", false);
 updateTopbarShade();
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+window.addEventListener('load', () => { document.fonts.ready.then(() => { requestAnimationFrame(() => { window.scrollTo({top: 0, behavior: 'instant'}); updateTopbarShade(); }); }); });

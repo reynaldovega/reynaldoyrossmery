@@ -3801,13 +3801,25 @@ address {
   }
 }
 
-/* On mobile the header occupies its own space instead of covering the photos. */
+/* Keep the mobile menu visible while reserving its space above the cover. */
 @media (max-width: 880px) {
   .topbar,
   .topbar.is-scrolled {
-    position: relative;
+    position: sticky;
+    top: 0;
     padding: 12px;
-    background: #334127;
+    background: #24221f;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition: background 300ms ease, box-shadow 300ms ease;
+  }
+  .topbar.is-scrolled {
+    background: rgba(24, 23, 21, 0.16);
+    box-shadow: none;
+    border-bottom-color: transparent;
+  }
+  .topbar.is-scrolled a {
+    text-shadow: 0 1px 3px #000, 0 0 7px #0009;
   }
   .topbar a,
   .topbar.is-scrolled a,
@@ -3818,10 +3830,12 @@ address {
     -webkit-text-stroke: 0;
   }
   .topbar__brand.is-active { visibility: visible; pointer-events: auto; }
+  .topbar.is-scrolled a { text-shadow: 0 1px 3px #000, 0 0 7px #0009; }
   .topbar .topbar__right .topbar__cta,
   .topbar.is-scrolled .topbar__right .topbar__cta {
     color: #334127;
     background: #fffdf6;
+    text-shadow: none;
   }
   .story-hero img,
   .sheet--ceremony .sheet__media img,
