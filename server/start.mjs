@@ -4,7 +4,7 @@ import { createApp } from './app.mjs';
 import { Drive } from './drive.mjs';
 const env=process.env;
 const port=Number(env.PORT||8787);
-const origin=env.PUBLIC_ORIGIN||`http://127.0.0.1:${port}`;
+const origin=env.PUBLIC_ORIGIN||env.RENDER_EXTERNAL_URL||`http://127.0.0.1:${port}`;
 const enabled=env.MEMORIES_ENABLED==='true';
 const required=['GOOGLE_CLIENT_ID','GOOGLE_CLIENT_SECRET','GOOGLE_REFRESH_TOKEN','GOOGLE_DRIVE_FOLDER_ID','MEMORIES_SESSION_KEY'];
 if(enabled && required.some(k=>!env[k])) throw new Error('Falta configurar el almacenamiento privado. Consulta RECUERDOS-SETUP.md.');

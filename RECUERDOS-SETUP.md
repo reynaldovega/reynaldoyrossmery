@@ -38,7 +38,7 @@ No se necesita enlace público, Google Fotos, clave de Supabase ni contraseña d
 
 El Render actual es un **Static Site**: no ejecutará el backend. Crear un **Web Service nuevo** del mismo repositorio, con Node 24, `npm install --omit=dev` y `npm start`. Hay un ejemplo en `server/render-memories.yaml`; no reemplazar `render.yaml`.
 
-Configurar en Environment las variables de `.env`, con PUBLIC_ORIGIN igual al origen HTTPS real del servicio nuevo. Mantener MEMORIES_SESSION_KEY y los datos de Drive. No incluir una barra final ni ruta en PUBLIC_ORIGIN. Habilitar MEMORIES_ENABLED solo después de completar la configuración.
+Configurar en Environment las variables de conexión de `.env`, sin copiar PORT ni el PUBLIC_ORIGIN local. El servidor usa RENDER_EXTERNAL_URL, proporcionado por Render. Mantener MEMORIES_SESSION_KEY y los datos de Drive. Si se usa un dominio personalizado, configurar PUBLIC_ORIGIN como su origen HTTPS, sin ruta. Habilitar MEMORIES_ENABLED solo después de completar la configuración.
 
 El plan Free puede servir para validar, pero se suspende tras inactividad y tiene límites de tráfico; las cargas y visualizaciones de videos consumen transferencia. No se garantiza gratuidad ni disponibilidad inmediata el día de la boda. Cualquier plan de pago requiere elección del propietario.
 
