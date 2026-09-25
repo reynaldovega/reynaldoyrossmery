@@ -2,3 +2,6 @@
 Thumbs.db
 *.tmp
 *.log
+
+# Nunca subir credenciales reales
+.env
