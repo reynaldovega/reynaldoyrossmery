@@ -1,0 +1,14 @@
+import { fileURLToPath } from 'node:url';
+import './env.mjs';
+import { createApp } from './app.mjs';
+import { Drive } from './drive.mjs';
+const env=process.env;
+const port=Number(env.PORT||8787);
+const origin=env.PUBLIC_ORIGIN||`http://127.0.0.1:${port}`;
+const enabled=env.MEMORIES_ENABLED==='true';
+const required=['GOOGLE_CLIENT_ID','GOOGLE_CLIENT_SECRET','GOOGLE_REFRESH_TOKEN','GOOGLE_DRIVE_FOLDER_ID','MEMORIES_SESSION_KEY'];
+if(enabled && required.some(k=>!env[k])) throw new Error('Falta configurar el almacenamiento privado. Consulta RECUERDOS-SETUP.md.');
+if(enabled && new URL(origin).protocol!=='https:' && !['localhost','127.0.0.1'].includes(new URL(origin).hostname)) throw new Error('El álbum necesita HTTPS.');
+if(env.GOOGLE_DRIVE_FOLDER_ID && !/^[\w-]+$/.test(env.GOOGLE_DRIVE_FOLDER_ID)) throw new Error('Identificador de carpeta inválido.');
+const app=createApp({ drive:enabled?new Drive(env):null, key:env.MEMORIES_SESSION_KEY, origin:new URL(origin).origin, enabled, publicDir:fileURLToPath(new URL('../',import.meta.url)), trustProxy:env.RENDER==='true' });
+app.listen(port,'0.0.0.0',()=>console.log(`Álbum ${enabled?'conectado (pendiente de verificación remota)':'cerrado hasta conectar Drive'}: ${origin}/#recuerdos`));

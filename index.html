@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="styles.css?v=72">
   <link rel="stylesheet" href="ring-surprise.css?v=3">
   <link rel="stylesheet" href="programa.css?v=4">
+  <link rel="stylesheet" href="recuerdos.css?v=2">
 </head>
 <body>
   <nav class="topbar" aria-label="Navegación principal">
@@ -28,6 +29,7 @@
       <a href="#familia" data-sheet-link>Familia</a>
       <a href="#cortejo" data-sheet-link>Cortejo nupcial</a>
       <a href="#programa" data-sheet-link>Programa</a>
+      <a href="#recuerdos" data-sheet-link>Recuerdos de la boda</a>
       <a href="#ceremonia" data-sheet-link>Ceremonia y recepción</a>
       <a href="#regalos" data-sheet-link>Lista de regalos</a>
     </div>
@@ -464,6 +466,33 @@
       </div>
     </section>
 
+    <section class="sheet" id="recuerdos" data-sheet hidden aria-labelledby="titulo-recuerdos">
+      <div class="memory-wrap">
+        <div class="memory-hero">
+          <div class="memory-intro"><p class="eyebrow">26 septiembre 2026 · Rey &amp; Rous</p><h2 id="titulo-recuerdos">Nuestro día,<em>a través de tus ojos</em></h2><p>Hay instantes que solo tú pudiste capturar.<br>Una sonrisa, un abrazo, un pequeño gesto de amor. Nos encantará conservar tu mirada de nuestra boda.</p></div>
+          <figure class="memory-photo"><img src="assets/fotos/historia-pareja-beso.jpeg" alt="Reynaldo y Rossmery compartiendo un beso"><figcaption>Los momentos pasan, el amor se queda</figcaption></figure>
+        </div>
+        <div class="memory-panel">
+          <p class="memory-preview-note" role="status" data-memory-notice>Comprobando que tu álbum privado esté disponible…</p>
+          <form>
+            <p class="eyebrow">Un rincón para tus recuerdos</p><h3>Tu mirada también cuenta</h3><p>Comparte tus fotos y videos en tu propio espacio. Solo tú y los novios podrán verlos.</p>
+            <div class="memory-name-row"><label for="memory-name">¿Cómo te llamas?<input id="memory-name" name="guestName" autocomplete="name" maxlength="80" required placeholder="Tu nombre"></label><button class="memory-button" type="submit" disabled>Crear mi espacio privado</button></div>
+            <p>Tu nombre es una dedicatoria, no una contraseña. Crearemos un acceso único que este navegador recordará durante 90 días. Si ya tienes un espacio, abre tu enlace privado para recuperarlo.</p>
+          </form>
+          <div data-memory-space hidden>
+            <h3 data-memory-greeting tabindex="-1">Tus recuerdos</h3><p>Este rincón es solo tuyo. Los demás invitados no pueden ver tus archivos.</p>
+            <div class="memory-tools"><button class="memory-button memory-button--light" type="button" data-memory-recovery>Guardar mi enlace privado</button><button class="memory-button memory-button--light" type="button" data-memory-logout>Salir de mi espacio</button></div>
+            <div data-memory-recovery-box hidden><label for="memory-recovery">Tu enlace es una llave: guárdalo y no lo compartas.</label><textarea id="memory-recovery" readonly rows="3"></textarea><p>El acceso dura 90 días desde la creación del espacio. Salir del navegador no invalida este enlace.</p></div>
+            <div class="memory-upload"><strong>Cada recuerdo es un regalo</strong><p>Hasta 100 MB por archivo y 1 GB en tu espacio. Selecciona hasta 20 fotos o videos por envío.</p><button class="memory-button" type="button" data-memory-select>Seleccionar fotos y videos</button><input type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif,video/mp4,video/quicktime,video/webm" multiple hidden data-memory-files><p>JPG, PNG, WebP, GIF, HEIC, MP4, MOV y WebM. Algunos formatos se descargan como originales si tu navegador no puede mostrarlos.</p></div>
+            <h3>Listos para compartir</h3><div class="memory-gallery" data-memory-chosen></div><button class="memory-button" type="button" data-memory-send disabled>Enviar mis recuerdos</button><progress max="100" value="0" aria-label="Avance de la carga" hidden></progress>
+            <p role="status" aria-live="polite" data-memory-status>Aún no has seleccionado recuerdos.</p>
+            <h3>Mis recuerdos guardados</h3><button class="memory-button memory-button--light" type="button" data-memory-refresh>Actualizar mis recuerdos</button>
+            <p class="memory-empty" data-memory-empty>Tu historia de este día comienza con un recuerdo.</p><div class="memory-gallery" data-memory-gallery></div>
+          </div>
+        </div>
+        <p class="memory-signature">Con todo nuestro amor, Rey &amp; Rous</p>
+      </div>
+    </section>
     <footer class="site-footer" aria-label="Opciones finales">
       <div class="site-footer__questions">
         <p>¿Tienes preguntas?</p>
@@ -484,6 +513,7 @@
         <button class="footer-share-button" type="button" data-open-share>Compartir invitación</button>
       </div>
     </footer>
+
   </main>
 
   <aside class="music-widget" data-music-widget aria-label="Música de fondo">
@@ -618,6 +648,7 @@
   <script src="supabase-config.js?v=2"></script>
   <script src="cortejo-data.js?v=1"></script>
   <script src="script.js?v=57"></script>
+  <script src="recuerdos.js?v=2"></script>
   <script>
     (() => {
       const topbar = document.querySelector(".topbar");

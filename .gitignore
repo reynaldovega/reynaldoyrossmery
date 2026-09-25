@@ -2,3 +2,8 @@
 Thumbs.db
 *.tmp
 *.log
+.env
+.env.*
+!.env.example
+*client_secret*.json
+node_modules/

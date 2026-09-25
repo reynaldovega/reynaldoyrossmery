@@ -1,0 +1,27 @@
+# Crear un servicio NUEVO. No sustituye el sitio estático existente.
+# Introducir las variables secretas desde Environment en Render.
+services:
+  - type: web
+    name: recuerdos-rey-rous
+    runtime: node
+    plan: free
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: 24.19.0
+      - key: PUBLIC_ORIGIN
+        sync: false
+      - key: MEMORIES_ENABLED
+        value: "false"
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_REFRESH_TOKEN
+        sync: false
+      - key: GOOGLE_DRIVE_FOLDER_ID
+        sync: false
+      - key: MEMORIES_SESSION_KEY
+        sync: false

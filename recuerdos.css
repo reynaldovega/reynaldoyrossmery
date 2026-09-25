@@ -1,0 +1,39 @@
+#recuerdos { display:block; background:#fbf7ef; min-height:100vh; padding:180px 24px 80px; }
+#recuerdos[hidden] { display:none; }
+.memory-wrap { max-width:1080px; margin:auto; }
+.memory-hero { display:grid; grid-template-columns:1.15fr 1fr; gap:65px; align-items:center; margin-bottom:55px; }
+.memory-intro .eyebrow { color:#8c7351; font-size:.68rem; letter-spacing:.22em; }
+.memory-intro h2 { font:400 clamp(3.4rem,6vw,5.7rem)/1.05 'Cormorant Garamond',serif; color:#485640; margin:22px 0; }
+.memory-intro h2 em { display:block; color:#a56f68; font-family:'Parisienne',cursive; font-weight:400; }
+.memory-intro p { max-width:450px; line-height:1.9; font-size:.87rem; color:#756e61; }
+.memory-photo { position:relative; padding:15px 15px 37px; background:#fffdf9; box-shadow:0 18px 55px #6d55431a; transform:rotate(3deg); border:1px solid #e5dac9; }
+.memory-photo img { aspect-ratio:4/3; object-fit:cover; }
+.memory-photo figcaption { font:1.8rem 'Parisienne',cursive; color:#897253; text-align:center; margin-top:20px; }
+.memory-photo::after { content:''; position:absolute; width:140px; height:140px; right:-30px; bottom:-35px; background:url('floral-peach-corners.png') center/contain no-repeat; pointer-events:none; }
+.memory-panel { border:1px solid #ded3c1; background:#fffcf6; padding:clamp(22px,4vw,46px); border-radius:24px 24px 4px 4px; box-shadow:0 12px 40px #78674908; }
+.memory-panel h3 { font:400 2.3rem 'Cormorant Garamond',serif; color:#485640; margin:10px 0; text-transform:none; letter-spacing:0; }
+.memory-panel p,.memory-panel label { font-size:.8rem; line-height:1.8; color:#756e61; }
+.memory-preview-note { padding:12px 18px; border:1px dashed #c7b396; border-radius:8px; margin:0 0 28px; }
+.memory-name-row { display:flex; align-items:end; gap:14px; margin:22px 0; }
+.memory-name-row label { flex:1; }
+.memory-name-row input { display:block; width:100%; font:inherit; padding:15px; border:1px solid #d7cbb7; background:white; border-radius:7px; margin-top:7px; }
+.memory-button { border:1px solid #58664d; background:#58664d; color:#fffdf7; border-radius:7px; padding:16px 22px; cursor:pointer; font-size:.8rem; }
+.memory-button:focus-visible,.memory-name-row input:focus-visible { outline:3px solid #b17f70; outline-offset:4px; }
+.memory-button--light { background:transparent; color:#58664d; }
+.memory-upload { margin:25px 0; padding:30px 20px; border:1px dashed #bfa98b; border-radius:12px; text-align:center; background:#f7f3e9; }
+.memory-upload strong { display:block; font:1.65rem 'Cormorant Garamond',serif; margin-bottom:12px; color:#58664d; }
+.memory-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:20px; }
+.memory-item { margin:0; padding:9px; background:white; border:1px solid #e4d9ca; border-radius:8px; min-width:0; }
+.memory-item img,.memory-item video { width:100%; height:180px; object-fit:cover; border-radius:4px; background:#f2ecdf; }
+.memory-item figcaption { font-size:.68rem; overflow-wrap:anywhere; margin:10px 0; color:#756e61; }
+.memory-item button { border:0; background:none; color:#8c5750; padding:8px 0; cursor:pointer; font-size:.7rem; }
+.memory-empty { text-align:center; padding:30px 15px; }
+.memory-signature { text-align:center; font:2.2rem 'Parisienne',cursive; color:#9a7963; margin:35px 0 0; }
+.memory-tools { display:flex; flex-wrap:wrap; gap:12px; margin:20px 0; }
+.memory-button:disabled { opacity:.55; cursor:not-allowed; }
+.memory-panel textarea { width:100%; margin-top:10px; padding:12px; border:1px solid #d7cbb7; border-radius:8px; resize:vertical; font:inherit; font-size:.75rem; }
+.memory-panel progress { width:100%; margin-top:16px; accent-color:#58664d; }
+.memory-item a { font-size:.7rem; color:#58664d; }
+[data-memory-chosen] { margin-bottom:20px; }
+#recuerdos [hidden] { display:none!important; }
+@media(max-width:720px) { #recuerdos { padding:45px 20px 50px; } .memory-hero { grid-template-columns:1fr; gap:25px; } .memory-photo { max-width:360px; margin:10px auto; width:85%; } .memory-intro { text-align:center; } .memory-intro p { margin-inline:auto; } .memory-name-row { flex-direction:column; align-items:stretch; } .memory-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); } .memory-item img,.memory-item video { height:140px; } }

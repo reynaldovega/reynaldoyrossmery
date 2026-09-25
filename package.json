@@ -1,0 +1,11 @@
+{
+  "name": "recuerdos-rey-rous",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node server/start.mjs",
+    "test": "node --test server/*.test.mjs",
+    "connect-drive": "node --env-file-if-exists=.env server/connect-drive.mjs"
+  }
+}
