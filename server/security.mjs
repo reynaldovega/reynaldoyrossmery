@@ -5,7 +5,7 @@ export class HttpError extends Error {
 }
 export const MAX_FILE = 100 * 1024 * 1024;
 export const MAX_GUEST = 1024 * 1024 * 1024;
-export const MAX_EVENT = 30 * 1024 * 1024 * 1024;
+export const MAX_EVENT = 35 * 1024 * 1024 * 1024;
 export const MIME_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/heic', 'image/heif', 'video/mp4', 'video/quicktime', 'video/webm']);
 const AGE = 90 * 24 * 60 * 60;
 
